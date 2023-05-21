@@ -4,7 +4,7 @@ import PagInicial from './pages/Pag_Inicial/index.js';
 
 function App() {
   return (
-    <PagInicial />
+    <Main />
   );
 }
 

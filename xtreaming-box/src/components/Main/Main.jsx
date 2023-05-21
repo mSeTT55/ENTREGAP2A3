@@ -1,11 +1,7 @@
 import './Body.css';
 
 //Componente Menu Superior
-import MenuSuperior from '../MenuSuperior/MenuSuperior';
-
-
-
-
+import MenuSuperior from '../MenuSuperior/MenuSuperior.jsx';
 
 function Main (){
     return (
