@@ -21,7 +21,7 @@ body * {
     height: 100%;
     display: flex;
     flex-direction: column;
-    background-image: url("/imgs/img-fundo.jpg");
+    background-image: url("../../assets/imgs/img-fundo.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -38,3 +38,5 @@ body * {
     background-color: #16FC92;
     border-radius: 10px;
 }
+
+
