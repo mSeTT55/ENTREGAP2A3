@@ -1,6 +1,6 @@
 import './style.css';
 import './styleMobile.css';
-import logo from '../../assets/imgs/logo.png';
+import logo from '../../../assets/imgs/logo.png';
 
 
 function PagInicial(){
