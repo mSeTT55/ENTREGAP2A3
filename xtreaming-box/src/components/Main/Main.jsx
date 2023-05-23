@@ -2,15 +2,15 @@ import './Body.css';
 
 //Componente Menu Superior
 import MenuSuperior from '../MenuSuperior/MenuSuperior.jsx';
+import ConteudoPrincipal from '../ConteudoPrincipal/ConteudoPrincial.jsx';
 
 function Main (){
     return (
         <body>
-            <div class="main">
+            <div className="main">
                 {MenuSuperior()}
                 {/*<!--Aqui termina toda parte do menu superior-->*/}
-                <div class="conteudo-principal-lista">
-                </div>
+                {ConteudoPrincipal()}
             </div>
         </body>
     );
