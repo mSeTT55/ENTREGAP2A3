@@ -1,8 +1,9 @@
+/*Aqui começa todos os istens da página*/
+
 .sessao-superior {
     width: 100%;
     height: 25%;
     display: flex;
-
 }
 
 .logo-img {
