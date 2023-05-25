@@ -1,0 +1,67 @@
+@media only screen and (max-width:540px) {
+
+    .img-esquerda{
+        width: 100%;
+    }
+
+    .img-logo {
+        width: 40vw;
+    }
+
+    .menu-text{
+        display: none;
+    }
+
+    #minhalista{
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+    }
+
+    #minhalista > h1{
+        font-weight: 30px;
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .esquerda-form {
+        display: flex;
+        width: 100%;
+        padding: 4% ;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .direita-form{
+        display: none;
+    }
+    
+    input{
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    .conect{
+        width: 100%;
+    }
+    .conect > p, a {
+        font-size: 10px;
+    }
+
+    .termo {
+        width: 100%;
+    }
+
+    .termo > p{
+        font-size: 8px;
+    }
+
+    .bt1{
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width:350px){
+    
+}
