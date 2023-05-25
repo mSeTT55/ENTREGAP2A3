@@ -1,7 +1,7 @@
-import './style.css';
-import './styleMobile.css';
 import '../../../components/MenuSuperior/MenuSuperior.css';
 import '../../../components/ConteudoPrincipal/ConteudoPrincipal.css';
+import './style.css';
+import './styleMobile.css';
 import logo from '../../../assets/imgs/logo.png';
 
 
@@ -9,7 +9,7 @@ function cadastreSe(){
     return(
         <div className="main">
             <div className="menu-superior">
-                    <div className="img-esquerda">
+                    <div className="img-esquerda" id='img-esquerda'>
                     <img className="img-logo" src={logo} alt="Imagem da Logo"/>   
                     </div>
                     <div className="menu-text">

@@ -16,7 +16,7 @@ function App() {
       <Routes>
         <Route exact path='/' element={<PagInicial/>}/>
         <Route  path='/login' element={<Login/>}/>
-        <Route  path='/cadastre-se' element={<CadastreSe/>}/>
+        <Route  path='/cadastro' element={<CadastreSe/>}/>
       </Routes>
     </BrowserRouter>
   );

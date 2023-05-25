@@ -1,6 +1,6 @@
 @media only screen and (max-width:540px) {
 
-    .img-esquerda{
+    #img-esquerda{
         width: 100%;
     }
 
@@ -40,6 +40,11 @@
     input{
         box-sizing: border-box;
         width: 100%;
+        margin-bottom: 1em;
+    }
+
+    label{
+        margin-bottom: 1em;
     }
 
     .conect{

@@ -32,7 +32,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     width: 90%;
     height: 100%;
     background-color: rgba(31, 27, 44, 0.8);
@@ -43,7 +43,7 @@
 .esquerda-form {
     display: flex;
     width: 50%;
-    padding: 0 0 0 2%;
+    padding: 2% 0 0 2%;
     flex-direction: column;
     justify-content: left;
 }
