@@ -17,11 +17,11 @@ body * {
 }
 
 .main{   
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    background-image: url("/imgs/img-fundo.jpg");
+    background-image: url("../assets/imgs/img-fundo.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -38,3 +38,5 @@ body * {
     background-color: #16FC92;
     border-radius: 10px;
 }
+
+

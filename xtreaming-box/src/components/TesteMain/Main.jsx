@@ -1,4 +1,5 @@
-import './Body.css';
+//Componente Body estilo padrão das páginas
+import '../../layouts/body.css';
 
 //Componente Menu Superior
 import MenuSuperior from '../MenuSuperior/MenuSuperior.jsx';
@@ -8,13 +9,11 @@ import ConteudoPrincipal from '../ConteudoPrincipal/ConteudoPrincial.jsx';
 
 function Main (){
     return (
-        <body>
-            <div className="main">
-                {MenuSuperior()}
-                {/*<!--Aqui termina toda parte do menu superior-->*/}
-                {ConteudoPrincipal()}
+        
+            <div className='main'>
+
             </div>
-        </body>
+        
     );
 }
 

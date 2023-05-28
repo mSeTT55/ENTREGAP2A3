@@ -1,6 +1,5 @@
-import '../../../components/Main/Body.css';
-import './style.css';
-import './styleMobile.css';
+import '../../../layouts/body.css';
+
 import logo from '../../../assets/imgs/logo.png';
 
 

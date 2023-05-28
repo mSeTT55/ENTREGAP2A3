@@ -1,0 +1,143 @@
+@media only screen and (max-width:540px){
+    
+    .caixa-itens{
+        width: 95%;
+    }
+    
+    
+    #esquerda-text-botoes{
+        width: 100%;
+        justify-content: left;
+        padding-left: 30px;
+    }
+
+    #direita-text-botoes{
+        display: none;
+    }
+
+    .minhalista{
+        font-size: 35px;
+    }
+
+    /*Itens da esquerda---------------------------------------------------------------*/
+    .esquerda-itens{
+        width: 30%;
+    }
+
+    .esquerda-itens > div > a{
+        font-size: 15px;
+    }
+    
+    /*Itens da direita Vazio de Desejo Assistir---------------------------------------------------------------*/
+
+    .direita-itens-vazio{
+        width: 70%;
+    }
+
+    .direita-itens-vazio > img{
+        height: 20vh;
+    }
+
+    .direita-itens-vazio > p {
+        font-size: 15px;
+        text-align: center;
+    }
+
+    .direita-itens-vazio> a {
+        height: 6%;
+        width: 50%;
+        font-size: 14px;
+        padding: 0;
+    }
+    
+    /*Itens dentro de Desejo Assistir------------------------------------------------------*/
+
+
+    .direita-itens-desejo-assistir{
+        width: 70%;
+    }
+
+
+    /*Itens dentro de Visto------------------------------------------------------*/
+
+
+    .direita-itens-visto{
+        width: 70%;
+    }
+
+    /*Itens dentro Design dos itens do direita------------------------------------------------------*/
+
+
+    .item{
+        width: 55vw;
+        height: 30vh;
+        display: flex;
+        flex-direction: column;     
+        margin-top: 0;
+        padding: 0.1em;
+    }
+
+    .item > div{
+        width: 2vw;
+        height: 20%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #imagem-plataforma{
+        width: 4vw;
+    }
+
+    #imagem-plataforma > img {
+        width:  35px;
+        height: 35px;
+    }
+
+    #div-nome-serie {
+        width: 15vw;
+    }
+
+    #div-genero, #div-qntdtemporada {
+        display: none;
+    }
+
+    #checkbox-item{
+        height: 12px;
+    }
+
+    .lixeira > img{
+        width:  20px;
+        height: 20px;
+        cursor: pointer;
+    }
+
+    .item > div > p{
+        margin: 0;
+        font-size: 10px;
+        margin-bottom: 0px;
+    }
+
+    .item > div > .verde{
+        color: #16FC92;
+        font-size: 10px;
+        margin-right: 10px;
+    }
+
+
+}
+
+
+@media only screen and (max-width:350px){
+    
+    
+    
+    .direita-itens-vazio > p {
+        font-size: 12px;
+    }
+
+    .direita-itens-vazio> a {
+        font-size: 10px;
+    }
+}

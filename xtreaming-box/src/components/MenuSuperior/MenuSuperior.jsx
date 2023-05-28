@@ -2,7 +2,6 @@ import './MenuSuperior.css';
 import './MenuSuperiorMobile.css';
 import DropdownMenu from '../DropdownButton/DropdownButton';
 import DropdownMenuMobile from '../DropdownButton/DropdownButtonMobile';
-
 import logo from '../../assets/imgs/logo.png';
 
 
@@ -14,9 +13,9 @@ function MenuSuperior() {
                     <img className="img-logo" src={logo} alt="Imagem da Logo"/>     
                 </div>
                 <div className="text-direita">
-                    <a href="#">SÉRIES</a>
-                    <a href="#">MINHA LISTA</a>
-                    <a href="#">CONTATO</a>
+                    <a href="">SÉRIES</a>
+                    <a href="">MINHA LISTA</a>
+                    <a href="">CONTATO</a>
                 </div>
             </div>
             <div className="usuario">

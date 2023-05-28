@@ -1,7 +1,5 @@
 import '../../../components/MenuSuperior/MenuSuperior.css';
 import '../../../components/ConteudoPrincipal/ConteudoPrincipal.css';
-import './style.css';
-import './styleMobile.css';
 import logo from '../../../assets/imgs/logo.png';
 
 
