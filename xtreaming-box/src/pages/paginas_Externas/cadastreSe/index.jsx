@@ -1,5 +1,5 @@
-import '../../../components/MenuSuperior/MenuSuperior.css';
-import '../../../components/ConteudoPrincipal/ConteudoPrincipal.css';
+import './stylecadastreSe.css';
+import './stylecadastreSeMobile.css';
 import logo from '../../../assets/imgs/logo.png';
 
 
@@ -17,21 +17,23 @@ function cadastreSe(){
             {/*Aqui termina toda parte do menu superior*/}
             <div className="conteudo-principal-lista" id="conteudoprincipalLista">
                 <div className="text-botoes">
-                    <div id="minhalista">
-                        <h1>Cadastro do Usuário</h1>
+                    <div id="esquerda-text-botoes-cadastro">
+                        <h1 id="minhalista" className="minhalista">Cadastro de usuário</h1>
+                    </div>
+                    <div id="direita-text-botoes">
                     </div>
                 </div>
                 <div className="conteiner-maior">
                     <div className="caixa-itens">
                         <form className="esquerda-form" id="esquerda-form" onsubmit="">
-                            <label for="nome">Nome Completo</label>
-                            <input type="text" name="sobrenome" id= "edit_sobren" placeholder="Digite seu sobrenome"/>
-                            <label for="email">E-mail</label>
-                            <input type="email" name="email" id="" placeholder="Digite um e-mail válido"/>
-                            <label for="senha">Senha</label>
-                            <input type="password" name="senha" id="" placeholder="Digite sua senha"/>
-                            <label for="repetir">Repetir Senha</label>
-                            <input type="password" name="repitirsenha" id="" placeholder="Confirme a sua senha"/>
+                            <label className="label-cadastro" for="nome">Nome Completo</label>
+                            <input className="input-cadastro" type="text" name="sobrenome" id= "edit_sobren" placeholder="Digite seu sobrenome"/>
+                            <label className="label-cadastro"  for="email">E-mail</label>
+                            <input className="input-cadastro" type="email" name="email" id="" placeholder="Digite um e-mail válido"/>
+                            <label className="label-cadastro"  for="senha">Senha</label>
+                            <input className="input-cadastro" type="password" name="senha" id="" placeholder="Digite sua senha"/>
+                            <label className="label-cadastro"  for="repetir">Repetir Senha</label>
+                            <input className="input-cadastro" type="password" name="repitirsenha" id="" placeholder="Confirme a sua senha"/>
                             <div className="conect">
                                 <p>Já tem uma conta</p>
                                 <a href="/Login/index.html">Conecte-se</a>

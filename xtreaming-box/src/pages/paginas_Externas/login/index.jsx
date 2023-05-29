@@ -1,4 +1,6 @@
-
+import '../../../layouts/body.css';
+import './styleLogin.css';
+import './styleLoginMobile.css';
 import logo from '../../../assets/imgs/logo.png';
 
 
@@ -6,8 +8,8 @@ function Login(){
     return(
         <body>
             <div className="main-login">
-                <div className="sessao-superior">
-                    <img src={logo} className="logo-img" alt="Logotipo do site EXtreamingBox"/>
+                <div className="sessao-superior-login">
+                    <img src={logo} className="logoimg" alt="Logotipo do site EXtreamingBox"/>
                 </div>
                 <div className="sessao-inferior">
                     <form className="card-login">
@@ -24,8 +26,8 @@ function Login(){
                         
                         <button type="submit" className="btn-entrar">Entrar</button>
                         <div className="cardlogin-botoes-inferiores">
-                            <input className="manterconectado" type="checkbox" name="manterconectado"/>
-                            <label className="manterconectado">Manter conectado</label>
+                            <input className="manterconectado-login" type="checkbox" name="manterconectado"/>
+                            <label className="manterconectado-login">Manter conectado</label>
                             <button className="btn-esquecisenha">Esqueci a senha</button>
                         </div>
                     </form>

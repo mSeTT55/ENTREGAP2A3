@@ -1,5 +1,5 @@
-
-
+import './styleContato.css';
+import './styleContatoMobile.css';
 import logo from '../../../assets/imgs/logo.png';
 
 function contato(){
@@ -10,14 +10,14 @@ function contato(){
                     <div className="img-esquerda">
                         <img className="img-logo" src={logo} alt="Imagem da Logo"/>     
                     </div>
-                    <div className="text-direita">
+                    <div className="text-direita-contato">
                         <h1>Contato</h1>
                     </div>
                 </div>
             </div>
             {/*Aqui termina toda parte do menu superior*/}
             <div className="conteudo-principal-lista" id="conteudoprincipalLista">
-                <div className="text-botoes">
+                <div className="text-botoes-contato">
                     <div>
                         <p className="title1">Deixe aqui sua opnião ou mande uma mensagem</p>
                     </div>

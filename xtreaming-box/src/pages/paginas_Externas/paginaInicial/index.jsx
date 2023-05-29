@@ -1,4 +1,6 @@
 import '../../../layouts/body.css';
+import './stylePaginaInicial.css';
+import './stylePaginaInicialMobile.css';
 
 import logo from '../../../assets/imgs/logo.png';
 
@@ -10,7 +12,7 @@ function PagInicial(){
                 <div className="sessao-superior">
                     <img src={logo}className="logo-img" alt="Logotipo do site EXtreamingBox"/>
                 </div>
-                <div className="sessao-inferior">
+                <div className="sessao-inferior-paginicial">
                     <div className="esquerda">
                         
                         <div className="texto1">

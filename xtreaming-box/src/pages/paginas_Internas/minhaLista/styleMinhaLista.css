@@ -40,30 +40,30 @@
     cursor: pointer;
 }
 
-/*Itens da direita Vazio de Desejo Assistir---------------------------------------------------------------*/
+/*Itens da direita Vazio DESEJO ASSISTIR---------------------------------------------------------------*/
 
-.direita-itens-vazio{
+.direita-itens-vazio-desejo-assistir{
     width: 85%;
     height: 100%;
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.direita-itens-vazio > img{
+.direita-itens-vazio-desejo-assistir > img{
     height: 40vh;
     opacity: 0.3;
 }
 
-.direita-itens-vazio > p {
+.direita-itens-vazio-desejo-assistir > p {
     color: #FFFFFF;
     font-style: normal;
     font-weight: 900;
     font-size: 25px;
 }
 
-.direita-itens-vazio> a {
+.direita-itens-vazio-desejo-assistir > a {
     height: 35px;
     padding: 1em 2em;
     display: flex;
@@ -78,7 +78,49 @@
     text-decoration: none;
 }
 
-.direita-itens-vazio > a:hover{
+.direita-itens-vazio-desejo-assistir > a:hover{
+    background-color: #1ca364;
+}
+
+/*Itens da direita Vazio VISTO---------------------------------------------------------------*/
+
+.direita-itens-vazio-visto{
+    width: 85%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.direita-itens-vazio-visto > img{
+    height: 40vh;
+    opacity: 0.3;
+}
+
+.direita-itens-vazio-visto > p {
+    color: #FFFFFF;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 25px;
+}
+
+.direita-itens-vazio-visto > a {
+    height: 35px;
+    padding: 1em 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 25px;
+    background: #16FC92;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.direita-itens-vazio-visto > a:hover{
     background-color: #1ca364;
 }
 
