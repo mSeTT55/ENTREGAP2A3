@@ -23,7 +23,8 @@ import Contato from './pages/paginas_Externas/contato/index.jsx';
 //Importando a pagina de editar perfil
 import MinhaLista from './pages/paginas_Internas/minhaLista/index.jsx';
 
-
+//Importando a pagina de teste
+import Series from './pages/paginas_Internas/series/index.jsx';
 
 //Importando a pagina de teste
 import TesteMain from './components/TesteMain/Main.jsx';
@@ -40,6 +41,7 @@ function Rotas() {
                 {/*<Route  path='/perfil' element={<MeuPerfil/>}/>*/}
                 {/*<Route  path='/editarperfil' element={<EditarPerfil/>}/>*/}
                 <Route  path='/minhalista' element={<MinhaLista/>}/>
+                <Route  path='/series' element={<Series/>}/>
                 <Route  path='/testemain' element={<TesteMain/>}/>
             </Routes>
         </BrowserRouter>

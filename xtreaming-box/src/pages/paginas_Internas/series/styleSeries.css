@@ -1,0 +1,85 @@
+
+#text-direita-series{
+    color: #16FC92;
+}
+
+.cabecalho {
+    width: 100%;
+    height: 14%;
+    margin: 0;
+}
+
+.cabecalho > div{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin: 0;
+}
+
+
+
+.nome-h1 {
+    text-align: center;
+    font-family: 'Graduate', cursive;
+    color: white;
+    font-style: normal;
+    font-size: 22px;
+    margin: 15px;
+}
+
+.sub-title {
+    text-align: center;
+    font-family: 'Graduate', cursive;
+    color: white;
+    font-style: normal;
+    font-size: 14px;
+}
+
+
+
+.caixa-itens {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 2.5em;
+    overflow: auto;
+    flex-wrap:wrap;
+}
+
+/*Aqui se encontra cada card das series*/
+
+.series{
+    display: flex;
+    flex-direction: row;
+    margin: 0 0.5em 2.5em 0.5em;
+}
+
+.conteudo_serie{
+    width: 10em;
+    height: 18em;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.conteudo_serie > img, p , div{
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+.img_serie{
+    width: 6.5em;
+    border-radius: 15px;
+}
+
+.conteudo_serie > p {
+    font-family: 'Baloo Thambi',cursive;
+    color: white;
+
+}
+
+.img-star{
+    width: 8em;
+}

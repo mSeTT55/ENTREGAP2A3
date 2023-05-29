@@ -1,0 +1,17 @@
+@media only screen and (max-width:540px){
+    .cabecalho > div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .nome-h1{
+        font-size: 14px;
+        text-align: center;
+    }
+    
+    .sub-title {
+        font-size: 13px;
+        text-align: center;
+    }
+}
