@@ -9,7 +9,7 @@
     margin: 0;
 }
 
-.cabecalho > div{
+.cabecalho > .divcabecalho{
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -25,7 +25,7 @@
     color: white;
     font-style: normal;
     font-size: 22px;
-    margin: 15px;
+    margin: 6px;
 }
 
 .sub-title {
@@ -34,11 +34,12 @@
     color: white;
     font-style: normal;
     font-size: 14px;
+    margin: 2px;
 }
 
 
 
-.caixa-itens {
+#caixa-itens {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -64,7 +65,7 @@
     flex-direction: column;
 }
 
-.conteudo_serie > img, p , div{
+.conteudo_serie > .img_serie, .nome_serie , .startsdiv, .div-botton {
     margin: 0;
     margin-bottom: 15px;
 }
@@ -74,7 +75,7 @@
     border-radius: 15px;
 }
 
-.conteudo_serie > p {
+.conteudo_serie > .nome_serie {
     font-family: 'Baloo Thambi',cursive;
     color: white;
 

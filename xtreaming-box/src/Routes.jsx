@@ -14,10 +14,10 @@ import CadastreSe from './pages/paginas_Externas/cadastreSe/index.jsx';
 import Contato from './pages/paginas_Externas/contato/index.jsx';
 
 //Importando a pagina de meu perfil
-//import MeuPerfil from './pages/paginas_Internas/meuPerfil/index.jsx';
+import MeuPerfil from './pages/paginas_Internas/meuPerfil/index.jsx';
 
 //Importando a pagina de editar perfil
-//import EditarPerfil from './pages/paginas_Internas/editarPerfil/index.jsx';
+import EditarPerfil from './pages/paginas_Internas/editarPerfil/index.jsx';
 
 
 //Importando a pagina de editar perfil
@@ -38,8 +38,8 @@ function Rotas() {
                 <Route  path='/login' element={<Login/>}/>
                 <Route  path='/cadastro' element={<CadastreSe/>}/>
                 <Route  path='/contato' element={<Contato/>}/>
-                {/*<Route  path='/perfil' element={<MeuPerfil/>}/>*/}
-                {/*<Route  path='/editarperfil' element={<EditarPerfil/>}/>*/}
+                <Route  path='/perfil' element={<MeuPerfil/>}/>
+                <Route  path='/editarperfil' element={<EditarPerfil/>}/>
                 <Route  path='/minhalista' element={<MinhaLista/>}/>
                 <Route  path='/series' element={<Series/>}/>
                 <Route  path='/testemain' element={<TesteMain/>}/>

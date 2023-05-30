@@ -18,24 +18,24 @@ function Series (){
     return(
         <Interno>
                 <div className="cabecalho">
-                    <div>
+                    <div className='divcabecalho'>
                         <p className="nome-h1">Veja as series mais popupalares do X-TREAMING BOX</p>
                         <p className="sub-title"> Escolha suas series favoritas e coloque em sua coleção</p>
                     </div>
                 </div>
                 <div className="conteiner-maior">
-                    <div className="caixa-itens">
+                    <div id='caixa-itens' className="caixa-itens" >
                         {/*<!--Aqui se encontra cada card das series-->*/}
                         <section className="series"> 
                             <div className="conteudo_serie">
                                 <img className="img_serie" src={imgserie} alt="Amor e Morte"/>
                                 <p className="nome_serie">Amor e Morte</p>
-                                <div>
+                                <div className='startsdiv'>
                                     <img className="img-star" src={estrela} alt="Avaliação"/>
                                 </div>
                                 <div className="div-botton">
-                                    <img className="img-botton" src={vouver}/>                   
-                                    <img className="img-botton" src={visto} />
+                                    <img className="img-botton" src={vouver} alt="Botoes"/>                   
+                                    <img className="img-botton" src={visto} alt="Botoes"/>
                                 </div>
                             </div>     
                         </section>
@@ -43,12 +43,12 @@ function Series (){
                             <div className="conteudo_serie">
                                 <img className="img_serie" src={imgserie2} alt="Amor e Morte"/>
                                 <p className="nome_serie">A casa do Dragão</p>
-                                <div>
+                                <div className='startsdiv'>
                                     <img className="img-star" src={estrela2} alt="Avaliação"/>
                                 </div>
                                 <div className="div-botton">
-                                    <img className="img-botton" src={vouver}/>                   
-                                    <img className="img-botton" src={visto}/>
+                                    <img className="img-botton" src={vouver} alt="Botoes"/>                   
+                                    <img className="img-botton" src={visto} alt="Botoes"/>
                                 </div>
                             </div>   
                         </section>
