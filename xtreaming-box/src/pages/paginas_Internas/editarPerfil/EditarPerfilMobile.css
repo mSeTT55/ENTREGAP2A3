@@ -2,10 +2,28 @@
 
 
 @media only screen and (max-width:540px){
+    
     #editarperfil{
         color: #16FC92;
         font-style: normal;
         font-weight: 900;
         font-size: 20px;
+        text-align: center;
+    }
+    
+    #caixa-itens-editarperfil{
+        display: flex;
+    }
+
+    
+
+    .bt1submit {
+        width: 40%;
+        
+        
+    }
+
+    .entradasdetexto {
+        width: 80%;
     }
 }

@@ -22,18 +22,16 @@ function EditarPerfil (){
                     </div>
                     <div class="itens-tab">
                         <form>
-                            <div class="input-box">
-                                <input type="text" name="nome" id= "edit_nome" placeholder="Nome"/>
+                            <div class="inputs">
+                                <input class="entradasdetexto" type="text" name="nome" id= "edit_nome" placeholder="Nome"/>
                             </div>
-                            <div class="input-box">
-                                <input type="text" name="sobrenome" id= "edit_sobren" placeholder="Sobrenome"/>
+                            <div class="inputs">
+                                <input class="entradasdetexto" type="text" name="sobrenome" id= "edit_sobren" placeholder="Sobrenome"/>
                             </div>
-                            <div class="input-box">
-                                <input type="email" name="email" id="" placeholder="E-mail"/>
+                            <div class="inputs">
+                                <input class="entradasdetexto" type="email" name="email" id="" placeholder="E-mail"/>
                             </div>
-                            <div>
-                                <button class="bt1" id="" type="submit">Confirmar</button>
-                            </div>
+                                <button class="bt1submit" id="" type="submit">Confirmar</button>                            
                         </form>
                     </div>
                     <div> 
@@ -41,15 +39,13 @@ function EditarPerfil (){
                     </div>                            
                     <div class="itens-tab">
                         <form>  
-                            <div class="input-box">
-                                <input type="password" name="novasenha" id= "edit_novasenha" placeholder="Nova Senha"/>
+                            <div class="inputs">
+                                <input class="entradasdetexto" type="password" name="novasenha" id= "edit_novasenha" placeholder="Nova Senha"/>
                             </div>
-                            <div class="input-box">
-                                <input type="password" name="senhaatual" id= "edit_senhaatual" placeholder="Senha Atual"/>
-                            </div>
-                            <div>
-                                <button class="bt1" id="" type="submit">Confirmar</button>
-                            </div>
+                            <div class="inputs">
+                                <input class="entradasdetexto" type="password" name="senhaatual" id= "edit_senhaatual" placeholder="Senha Atual"/>
+                            </div>                          
+                                <button class="bt1submit" id="" type="submit">Confirmar</button>
                         </form> 
                     </div>
                 </div>

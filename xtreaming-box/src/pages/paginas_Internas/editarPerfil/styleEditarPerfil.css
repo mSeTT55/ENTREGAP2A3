@@ -2,6 +2,8 @@
 #caixa-itens-editarperfil {
     display: flex;
     flex-direction: column;
+    padding: 2%;
+    justify-content: center;
 }
 
 
@@ -17,13 +19,14 @@
     font-size: 22px;
     margin: 0%;
     margin-left: 5%; 
-    margin-bottom: 2%; 
+    margin-bottom: 1%; 
 }
 /* area de formatação dos inputs */
 
-.input-box > input{
+
+.entradasdetexto{
     box-sizing: border-box;
-    width: 337px;
+    width: 30%;
     height: 5vh;
     background: #514769;
     border: 1px solid #16FC92;
@@ -32,21 +35,20 @@
     font-size: 16px;
     color: white;
     margin-bottom: 10px;
-    margin-left: 5%;
+    
 }
 
-.bt1 {
-    width: 160px;
+.bt1submit {
+    width: 10%;
     height: 5vh;
     background: #16FC92;
     font-family: 'Baloo Thambi 2';
     font-size: 16px ;
     cursor: pointer;
-    transition: background-color 0.3s ease;
     color: black;
     font-weight: 900;
-    margin-left: 5%;
     border-radius: 8px;
+    
 }
 
 ::placeholder {
