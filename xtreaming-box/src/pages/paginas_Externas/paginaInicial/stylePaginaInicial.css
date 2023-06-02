@@ -10,10 +10,10 @@
 
 .logo-img {
     display: flex;
-    position: relative;
+    position: absolute;
     width: 25vw;
     left: 3%;
-    top: 20%;
+    top: 5%;
 }
 
 .sessao-inferior-paginicial {
