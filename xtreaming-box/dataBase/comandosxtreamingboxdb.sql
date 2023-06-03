@@ -2,14 +2,19 @@
 
 
 --SQLITE COMANDO
+
+CREATE TABLE IF NOT EXISTS [plataforma] ([idplataforma] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE,[nome] TEXT NOT NULL,[imagemplataforma] TEXT NOT NULL, FOREIGN KEY([idplataforma]) REFERENCES [series]([plataforma_idplataforma]) ON DELETE CASCADE)
+
+CREATE TABLE IF NOT EXISTS [usuario] ([idusuario] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE,[nome_completo] TEXT NOT NULL,[email] TEXT NOT NULL UNIQUE,[senha] TEXT NOT NULL, FOREIGN KEY([idusuario]) REFERENCES [situacao_serie]([usuario_idusuario]) ON DELETE CASCADE ON UPDATE CASCADE)
+
+CREATE TABLE IF NOT EXISTS [series] ([idseries] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE,[plataforma_idplataforma] INTEGER NOT NULL,[nome] TEXT NOT NULL,[ano] INTEGER NOT NULL,[genero] TEXT NOT NULL,[avalicacao] FLOAT,[temporada] INTEGER NOT NULL,FOREIGN KEY([idseries]) REFERENCES [situacao_serie]([series_idseries]) ON DELETE CASCADE ON UPDATE CASCADE, FOREIGN KEY([plataforma_idplataforma]) REFERENCES [situacao_serie]([series_plataforma_idplataforma]))
+
+CREATE TABLE IF NOT EXISTS [situacao_serie] ([idsituacao_serie] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE,[desejo_assistir] TEXT NOT NULL,[visto] TEXT NOT NULL,[series_idseries] INTEGER NOT NULL,[series_plataforma_idplataforma] INTEGER NOT NULL,[usuario_idusuario] INTEGER NOT NULL)
+
+
 INSERT INTO usuario(id,nome_completo,email,senha) VALUES(1,'Mateus Sena','mateus_sena55@hotmail.com','12345')
 
 INSERT INTO usuario(id,nome_completo,email,senha) VALUES(2,'Flavio Raposo','flavioraposo.90@gmail.com','12345')
-
-CREATE TABLE IF NOT EXISTS usuario (id_usuario INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, nome_completo TEXT NOT NULL, email TEXT NOT NULL UNIQUE, senha TEXT NOT NULL)
-
-
-
 
 
 -- -----------------------------------------------------
