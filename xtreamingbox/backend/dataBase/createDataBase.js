@@ -1,21 +1,19 @@
 import sqlite3 from 'sqlite3'
-//import { open } from 'sqlite'
 import {createTables} from './createTables.js'
 
 
-
-// you would have to import / invoke this in another file
+//Conectando ao arquivo do Banco e exportando para 
 const dataBaseFile = './dataBase/xtreamingbox.db'
-export async function openDb () {
-  new sqlite3.Database(dataBaseFile, sqlite3.OPEN_READWRITE)  
+export async function ConnectDBFile () {
+  new sqlite3.Database(dataBaseFile)  
   return(
     console.log('Criando Banco')
   );
 }
-openDb ();
 
-//Criando tabelas após 5 segundos
-const delay = 5000; // Tempo de atraso em milissegundos (5 segundos)
+
+//Criando tabelas após 2 segundos
+const delay = 2000; // Tempo de atraso em milissegundos (2 segundos)
 setTimeout(createTables, delay);
 
 

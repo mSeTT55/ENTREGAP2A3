@@ -14,13 +14,20 @@ const port = 5000
 // });
 
 
+
 //Iniciando Banco
 import sqlite3 from 'sqlite3'
+
 //Chamando arquivo do banco
-import {openDb} from './dataBase/createDataBase.js'
+import {ConnectDBFile} from './dataBase/createDataBase.js'
+
+
+//Criando arquivo do banco, tabelas e insets
+ConnectDBFile ();
+
+
 //Conectando ao Banco
 function conectandoBanco(){
-  openDb ();
   const dataBaseFile = './dataBase/xtreamingbox.db'
   const db = new sqlite3.Database(dataBaseFile, sqlite3.OPEN_READWRITE,(err)=>{
     if (err) {
@@ -29,34 +36,24 @@ function conectandoBanco(){
     }
   );
 }
-//Conectando o Banco em 8 segundos
-const delay2 = 8000; // Tempo de atraso em milissegundos (8 segundos)
+//Conectando o Banco em 3 segundos
+const delay2 = 3000; // Tempo de atraso em milissegundos (3 segundos)
 setTimeout(conectandoBanco, delay2);
 
 
-
-//Endereço da API
+//Conectando API e entregando o endereço
 function apiConectada(){
   app.listen(port, () => {
-    console.log(`API RODANDO...Estou disponibilizando os dados no endereço http://localhost:${port}`)
+    console.log(`API RODANDO no endereço http://localhost:${port}`)
   })
 }
-//Servidor ouvindo API em 9 segundos
-const delay3 = 9000; // Tempo de atraso em milissegundos (9 segundos)
+//Servidor ouvindo API em 4 segundos
+const delay3 = 4000; // Tempo de atraso em milissegundos (4 segundos)
 setTimeout(apiConectada, delay3);
-
 
 
 // Middleware para o uso do JSON
 app.use(express.json());
-
-
-
-
-
-
-
-
 
 
 
