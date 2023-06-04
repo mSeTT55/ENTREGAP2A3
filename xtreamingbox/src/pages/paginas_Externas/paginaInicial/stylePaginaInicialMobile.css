@@ -1,0 +1,127 @@
+@media only screen and (min-width:2400px){
+    .nome-ou::before,.nome-ou::after {
+        top: 0.55em;
+        width: 100px;
+        height: 0.50vh;
+        background-color: white;
+        left: 40px;
+}
+    .nome-ou::after {
+        left: initial;
+        right: 40px;
+    }
+}
+
+
+
+@media only screen and (min-width:1827px){
+    
+    .esquerda{
+        width: 40%;
+        max-width: 2655px;
+    }
+
+    .texto1, .texto-membro{
+        max-width: 800px;
+    }
+    
+    .bts-acesso{
+        max-width: 700px;
+    }
+
+    .botoes{
+        margin-left: 6%;
+        max-width: 60%;
+    
+    }
+    
+    .nome-ou::before,.nome-ou::after {
+        top: 0.55em;
+        width: 130px;
+        height: 0.50vh;
+        background-color: white;
+        left: 50px;
+}
+    .nome-ou::after {
+        left: initial;
+        right: 50px;
+    }
+}
+
+
+@media only screen and (max-width:540px){
+    
+    .sessao-superior {
+        align-items: center;
+        justify-content: center;
+    
+    }
+   
+    .logo-img{
+        width: 70vw;
+    }
+     
+    .esquerda{
+        width: 100%;
+    }
+
+    .direita{
+        display: none;
+    }
+
+    .texto1, .texto-membro, .nome-ou{
+        font-size: 20px;
+    }
+
+    .bts-acesso{
+        align-items: center;
+        justify-content: center;
+        padding-left: 0;
+    }
+
+    .botoes{
+        width: 60vw;
+        font-size: 20px;
+    }
+
+    .nome-ou{
+        width: 40%; 
+    }
+
+    .nome-ou::before,.nome-ou::after {
+        content: "";
+        position: absolute;
+        top: 0.70em;
+        width: 20vw;
+        height: 0.50vh;
+        background-color: white;
+        left: -25px;
+    }
+    .nome-ou::after {
+        left: initial;
+        right: -25px;
+    }
+
+
+}
+
+@media only screen and (max-width:350px){
+    .nome-ou::before,.nome-ou::after {
+        content: "";
+        position: absolute;
+        top: 0.70em;
+        width: 14vw;
+        height: 0.50vh;
+        background-color: white;
+        left: -20px;
+    }
+    .nome-ou::after {
+        left: initial;
+        right: -20px;
+    }
+}
+
+
+
+
+

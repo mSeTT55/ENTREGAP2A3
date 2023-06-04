@@ -1,0 +1,226 @@
+
+#minha-lista{
+    color: #16FC92;
+}
+
+
+.esquerda-itens {
+    width: 15%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    background-color: rgba(81, 71, 105, 0.15);
+}
+
+/*Itens da esquerda---------------------------------------------------------------*/
+
+.esquerda-itens > div{
+    width: 100%;
+    height: 5em;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 1em;
+}
+
+.esquerda-itens > div > a{
+    color: #16FC92;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 20px;
+}
+
+.desejoassistir {
+    background-color: rgba(81, 71, 105, 0.45);
+    cursor: pointer;
+}
+
+.visto{
+    cursor: pointer;
+}
+
+/*Itens da direita Vazio DESEJO ASSISTIR---------------------------------------------------------------*/
+
+.direita-itens-vazio-desejo-assistir{
+    width: 85%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.direita-itens-vazio-desejo-assistir > img{
+    height: 40vh;
+    opacity: 0.3;
+}
+
+.direita-itens-vazio-desejo-assistir > p {
+    color: #FFFFFF;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 25px;
+}
+
+.direita-itens-vazio-desejo-assistir > a {
+    height: 35px;
+    padding: 1em 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 25px;
+    background: #16FC92;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.direita-itens-vazio-desejo-assistir > a:hover{
+    background-color: #1ca364;
+}
+
+/*Itens da direita Vazio VISTO---------------------------------------------------------------*/
+
+.direita-itens-vazio-visto{
+    width: 85%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.direita-itens-vazio-visto > img{
+    height: 40vh;
+    opacity: 0.3;
+}
+
+.direita-itens-vazio-visto > p {
+    color: #FFFFFF;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 25px;
+}
+
+.direita-itens-vazio-visto > a {
+    height: 35px;
+    padding: 1em 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 25px;
+    background: #16FC92;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.direita-itens-vazio-visto > a:hover{
+    background-color: #1ca364;
+}
+
+
+/*Itens dentro de Desejo Assistir------------------------------------------------------*/
+
+
+.direita-itens-desejo-assistir{
+    width: 85%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em 0 1em 0;
+}
+
+
+/*Itens dentro de Visto------------------------------------------------------*/
+
+
+.direita-itens-visto{
+    width: 85%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em 0 1em 0;
+}
+
+
+
+/*Itens dentro Design dos itens do direita------------------------------------------------------*/
+
+
+.item{
+    all: unset;
+    width: 70vw;
+    height: 11vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #514769;
+    border-radius: 15px;
+    padding: 0.5em 1em;
+    margin-top: 1em;
+}
+
+.item > div{
+    width: 8vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+#imagem-plataforma{
+    width: 4vw;
+    margin-left:1em;
+    margin-right:1em;
+}
+
+#imagem-plataforma > img {
+    width:  50px;
+    height: 50px;
+}
+
+#div-nome-serie {
+    width: 25vw;
+    text-align: left;
+}
+
+#div-qntdtemporada {
+    width: 15vw;
+}
+
+.lixeira{
+    align-items: center;
+}
+
+.lixeira > img{
+    width:  50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.item > div > p{
+    margin: 0;
+    color: #FFFFFF;
+    font-family: Graduate;
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.item > div > .verde{
+    color: #16FC92;
+    font-size: 14px;
+    
+}
+
+
+/**/
+
