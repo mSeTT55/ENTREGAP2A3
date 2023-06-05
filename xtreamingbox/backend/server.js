@@ -55,7 +55,7 @@ app.get('/users', (req, res) => {
   db.all('SELECT * FROM usuarios', (err, rows) =>{
     if (err) {
       console.error(err);
-      res.status(500).json({ error: 'Erro ao obter usuários do banco de dados' });
+      res.status(500).json({ error: 'Não conseguimos acessar informações dos usuários' });
     } else {
       res.json(rows);
     }
@@ -69,7 +69,7 @@ app.get('/users/:id', (req, res) => {
   db.get('SELECT * FROM usuarios WHERE idusuario = ?', [idusuario], (err, row) => {
     if (err) {
       console.error(err);
-      res.status(500).json({ error: 'Erro ao obter usuário do banco de dados' });
+      res.status(500).json({ error: 'Não conseguimos acessar informações desse usuário' });
     } else if (row) {
       res.json(row);
     } else {
@@ -85,7 +85,7 @@ app.post('/users', (req, res) => {
   db.run('INSERT INTO usuarios (nome_completo, email, senha) VALUES (?, ?, ?)', [nome_completo, email, senha], function (err) {
     if (err) {
       console.error(err);
-      res.status(500).json({ error: 'Erro ao criar usuário no banco de dados' });
+      res.status(500).json({ error: 'Erro no cadastro do usuário' });
     } else {
       res.json({ id: this.lastID });
     }
@@ -100,7 +100,7 @@ app.put('/users/:id', (req, res) => {
   db.run('UPDATE usuarios SET nome_completo = ?, email = ?, senha = ? WHERE idusuario = ?', [nome_completo, email, senha,  idusuario], function (err) {
     if (err) {
       console.error(err);
-      res.status(500).json({ error: 'Erro ao atualizar usuário no banco de dados' });
+      res.status(500).json({ error: 'Erro ao atualizar dados do usuário' });
     } else if (this.changes > 0) {
       res.json({ message: 'Usuário atualizado com sucesso' });
     } else {
@@ -116,7 +116,7 @@ app.delete('/users/:id', (req, res) => {
   db.run('DELETE FROM usuarios WHERE idusuario = ?', [idusuario], function (err) {
     if (err) {
       console.error(err);
-      res.status(500).json({ error: 'Erro ao excluir usuário do banco de dados' });
+      res.status(500).json({ error: 'Erro ao excluir usuário' });
     } else if (this.changes > 0) {
       res.json({ message: 'Usuário excluído com sucesso' });
     } else {
@@ -126,7 +126,86 @@ app.delete('/users/:id', (req, res) => {
 });
 
 
-/*USUÁRIOS------------------------------------------------------------------------------------------------*/
 
+/*CRUD DE PLATAFORMA------------------------------------------------------------------------------------------------*/
+
+
+//Rota API GET para obter todas as plataformas
+app.get('/plataformas', (req, res) => {
+  db.all('SELECT * FROM plataforma', (err, rows) =>{
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Não conseguimos acessar informações das plataforma' });
+    } else {
+      res.json(rows);
+    }
+  });
+});
+
+
+//Rota API GET para obter uma plataforma por ID
+app.get('/plataformas/:id', (req, res) => {
+  const { idplataforma } = req.body;
+  db.get('SELECT * FROM plataforma WHERE idplataforma = ?', [idplataforma], (err, row) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Não conseguimos acessar informações dessa plataforma' });
+    } else if (row) {
+      res.json(row);
+    } else {
+      res.status(404).json({ error: 'Plataforma não encontrada' });
+    }
+  });
+});
+
+
+// Rota POST para criar uma nova plataforma
+app.post('/plataformas', (req, res) => {
+  const { nome_plataforma, imagem_plataforma } = req.body;
+  db.run('INSERT INTO plataforma (nome, imagemplataforma) VALUES (?, ?)', [nome_plataforma, imagem_plataforma], function (err) {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Erro ao cadastrar plataforma' });
+    } else {
+      res.json({ id: this.lastID });
+    }
+  });
+});
+
+
+//Rota PUT para atualizar uma plataforma existente
+app.put('/plataforma/:id', (req, res) => {
+  const { idplataforma } = req.body;
+  const { nome_plataforma, imagem_plataforma  } = req.body;
+  db.run('UPDATE plataforma SET nome = ?, imagemplataforma = ?', [nome_plataforma, imagem_plataforma ], function (err) {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Erro ao atualizar plataforma no banco de dados' });
+    } else if (this.changes > 0) {
+      res.json({ message: 'Plataforma atualizado com sucesso' });
+    } else {
+      res.status(404).json({ error: 'Plataforma não encontrado' });
+    }
+  });
+});
+
+
+//Rota DELETE para excluir uma plataforma
+app.delete('/plataforma/:id', (req, res) => {
+  const { idplataforma } = req.body;
+  db.run('DELETE FROM plataforma WHERE idplataforma = ?', [idplataforma], function (err) {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Erro ao excluir plataforma de streaming' });
+    } else if (this.changes > 0) {
+      res.json({ message: 'Plataforma excluída com sucesso' });
+    } else {
+      res.status(404).json({ error: 'Plataforma não encontrada' });
+    }
+  });
+});
+
+
+/*PLATAFORMA FIM------------------------------------------------------------------------------------------------*/
 
 
