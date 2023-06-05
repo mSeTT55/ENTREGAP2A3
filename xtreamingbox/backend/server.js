@@ -5,34 +5,18 @@ const port = 5000
 
 
 //Iniciando Banco
-// const dataBaseFile = './dataBase/xtreamingbox.db'
-// const sqlite3 = require('sqlite3').verbose();
-// const db = new sqlite3.Database(dataBaseFile, sqlite3.OPEN_READWRITE,(err)=>{
-//   if (err) {
-//       return console.error(err.message);
-//   }
-// });
-
-
-//Iniciando Banco
 import sqlite3 from 'sqlite3'
-
 //Chamando arquivo do banco
 import {ConnectDBFile} from './dataBase/createDataBase.js'
-
-
 //Criando arquivo do banco, tabelas e insets
 ConnectDBFile ();
-
-
 //Conectando ao Banco
-
 const dataBaseFile = './dataBase/xtreamingbox.db'
 const db = new sqlite3.Database(dataBaseFile, sqlite3.OPEN_READWRITE,(err)=>{
-if (err) {
+  if (err) {
     return console.error(err.message);
+    }
   }
-}
 );
 
 
@@ -43,6 +27,8 @@ app.listen(port, () => {
   console.log(`API RODANDO no endereço http://localhost:${port}`)
 })
 }
+
+
 //Servidor ouvindo API em 4 segundos
 const delay3 = 4000; // Tempo de atraso em milissegundos (4 segundos)
 setTimeout(apiConectada, delay3);
@@ -52,16 +38,28 @@ setTimeout(apiConectada, delay3);
 app.use(express.json());
 
 
+
+
+
+
+
+
+
+
+
+/*CRUD DE USUÁRIOS------------------------------------------------------------------------------------------------*/
+
+
 //Rota API GET para obter todos os usuários
 app.get('/users', (req, res) => {
-db.all('SELECT * FROM usuarios', (err, rows) =>{
-  if (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Erro ao obter usuários do banco de dados' });
-  } else {
-    res.json(rows);
-  }
-});
+  db.all('SELECT * FROM usuarios', (err, rows) =>{
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Erro ao obter usuários do banco de dados' });
+    } else {
+      res.json(rows);
+    }
+  });
 });
 
 
@@ -95,11 +93,11 @@ app.post('/users', (req, res) => {
 });
 
 
-// Rota PUT para atualizar um usuário existente
+//Rota PUT para atualizar um usuário existente
 app.put('/users/:id', (req, res) => {
-  const { idusuario } = req.params;
+  const { idusuario } = req.body;
   const { nome_completo, email, senha } = req.body;
-  db.run('UPDATE usuarios SET nome_completo = ?, email = ? WHERE idusuario = ?', [nome_completo, email, senha,  idusuario], function (err) {
+  db.run('UPDATE usuarios SET nome_completo = ?, email = ?, senha = ? WHERE idusuario = ?', [nome_completo, email, senha,  idusuario], function (err) {
     if (err) {
       console.error(err);
       res.status(500).json({ error: 'Erro ao atualizar usuário no banco de dados' });
@@ -112,6 +110,23 @@ app.put('/users/:id', (req, res) => {
 });
 
 
+//Rota DELETE para excluir um usuário
+app.delete('/users/:id', (req, res) => {
+  const { idusuario } = req.body;
+  db.run('DELETE FROM usuarios WHERE idusuario = ?', [idusuario], function (err) {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Erro ao excluir usuário do banco de dados' });
+    } else if (this.changes > 0) {
+      res.json({ message: 'Usuário excluído com sucesso' });
+    } else {
+      res.status(404).json({ error: 'Usuário não encontrado' });
+    }
+  });
+});
+
+
+/*USUÁRIOS------------------------------------------------------------------------------------------------*/
 
 
 

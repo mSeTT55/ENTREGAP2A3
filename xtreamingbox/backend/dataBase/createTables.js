@@ -1,19 +1,15 @@
 //import sqlite3módulo:
-//const sqlite3 = require('sqlite3').verbose();
 import sqlite3 from 'sqlite3'
-
-
 
 //Função de criação de tabelas
 export async function createTables () {
-    
+
     //Criando Database e conectando 
     const db = new sqlite3.Database('./dataBase/xtreamingbox.db', sqlite3.OPEN_READWRITE,(err)=>{
         if (err) {
             return console.error(err.message);
         }
     });
-
 
 
     //Criando variaveis de criação de tabelas
