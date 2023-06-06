@@ -390,12 +390,12 @@ app.delete('/situacao_serie/delete/:id', (req, res) => {
 
 /*CRUD DE SERIES------------------------------------------------------------------------------------------------*/
 
-//Rota API GET para obter todos os usuários
-app.get('/usuario/get/all', (req, res) => {
-  db.all('SELECT * FROM usuarios', (err, rows) =>{
+//Rota API GET para obter todos as series
+app.get('/series/get/all', (req, res) => {
+  db.all('SELECT * FROM series', (err, rows) =>{
     if (err) {
       console.error(err);
-      res.status(500).json({ error: 'Não conseguimos acessar informações dos usuários' });
+      res.status(500).json({ error: 'Não conseguimos acessar informações das séries' });
     } else {
       res.json(rows);
     }
@@ -403,29 +403,29 @@ app.get('/usuario/get/all', (req, res) => {
 });
 
 
-//Rota API GET para obter um usuário por ID
-app.get('/usuario/get/:id', (req, res) => {
-  const { idusuario } = req.body;
-  db.get('SELECT * FROM usuarios WHERE idusuario = ?', [idusuario], (err, row) => {
+//Rota API GET para obter uma serie por ID
+app.get('/series/get/:id', (req, res) => {
+  const { idseries } = req.body;
+  db.get('SELECT * FROM series WHERE idseries = ?', [idseries], (err, row) => {
     if (err) {
       console.error(err);
-      res.status(500).json({ error: 'Não conseguimos acessar informações desse usuário' });
+      res.status(500).json({ error: 'Não conseguimos acessar informações dessa série' });
     } else if (row) {
       res.json(row);
     } else {
-      res.status(404).json({ error: 'Usuário não encontrado' });
+      res.status(404).json({ error: 'Série não encontrado' });
     }
   });
 });
 
 
-// Rota POST para criar um novo usuário
-app.post('/usuario/post/novo', (req, res) => {
-  const { nome_completo, email, senha } = req.body;
-  db.run('INSERT INTO usuarios (nome_completo, email, senha) VALUES (?, ?, ?)', [nome_completo, email, senha], function (err) {
+// Rota POST para criar um novo cadastro de série
+app.post('/series/post/novo', (req, res) => {
+  const { plataforma_idplataforma, nome, ano, genero, avaliação, temporada} = req.body;
+  db.run('INSERT INTO series (plataforma_idplataforma, nome, ano, genero, avaliação, temporada) VALUES (?, ?, ?, ?, ?, ?)', [plataforma_idplataforma, nome, ano, genero, avaliação, temporada], function (err) {
     if (err) {
       console.error(err);
-      res.status(500).json({ error: 'Erro no cadastro do usuário' });
+      res.status(500).json({ error: 'Erro no cadastro do série' });
     } else {
       res.json({ id: this.lastID });
     }
@@ -433,25 +433,25 @@ app.post('/usuario/post/novo', (req, res) => {
 });
 
 
-//Rota PUT para atualizar um usuário existente
-app.put('/usuario/update/:id', (req, res) => {
-  const { idusuario } = req.body;
-  const { nome_completo, email, senha } = req.body;
-  db.run('UPDATE usuarios SET nome_completo = ?, email = ?, senha = ? WHERE idusuario = ?', [nome_completo, email, senha,  idusuario], function (err) {
+//Rota PUT para atualizar uma série 
+app.put('/series/update/:id', (req, res) => {
+  const { idseries} = req.body;
+  const { plataforma_idplataforma, nome, ano, genero, tempoarada } = req.body;
+  db.run('UPDATE series SET plataforma_idplataforma = ?, nome = ?, ano = ?, genero = ?, temporada = ?, WHERE idseries = ?', [plataforma_idplataforma, nome, ano, genero, tempoarada, idseries], function (err) {
     if (err) {
       console.error(err);
-      res.status(500).json({ error: 'Erro ao atualizar dados do usuário' });
+      res.status(500).json({ error: 'Erro ao atualizar dados da série' });
     } else if (this.changes > 0) {
-      res.json({ message: 'Usuário atualizado com sucesso' });
+      res.json({ message: 'Série atualizada com sucesso' });
     } else {
-      res.status(404).json({ error: 'Usuário não encontrado' });
+      res.status(404).json({ error: 'Série não encontrado' });
     }
   });
 });
 
 
 //Rota DELETE para excluir um usuário
-app.delete('/usuario/delete/:id', (req, res) => {
+app.delete('/series/delete/:id', (req, res) => {
   const { idusuario } = req.body;
   db.run('DELETE FROM usuarios WHERE idusuario = ?', [idusuario], function (err) {
     if (err) {
