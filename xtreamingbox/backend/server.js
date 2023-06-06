@@ -387,3 +387,80 @@ app.delete('/situacao_serie/delete/:id', (req, res) => {
     }
   });
 });
+
+/*CRUD DE SERIES------------------------------------------------------------------------------------------------*/
+
+//Rota API GET para obter todos os usuários
+app.get('/usuario/get/all', (req, res) => {
+  db.all('SELECT * FROM usuarios', (err, rows) =>{
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Não conseguimos acessar informações dos usuários' });
+    } else {
+      res.json(rows);
+    }
+  });
+});
+
+
+//Rota API GET para obter um usuário por ID
+app.get('/usuario/get/:id', (req, res) => {
+  const { idusuario } = req.body;
+  db.get('SELECT * FROM usuarios WHERE idusuario = ?', [idusuario], (err, row) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Não conseguimos acessar informações desse usuário' });
+    } else if (row) {
+      res.json(row);
+    } else {
+      res.status(404).json({ error: 'Usuário não encontrado' });
+    }
+  });
+});
+
+
+// Rota POST para criar um novo usuário
+app.post('/usuario/post/novo', (req, res) => {
+  const { nome_completo, email, senha } = req.body;
+  db.run('INSERT INTO usuarios (nome_completo, email, senha) VALUES (?, ?, ?)', [nome_completo, email, senha], function (err) {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Erro no cadastro do usuário' });
+    } else {
+      res.json({ id: this.lastID });
+    }
+  });
+});
+
+
+//Rota PUT para atualizar um usuário existente
+app.put('/usuario/update/:id', (req, res) => {
+  const { idusuario } = req.body;
+  const { nome_completo, email, senha } = req.body;
+  db.run('UPDATE usuarios SET nome_completo = ?, email = ?, senha = ? WHERE idusuario = ?', [nome_completo, email, senha,  idusuario], function (err) {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Erro ao atualizar dados do usuário' });
+    } else if (this.changes > 0) {
+      res.json({ message: 'Usuário atualizado com sucesso' });
+    } else {
+      res.status(404).json({ error: 'Usuário não encontrado' });
+    }
+  });
+});
+
+
+//Rota DELETE para excluir um usuário
+app.delete('/usuario/delete/:id', (req, res) => {
+  const { idusuario } = req.body;
+  db.run('DELETE FROM usuarios WHERE idusuario = ?', [idusuario], function (err) {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Erro ao excluir usuário' });
+    } else if (this.changes > 0) {
+      res.json({ message: 'Usuário excluído com sucesso' });
+    } else {
+      res.status(404).json({ error: 'Usuário não encontrado' });
+    }
+  });
+});
