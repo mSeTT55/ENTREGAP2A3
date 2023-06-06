@@ -52,7 +52,7 @@
     padding-left: 3%;
     display: flex;
     justify-content: left;
-    align-items: center;  
+    align-items: center;
 }
 
 .text-direita > a {
@@ -63,7 +63,7 @@
     padding: 0 5%;
     outline: none;
     line-height: 1.5;
-    color: #FFFFFF;
+    
 }
 
 .user-esquerda{
@@ -79,6 +79,14 @@
     color: #FFFFFF;
     font-size: 18px;
     
+}
+
+.text-direita a.active {
+    color: #16FC92;
+    
+}
+.text-direita a.inactive {
+    color: #FFFFFF;
 }
 
 /*dropdown menu*/

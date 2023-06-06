@@ -1,9 +1,33 @@
 import './stylecadastreSe.css';
 import './stylecadastreSeMobile.css';
 import logo from '../../../assets/imgs/logo.png';
+import { useState } from 'react';
+import axios from 'axios';
 
 
-function cadastreSe(){
+const cadastreSe = () => {
+
+    const [nomeCompleto, setNomeCompleto] = useState('')
+    const [email, setEmail] = useState('')
+    const [senha, setSenha] = useState('')
+    const [repeteSenha, setRepeteSenha] = useState('')
+
+
+    axios.post('http://localhost:5000/users/post/new', cadastro)
+        .then(
+            () => {
+                setNomeCompleto('')
+                setEmail('')
+                setSenha('')
+            }
+        ).catch(
+           () =>{
+                console.log('Deu erro cajazeirense!')
+           } 
+        )
+
+
+
     return(
         <div className="main">
             <div className="menu-superior">
@@ -27,13 +51,13 @@ function cadastreSe(){
                     <div className="caixa-itens">
                         <form className="esquerda-form" id="esquerda-form" onsubmit="">
                             <label className="label-cadastro" for="nome">Nome Completo</label>
-                            <input className="input-cadastro" type="text" name="sobrenome" id= "edit_sobren" placeholder="Digite seu sobrenome"/>
+                            <input className="input-cadastro" type="text" id="edit_sobren" placeholder="Digite seu nome completo" value={nomeCompleto} onChange={setNomeCompleto} />
                             <label className="label-cadastro"  for="email">E-mail</label>
-                            <input className="input-cadastro" type="email" name="email" id="" placeholder="Digite um e-mail válido"/>
+                            <input className="input-cadastro" type="email" name="email"  placeholder="Digite um e-mail válido" value={email} onChange={setEmail}/>
                             <label className="label-cadastro"  for="senha">Senha</label>
-                            <input className="input-cadastro" type="password" name="senha" id="" placeholder="Digite sua senha"/>
+                            <input className="input-cadastro" type="password" name="senha" id="" placeholder="Digite sua senha" value={senha} onChange={setSenha}/>
                             <label className="label-cadastro"  for="repetir">Repetir Senha</label>
-                            <input className="input-cadastro" type="password" name="repitirsenha" id="" placeholder="Confirme a sua senha"/>
+                            <input className="input-cadastro" type="password" name="repitirsenha" id="" placeholder="Confirme a sua senha" value={repeteSenha} onChange={setRepeteSenha}/>
                             <div className="conect">
                                 <p>Já tem uma conta</p>
                                 <a href="/Login/index.html">Conecte-se</a>

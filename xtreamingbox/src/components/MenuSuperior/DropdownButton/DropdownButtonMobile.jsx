@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../MenuSuperiorMobile.css';
+import { NavLink } from 'react-router-dom';
 
 
 function DropdownButtonMobile() {
@@ -14,11 +15,11 @@ function DropdownButtonMobile() {
         <button onClick={toggleDropdown}>MINHA CONTA</button>
         {isOpen && (
           <div id="dropdown-content2" className="dropdown-content2">
-            <a href="/Séries/index.html">Séries</a>
-            <a href="/Minha_Lista/index.html">Minha Lista</a>
-            <a href="/Contato/index.html">Contato</a>
-            <a href="/perfil/index.html">Perfil</a>
-            <a href="/Pag_inicial/index.html">Sair</a>
+            <NavLink to={"/series"}>Séries</NavLink>
+            <NavLink to={"/minhalista"}>Minha Lista</NavLink>
+            <NavLink to={"/contato"}>Contato</NavLink>
+            <NavLink to={"/perfil"}>Perfil</NavLink>
+            <NavLink>Sair</NavLink>
           </div>
         )}
       </div>

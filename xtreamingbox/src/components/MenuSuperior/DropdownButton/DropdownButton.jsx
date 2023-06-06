@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../MenuSuperior.css';
+import { NavLink } from 'react-router-dom';
 
 
 function DropdownMenu() {
@@ -14,8 +15,8 @@ function DropdownMenu() {
         <button onClick={toggleDropdown}>MINHA CONTA</button>
         {isOpen && (
           <div id="dropdown-content" class="dropdown-content">
-            <a href="/perfil/index.html">Perfil</a>
-            <a href="/Pag_inicial/index.html">Sair</a>
+            <NavLink to={"/perfil"} >Perfil</NavLink>
+            <NavLink>Sair</NavLink>
           </div>
         )}
       </div>

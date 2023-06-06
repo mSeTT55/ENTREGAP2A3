@@ -2,6 +2,7 @@ import React from 'react';
 import './styleMeuPerfil.css';
 import './styleMeuPerfilMobile.css';
 import Interno from '../../../layouts/interno.jsx';
+import {Link} from 'react-router-dom';
 
 
 function MeuPerfil (){ 
@@ -37,7 +38,9 @@ function MeuPerfil (){
                             </div> 
                         </div>
                         <div className="linhabtn">
-                            <a className="bt1Editar" id="" type="submit">Editar Perfil</a>
+                            <Link className="bt1Editar" to={"/editarperfil"}>
+                                <a id="" type="submit">Editar Perfil</a>
+                            </Link>
                             <a className="bt2Encerrar" id="" type="submit">Encerrar Conta</a>
                         </div>
                     </div>
