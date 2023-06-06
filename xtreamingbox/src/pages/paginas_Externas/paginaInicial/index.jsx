@@ -3,6 +3,7 @@ import './stylePaginaInicial.css';
 import './stylePaginaInicialMobile.css';
 
 import logo from '../../../assets/imgs/logo.png';
+import { Link } from 'react-router-dom';
 
 
 function PagInicial(){
@@ -21,9 +22,9 @@ function PagInicial(){
                         
                         <div className="bts-acesso">
                             <p className="texto-membro">JÁ É MEMBRO DO NOSSO BOX</p>
-                            <a href="/Login/index.html" className="botoes">ACESSAR AGORA</a>
+                            <Link to={"/login"} className="botoes">ACESSAR AGORA</Link>
                             <div className="nome-ou">OU</div>
-                            <a href="/Pagina_cadastro_Usuario/index.html" className="botoes">CADASTRE-SE</a>
+                            <Link to={"/cadastro"} className="botoes">CADASTRE-SE</Link>
                         </div>
                     </div>
                     <div className="direita"></div>
