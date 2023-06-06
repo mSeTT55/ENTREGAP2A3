@@ -452,8 +452,8 @@ app.put('/series/update/:id', (req, res) => {
 
 //Rota DELETE para excluir um usuário
 app.delete('/series/delete/:id', (req, res) => {
-  const { idusuario } = req.body;
-  db.run('DELETE FROM usuarios WHERE idusuario = ?', [idusuario], function (err) {
+  const { idseries } = req.body;
+  db.run('DELETE FROM series WHERE idseries = ?', [idseries], function (err) {
     if (err) {
       console.error(err);
       res.status(500).json({ error: 'Erro ao excluir usuário' });
