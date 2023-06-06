@@ -50,7 +50,7 @@ app.use(express.json());
 /*CRUD DE USUÁRIOS------------------------------------------------------------------------------------------------*/
 
 //Rota API GET para obter todos os usuários
-app.get('/users', (req, res) => {
+app.get('/users/get/all', (req, res) => {
   db.all('SELECT * FROM usuarios', (err, rows) =>{
     if (err) {
       console.error(err);
@@ -63,7 +63,7 @@ app.get('/users', (req, res) => {
 
 
 //Rota API GET para obter um usuário por ID
-app.get('/users/:id', (req, res) => {
+app.get('/users/get/:id', (req, res) => {
   const { idusuario } = req.body;
   db.get('SELECT * FROM usuarios WHERE idusuario = ?', [idusuario], (err, row) => {
     if (err) {
@@ -79,7 +79,7 @@ app.get('/users/:id', (req, res) => {
 
 
 // Rota POST para criar um novo usuário
-app.post('/users', (req, res) => {
+app.post('/users/post/new', (req, res) => {
   const { nome_completo, email, senha } = req.body;
   db.run('INSERT INTO usuarios (nome_completo, email, senha) VALUES (?, ?, ?)', [nome_completo, email, senha], function (err) {
     if (err) {
@@ -93,7 +93,7 @@ app.post('/users', (req, res) => {
 
 
 //Rota PUT para atualizar um usuário existente
-app.put('/users/:id', (req, res) => {
+app.put('/users/update/:id', (req, res) => {
   const { idusuario } = req.body;
   const { nome_completo, email, senha } = req.body;
   db.run('UPDATE usuarios SET nome_completo = ?, email = ?, senha = ? WHERE idusuario = ?', [nome_completo, email, senha,  idusuario], function (err) {
@@ -110,7 +110,7 @@ app.put('/users/:id', (req, res) => {
 
 
 //Rota DELETE para excluir um usuário
-app.delete('/users/:id', (req, res) => {
+app.delete('/users/delete/:id', (req, res) => {
   const { idusuario } = req.body;
   db.run('DELETE FROM usuarios WHERE idusuario = ?', [idusuario], function (err) {
     if (err) {
@@ -128,7 +128,7 @@ app.delete('/users/:id', (req, res) => {
 /*CRUD DE PLATAFORMA------------------------------------------------------------------------------------------------*/
 
 //Rota API GET para obter todas as plataformas
-app.get('/plataformas', (req, res) => {
+app.get('/plataformas/get/all', (req, res) => {
   db.all('SELECT * FROM plataforma', (err, rows) =>{
     if (err) {
       console.error(err);
@@ -141,7 +141,7 @@ app.get('/plataformas', (req, res) => {
 
 
 //Rota API GET para obter uma plataforma por ID
-app.get('/plataformas/:id', (req, res) => {
+app.get('/plataformas/get/:id', (req, res) => {
   const { idplataforma } = req.body;
   db.get('SELECT * FROM plataforma WHERE idplataforma = ?', [idplataforma], (err, row) => {
     if (err) {
@@ -157,7 +157,7 @@ app.get('/plataformas/:id', (req, res) => {
 
 
 // Rota POST para criar uma nova plataforma
-app.post('/plataformas', (req, res) => {
+app.post('/plataformas/post/new', (req, res) => {
   const { nome_plataforma, imagem_plataforma } = req.body;
   db.run('INSERT INTO plataforma (nome, imagemplataforma) VALUES (?, ?)', [nome_plataforma, imagem_plataforma], function (err) {
     if (err) {
@@ -171,7 +171,7 @@ app.post('/plataformas', (req, res) => {
 
 
 //Rota PUT para atualizar uma plataforma existente
-app.put('/plataforma/:id', (req, res) => {
+app.put('/plataforma/update/:id', (req, res) => {
   const { idplataforma } = req.body;
   const { nome_plataforma, imagem_plataforma  } = req.body;
   db.run('UPDATE plataforma SET nome = ?, imagemplataforma = ?', [nome_plataforma, imagem_plataforma ], function (err) {
@@ -188,7 +188,7 @@ app.put('/plataforma/:id', (req, res) => {
 
 
 //Rota DELETE para excluir uma plataforma
-app.delete('/plataforma/:id', (req, res) => {
+app.delete('/plataforma/delete/:id', (req, res) => {
   const { idplataforma } = req.body;
   db.run('DELETE FROM plataforma WHERE idplataforma = ?', [idplataforma], function (err) {
     if (err) {

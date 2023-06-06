@@ -1,5 +1,5 @@
 //Importando o ReactRouter
-import { BrowserRouter, Routes, Route} from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Switch, Redirect} from 'react-router-dom';
 
 //Importando a pagina inicial
 import PagInicial from './pages/paginas_Externas/paginaInicial/index.jsx';

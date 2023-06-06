@@ -5,6 +5,10 @@ import logo from '../../../assets/imgs/logo.png';
 
 
 function Login(){
+    const handleChange = (event) =>{
+        console.log('Digitando...', event.target.name, event.target.value)
+    }
+
     return(
         <body>
             <div className="main-login">
@@ -16,12 +20,12 @@ function Login(){
                         <h1>ACESSO</h1>
                         <div className="textfield">
                             <label id="emailLabel" for="email">E-mail</label>
-                            <input type="email" name="email" id="email" oninput="emailValido(this.value)" placeholder="Digite seu e-mail" required/> 
+                            <input type="email" name="email" id="email" placeholder="Digite seu e-mail" onChange={handleChange} required/> 
                             <p id="emailErrado"></p>
                         </div>
                         <div className="textfield">
                             <label id="senhaLabel" for="password">Senha</label>
-                            <input type="password" name="password" placeholder="Senha" required/>
+                            <input type="password" name="password" placeholder="Senha" onChange={handleChange} required/>
                         </div>
                         
                         <button type="submit" className="btn-entrar">Entrar</button>
