@@ -50,7 +50,7 @@ app.use(express.json());
 /*CRUD DE USUÁRIOS------------------------------------------------------------------------------------------------*/
 
 //Rota API GET para obter todos os usuários
-app.get('/users/get/all', (req, res) => {
+app.get('/usuario/get/all', (req, res) => {
   db.all('SELECT * FROM usuarios', (err, rows) =>{
     if (err) {
       console.error(err);
@@ -63,7 +63,7 @@ app.get('/users/get/all', (req, res) => {
 
 
 //Rota API GET para obter um usuário por ID
-app.get('/users/get/:id', (req, res) => {
+app.get('/usuario/get/:id', (req, res) => {
   const { idusuario } = req.body;
   db.get('SELECT * FROM usuarios WHERE idusuario = ?', [idusuario], (err, row) => {
     if (err) {
@@ -79,7 +79,7 @@ app.get('/users/get/:id', (req, res) => {
 
 
 // Rota POST para criar um novo usuário
-app.post('/users/post/new', (req, res) => {
+app.post('/usuario/post/novo', (req, res) => {
   const { nome_completo, email, senha } = req.body;
   db.run('INSERT INTO usuarios (nome_completo, email, senha) VALUES (?, ?, ?)', [nome_completo, email, senha], function (err) {
     if (err) {
@@ -93,7 +93,7 @@ app.post('/users/post/new', (req, res) => {
 
 
 //Rota PUT para atualizar um usuário existente
-app.put('/users/update/:id', (req, res) => {
+app.put('/usuario/update/:id', (req, res) => {
   const { idusuario } = req.body;
   const { nome_completo, email, senha } = req.body;
   db.run('UPDATE usuarios SET nome_completo = ?, email = ?, senha = ? WHERE idusuario = ?', [nome_completo, email, senha,  idusuario], function (err) {
@@ -110,7 +110,7 @@ app.put('/users/update/:id', (req, res) => {
 
 
 //Rota DELETE para excluir um usuário
-app.delete('/users/delete/:id', (req, res) => {
+app.delete('/usuario/delete/:id', (req, res) => {
   const { idusuario } = req.body;
   db.run('DELETE FROM usuarios WHERE idusuario = ?', [idusuario], function (err) {
     if (err) {
@@ -157,7 +157,7 @@ app.get('/plataformas/get/:id', (req, res) => {
 
 
 // Rota POST para criar uma nova plataforma
-app.post('/plataformas/post/new', (req, res) => {
+app.post('/plataformas/post/novo', (req, res) => {
   const { nome_plataforma, imagem_plataforma } = req.body;
   db.run('INSERT INTO plataforma (nome, imagemplataforma) VALUES (?, ?)', [nome_plataforma, imagem_plataforma], function (err) {
     if (err) {
@@ -203,13 +203,10 @@ app.delete('/plataforma/delete/:id', (req, res) => {
 });
 
 
-/*PLATAFORMA FIM------------------------------------------------------------------------------------------------*/
-
 /*CRUD DE CONTATO------------------------------------------------------------------------------------------------*/
 
-
 //Rota API GET para obter todos as mensagens
-app.get('/contatos', (req, res) => {
+app.get('/contatos/get/all', (req, res) => {
   db.all('SELECT * FROM contato', (err, rows) =>{
     if (err) {
       console.error(err);
@@ -222,7 +219,7 @@ app.get('/contatos', (req, res) => {
 
 
 //Rota API GET para obter uma mensagem por ID
-app.get('/contatos/:id', (req, res) => {
+app.get('/contatos/get/:id', (req, res) => {
   const { idcontato } = req.body;
   db.get('SELECT * FROM contato WHERE idcontato = ?', [idcontato], (err, row) => {
     if (err) {
@@ -238,7 +235,7 @@ app.get('/contatos/:id', (req, res) => {
 
 
 // Rota POST para criar uma nova mensagem
-app.post('/contatos', (req, res) => {
+app.post('/contatos/post/novo', (req, res) => {
   const { nome_completo, email, mensagem } = req.body;
   db.run('INSERT INTO usuarios (nome, email, mensagem) VALUES (?, ?, ?)', [nome_completo, email, mensagem], function (err) {
     if (err) {
@@ -251,8 +248,8 @@ app.post('/contatos', (req, res) => {
 });
 
 
-//Rota PUT para atualizar um usuário existente
-app.put('/contato/:id', (req, res) => {
+//Rota PUT para atualizar uma mensagem existente
+app.put('/contato/update/:id', (req, res) => {
   const { idcontato } = req.body;
   const { nome_completo, email, mensagem } = req.body;
   db.run('UPDATE contato SET nome = ?, email = ?, mensagem = ? WHERE idcontato = ?', [nome_completo, email, mensagem,  idcontato], function (err) {
@@ -268,8 +265,8 @@ app.put('/contato/:id', (req, res) => {
 });
 
 
-//Rota DELETE para excluir um usuário
-app.delete('/contato/:id', (req, res) => {
+//Rota DELETE para excluir uma mensagem
+app.delete('/contato/delete/:id', (req, res) => {
   const { idcontato } = req.body;
   db.run('DELETE FROM contato WHERE idcontato = ?', [idcontato], function (err) {
     if (err) {
@@ -284,3 +281,109 @@ app.delete('/contato/:id', (req, res) => {
 });
 
 
+/*CRUD DE SITUAÇÃO SERIES------------------------------------------------------------------------------------------------*/
+
+//Rota API GET para obter todos resultados e situações
+app.get('/situacao_series/get/all', (req, res) => {
+  db.all('SELECT * FROM situacao_serie', (err, rows) =>{
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Não conseguimos analisar sua situação' });
+    } else {
+      res.json(rows);
+    }
+  });
+});
+
+
+//Rota API GET para obter todas as situação por ID
+app.get('/situacao_series/get/all/:id', (req, res) => {
+  const { idsituacao_serie } = req.body;
+  db.get('SELECT * FROM situacao_serie WHERE idsituacao_serie = ?', [idsituacao_serie], (err, row) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Não conseguimos identificar a situação' });
+    } else if (row) {
+      res.json(row);
+    } else {
+      res.status(404).json({ error: 'Situação não encontrada' });
+    }
+  });
+});
+
+
+//Rota API GET para obter situação por ID de desejo assistir
+app.get('/situacao_series/get/desejo_assistir/:id', (req, res) => {
+  const { idsituacao_serie } = req.body;
+  db.get('SELECT * FROM situacao_serie WHERE idsituacao_serie = ? AND desejo_assistir = 1', [idsituacao_serie], (err, row) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Não conseguimos identificar seu desejo' });
+    } else if (row) {
+      res.json(row);
+    } else {
+      res.status(404).json({ error: 'Situação não encontrada' });
+    }
+  });
+});
+
+//Rota API GET para obter situação por ID visto
+app.get('/situacao_series/get/visto/:id', (req, res) => {
+  const { idsituacao_serie } = req.body;
+  db.get('SELECT * FROM situacao_serie WHERE idsituacao_serie = ? AND visto = 2', [idsituacao_serie], (err, row) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Não conseguimos identificar series que já foram vistas' });
+    } else if (row) {
+      res.json(row);
+    } else {
+      res.status(404).json({ error: 'Situação não encontrada' });
+    }
+  });
+});
+
+// Rota POST para criar uma nova situação
+app.post('/situacao_serie/post/novo', (req, res) => {
+  const { desejo_assistir, visto, serie_idseries, series_plataforma_idplataforma, usuario_idusuario } = req.body;
+  db.run('INSERT INTO situacao_serie (desejo_assistir, visto, serie_idseries, series_plataforma_idplataforma, usuario_idusuario) VALUES (?, ?, ?, ?, ?)', [desejo_assistir, visto, serie_idseries, series_plataforma_idplataforma, usuario_idusuario], function (err) {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Erro ao cadastrar situação' });
+    } else {
+      res.json({ id: this.lastID });
+    }
+  });
+});
+
+
+//Rota PUT para atualizar situação de desejo e visto 1 para desejo e 2 para visto
+app.put('/situacao_serie/update/:id', (req, res) => {
+  const { usuario_idusuario } = req.body;
+  const { desejo_assistir, visto } = req.body;
+  db.run('UPDATE situacao_serie SET desejo_assistir = ?, visto = ?, WHERE usuario_idusuario = ?', [desejo_assistir, visto, usuario_idusuario], function (err) {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Erro ao atualizar a situação' });
+    } else if (this.changes > 0) {
+      res.json({ message: 'Situação atualizada com sucesso' });
+    } else {
+      res.status(404).json({ error: 'Situação não encontrada' });
+    }
+  });
+});
+
+
+//Rota DELETE para excluir a situação
+app.delete('/situacao_serie/delete/:id', (req, res) => {
+  const { usuario_idusuario } = req.body;
+  db.run('DELETE FROM situacao_serie WHERE usuario_idusuario = ?', [usuario_idusuario], function (err) {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Erro ao excluir situação' });
+    } else if (this.changes > 0) {
+      res.json({ message: 'Situação excluída com sucesso' });
+    } else {
+      res.status(404).json({ error: 'Situação não encontrado' });
+    }
+  });
+});
