@@ -49,7 +49,6 @@ app.use(express.json());
 
 /*CRUD DE USUÁRIOS------------------------------------------------------------------------------------------------*/
 
-
 //Rota API GET para obter todos os usuários
 app.get('/users', (req, res) => {
   db.all('SELECT * FROM usuarios', (err, rows) =>{
@@ -126,9 +125,7 @@ app.delete('/users/:id', (req, res) => {
 });
 
 
-
 /*CRUD DE PLATAFORMA------------------------------------------------------------------------------------------------*/
-
 
 //Rota API GET para obter todas as plataformas
 app.get('/plataformas', (req, res) => {
@@ -207,5 +204,83 @@ app.delete('/plataforma/:id', (req, res) => {
 
 
 /*PLATAFORMA FIM------------------------------------------------------------------------------------------------*/
+
+/*CRUD DE CONTATO------------------------------------------------------------------------------------------------*/
+
+
+//Rota API GET para obter todos as mensagens
+app.get('/contatos', (req, res) => {
+  db.all('SELECT * FROM contato', (err, rows) =>{
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Não conseguimos acessar informações da caixa de mensagem' });
+    } else {
+      res.json(rows);
+    }
+  });
+});
+
+
+//Rota API GET para obter uma mensagem por ID
+app.get('/contatos/:id', (req, res) => {
+  const { idcontato } = req.body;
+  db.get('SELECT * FROM contato WHERE idcontato = ?', [idcontato], (err, row) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Não conseguimos acessar informações desse contato' });
+    } else if (row) {
+      res.json(row);
+    } else {
+      res.status(404).json({ error: 'Contato não encontrado não encontrado' });
+    }
+  });
+});
+
+
+// Rota POST para criar uma nova mensagem
+app.post('/contatos', (req, res) => {
+  const { nome_completo, email, mensagem } = req.body;
+  db.run('INSERT INTO usuarios (nome, email, mensagem) VALUES (?, ?, ?)', [nome_completo, email, mensagem], function (err) {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Sua mensagem não foi enviada, tente denovo.' });
+    } else {
+      res.json({ id: this.lastID });
+    }
+  });
+});
+
+
+//Rota PUT para atualizar um usuário existente
+app.put('/contato/:id', (req, res) => {
+  const { idcontato } = req.body;
+  const { nome_completo, email, mensagem } = req.body;
+  db.run('UPDATE contato SET nome = ?, email = ?, mensagem = ? WHERE idcontato = ?', [nome_completo, email, mensagem,  idcontato], function (err) {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Erro ao atualizar mensagens enviadas' });
+    } else if (this.changes > 0) {
+      res.json({ message: 'Mensagem atualizada com sucesso' });
+    } else {
+      res.status(404).json({ error: 'Mensagem não encontrada' });
+    }
+  });
+});
+
+
+//Rota DELETE para excluir um usuário
+app.delete('/contato/:id', (req, res) => {
+  const { idcontato } = req.body;
+  db.run('DELETE FROM contato WHERE idcontato = ?', [idcontato], function (err) {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Erro ao excluir mensagem' });
+    } else if (this.changes > 0) {
+      res.json({ message: 'Mensagem excluída com sucesso' });
+    } else {
+      res.status(404).json({ error: 'Mensagem não encontrada' });
+    }
+  });
+});
 
 
