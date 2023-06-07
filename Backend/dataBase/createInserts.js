@@ -13,8 +13,8 @@ const db = new sqlite3.Database('./xtreamingbox.db', sqlite3.OPEN_READWRITE,(err
 let sql_insetinto_usuarios;
 let sql_insetinto_usuarios2;
 //Criando Dados
-sql_insetinto_usuarios = `INSERT INTO usuarios(nome_completo,email,senha) VALUES('Mateus Sena','mateus_sena55@hotmail.com','12345')`;
-sql_insetinto_usuarios2 = `INSERT INTO usuarios(nome_completo,email,senha) VALUES('Flavio Raposo','flavioraposo.90@gmail.com','12345')`;
+sql_insetinto_usuarios = `INSERT INTO usuarios(nome_completo,email,senha, confirm_senha) VALUES('Mateus Sena','mateus_sena55@hotmail.com','12345','12345')`;
+sql_insetinto_usuarios2 = `INSERT INTO usuarios(nome_completo,email,senha,confirm_senha) VALUES('Flavio Raposo','flavioraposo.90@gmail.com','12345','12345')`;
 //Iniciando criação de dados    
 db.run(sql_insetinto_usuarios);    
 db.run(sql_insetinto_usuarios2);    

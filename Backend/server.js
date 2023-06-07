@@ -1,6 +1,7 @@
 //Iniciando Express
 import express from 'express'
 const app = express()
+app.use(cors())
 const port = 5000
 
 
@@ -80,8 +81,8 @@ app.get('/usuario/get/:id', (req, res) => {
 
 // Rota POST para criar um novo usuário
 app.post('/usuario/post/novo', (req, res) => {
-  const { nome_completo, email, senha } = req.body;
-  db.run('INSERT INTO usuarios (nome_completo, email, senha) VALUES (?, ?, ?)', [nome_completo, email, senha], function (err) {
+  const { nome_completo, email, senha, confirm_senha } = req.body;
+  db.run('INSERT INTO usuarios (nome_completo, email, senha, confirm_senha) VALUES (?, ?, ?, ?)', [nome_completo, email, senha, confirm_senha], function (err) {
     if (err) {
       console.error(err);
       res.status(500).json({ error: 'Erro no cadastro do usuário' });
