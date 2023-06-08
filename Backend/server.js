@@ -1,5 +1,6 @@
 //Iniciando Express
 import express from 'express'
+import cors from 'cors'
 const app = express()
 app.use(cors())
 const port = 5000
@@ -41,7 +42,16 @@ app.use(express.json());
 
 
 
-
+app.get('/', (req, res) => {
+  db.all('SELECT * FROM usuarios', (err, rows) =>{
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Não conseguimos acessar informações dos usuários' });
+    } else {
+      res.json(rows);
+    }
+  });
+});
 
 
 

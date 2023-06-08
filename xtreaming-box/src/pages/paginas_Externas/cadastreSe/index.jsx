@@ -1,9 +1,11 @@
 import './stylecadastreSe.css';
 import './stylecadastreSeMobile.css';
 import logo from '../../../assets/imgs/logo.png';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+
+
 
 
 const CadastreSe = () => {
@@ -25,8 +27,10 @@ const CadastreSe = () => {
         };
 
         const formSumbit = async (pegarCada) => {
+            //Cancelando o comportamento padrão de recarregar a pagina
             pegarCada.preventDefault();
-
+            
+            //montando os dados do array
             const montandoDados = {
                 nome_completo: dadosForm.nome_completo, 
                 email: dadosForm.email, 
@@ -50,10 +54,14 @@ const CadastreSe = () => {
             // Chamando API atraves do AXIOS
             try {
                 const response = await axios.post('http://localhost:5000/usuario/post/novo', montandoDados, config);
-                console.log(response.data); 
+                console.log(response.data);
+                if(response.data){
+                    alert('Usuário cadastrado com sucesso.');      
+                }
             } catch (error) {
                 console.error(error);
             }
+        
         };
     
     return(
@@ -77,7 +85,7 @@ const CadastreSe = () => {
                 </div>
                 <div className="conteiner-maior">
                     <div className="caixa-itens">
-                        <form className="esquerda-form" id="esquerda-form" onSubmit={formSumbit}>
+                        <form className="esquerda-form" id="esquerda-form" onSubmit={(pegarCada) => formSumbit(pegarCada)}>
                             <label className="label-cadastro" for="nome">Nome Completo</label>
                             <input
                                 required
@@ -89,7 +97,7 @@ const CadastreSe = () => {
                                 onChange={(pegarCada) => setDadosForm({ ...dadosForm, nome_completo: pegarCada.target.value })}   
                             />
 
-                            <label className="label-cadastro"  for="email">E-mail</label>
+                            <label className="label-cadastro">E-mail</label>
                             
                             <input
                                 required
@@ -101,7 +109,7 @@ const CadastreSe = () => {
                                 onChange={(pegarCada) => setDadosForm({ ...dadosForm, email: pegarCada.target.value })}  
                             />
 
-                            <label className="label-cadastro"  for="senha">Senha</label>
+                            <label className="label-cadastro">Senha</label>
 
                             <input
                                 required 
@@ -113,13 +121,14 @@ const CadastreSe = () => {
                                 onChange={(pegarCada) => setDadosForm({ ...dadosForm, senha: pegarCada.target.value })}  
                             />
 
-                            <label className="label-cadastro"  for="repetir">Repetir Senha</label>
+                            <label className="label-cadastro">Repetir Senha</label>
                             
                             <input
                                 required 
                                 className="input-cadastro" 
                                 type="password" name="repitirsenha" 
                                 placeholder="Confirme a sua senha"
+
                                 value={dadosForm.confirm_senha}
                                 onChange={(pegarCada) => setDadosForm({ ...dadosForm, confirm_senha: pegarCada.target.value })} 
 
@@ -134,7 +143,7 @@ const CadastreSe = () => {
                                 responsabilidade do USUÁRIO.</p>
                             </div>
                             <div className="bt1">
-                                <button id="enviar_cad" type="submit">CRIAR CONTA</button>
+                                <button type="submit">CRIAR CONTA</button>
                             </div>
                         </form>
                         <div className="direita-form">
