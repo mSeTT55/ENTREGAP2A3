@@ -1,17 +1,61 @@
 import './stylecadastreSe.css';
 import './stylecadastreSeMobile.css';
 import logo from '../../../assets/imgs/logo.png';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 
-const cadastreSe = () => {
+const CadastreSe = () => {
+        //UseState para pegar os dados do formulario, decompor em um array e aplicar cada dado em cada variavel
+        const [dadosForm, setDadosForm] = useState({
+        nome_completo: '', 
+        email: '', 
+        senha: '', 
+        confirm_senha: '' 
+        });
+        //Verificar se as senhas são iguais
+        const senhasiguais = () => {
+            if (dadosForm.senha !== dadosForm.confirm_senha) {
+            alert('A senha e a confirmação de senha não correspondem.');
+            return false;
+            }
+            
+            return true;
+        };
 
-  
+        const formSumbit = async (pegarCada) => {
+            pegarCada.preventDefault();
+
+            const montandoDados = {
+                nome_completo: dadosForm.nome_completo, 
+                email: dadosForm.email, 
+                senha: dadosForm.senha, 
+                confirm_senha: dadosForm.confirm_senha
+            };
 
 
+            // Indicando ao AXIOS que os dados são em JSON
+            const config = {
+                headers: {
+                'Content-Type': 'application/json'
+                }
+            };
 
+            //Usando a validacao de senha
+            if (!senhasiguais()) {
+                return;
+            }
+
+            // Chamando API atraves do AXIOS
+            try {
+                const response = await axios.post('http://localhost:5000/usuario/post/novo', montandoDados, config);
+                console.log(response.data); 
+            } catch (error) {
+                console.error(error);
+            }
+        };
+    
     return(
         <div className="main">
             <div className="menu-superior">
@@ -33,21 +77,59 @@ const cadastreSe = () => {
                 </div>
                 <div className="conteiner-maior">
                     <div className="caixa-itens">
-                        <form className="esquerda-form" id="esquerda-form" onsubmit="">
+                        <form className="esquerda-form" id="esquerda-form" onSubmit={formSumbit}>
                             <label className="label-cadastro" for="nome">Nome Completo</label>
-                            <input className="input-cadastro" type="text" id="edit_sobren" placeholder="Digite seu nome completo"  />
+                            <input
+                                required
+                                className="input-cadastro" 
+                                type="text"
+                                placeholder="Digite seu nome completo"
+
+                                value={dadosForm.nome_completo}
+                                onChange={(pegarCada) => setDadosForm({ ...dadosForm, nome_completo: pegarCada.target.value })}   
+                            />
+
                             <label className="label-cadastro"  for="email">E-mail</label>
-                            <input className="input-cadastro" type="email" name="email"  placeholder="Digite um e-mail válido" />
+                            
+                            <input
+                                required
+                                className="input-cadastro" 
+                                type="email" name="email"  
+                                placeholder="Digite um e-mail válido"
+
+                                value={dadosForm.email}
+                                onChange={(pegarCada) => setDadosForm({ ...dadosForm, email: pegarCada.target.value })}  
+                            />
+
                             <label className="label-cadastro"  for="senha">Senha</label>
-                            <input className="input-cadastro" type="password" name="senha" id="" placeholder="Digite sua senha" />
+
+                            <input
+                                required 
+                                className="input-cadastro" 
+                                type="password" name="senha" 
+                                placeholder="Digite sua senha"
+
+                                value={dadosForm.senha}
+                                onChange={(pegarCada) => setDadosForm({ ...dadosForm, senha: pegarCada.target.value })}  
+                            />
+
                             <label className="label-cadastro"  for="repetir">Repetir Senha</label>
-                            <input className="input-cadastro" type="password" name="repitirsenha" id="" placeholder="Confirme a sua senha" />
+                            
+                            <input
+                                required 
+                                className="input-cadastro" 
+                                type="password" name="repitirsenha" 
+                                placeholder="Confirme a sua senha"
+                                value={dadosForm.confirm_senha}
+                                onChange={(pegarCada) => setDadosForm({ ...dadosForm, confirm_senha: pegarCada.target.value })} 
+
+                            />
                             <div className="conect">
                                 <p>Já tem uma conta</p>
                                 <Link to={"/login"}>Conecte-se</Link>
                             </div>
                             <div className="termo">
-                                <input className="check" type="checkbox" name="termo"/>
+                                <input className="check" type="checkbox" name="termo" required/>
                                 <p>Declaro que as informações fornecidas são completas, verdadeiras, sendo total
                                 responsabilidade do USUÁRIO.</p>
                             </div>
@@ -65,4 +147,4 @@ const cadastreSe = () => {
 }
 
 
-export default cadastreSe;
+export default CadastreSe;
