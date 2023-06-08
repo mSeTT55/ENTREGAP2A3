@@ -1,8 +1,24 @@
+import { useState } from 'react';
 import './styleContato.css';
 import './styleContatoMobile.css';
 import logo from '../../../assets/imgs/logo.png';
 
+
+
 function contato(){
+    const [formData, setFormData] = useState({
+        nome: '',
+        email:'',
+        mensagem:''
+    })
+
+    const handleFormEdit = (event, nome) =>{
+        setFormData({
+            ...formData,
+            [nome]: event.target.value
+        })
+    }
+
     return(
         <div className="main">
             <div className="menu-superior">
@@ -29,11 +45,11 @@ function contato(){
                     <div className="caixa-itens">
                         <form className="form-esquerda">
                             <p>Nova mensagem</p>
-                            <input type="text" placeholder="Nome (Obrigatório)" required/>
-                            <input type="email" placeholder="E-mail (Obrigatório)" required/>
-                            <textarea name="" id="" placeholder="Digite sua mensagem (Obrigatório)" required></textarea>
+                            <input type="text" placeholder="Nome (Obrigatório)" required value= {formData.nome} onChange={(e) => {handleFormEdit(e,'nome')}}/>
+                            <input type="email" placeholder="E-mail (Obrigatório)" requiredvalue= {formData.email} onChange={(e) => {handleFormEdit(e,'email')}}/>
+                            <textarea name="mensagem" id="" placeholder="Digite sua mensagem (Obrigatório)" required value= {formData.mensagem}onChange={(e) => {handleFormEdit(e,'mensagem')}}></textarea>
                             <div>
-                                <button className="Enviar">Enviar Mensagem</button>
+                                <button type='submit'className="Enviar">Enviar Mensagem</button>
                                 <button className="Cancelar">Cancelar</button>
                             </div>
                         </form>

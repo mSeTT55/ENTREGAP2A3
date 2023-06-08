@@ -1,0 +1,58 @@
+
+#caixa-itens-editarperfil {
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    justify-content: center;
+}
+
+
+/* titulo da caixa */
+.nome-DadosPessoais {
+    padding-top: 1%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-family: 'Baloo 2',cursive;
+    color: #16FC92;
+    font-weight: 600;
+    font-size: 22px;
+    margin: 0%;
+    margin-left: 5%; 
+    margin-bottom: 1%; 
+}
+/* area de formatação dos inputs */
+
+
+.entradasdetexto{
+    box-sizing: border-box;
+    width: 30%;
+    height: 5vh;
+    background: #514769;
+    border: 1px solid #16FC92;
+    border-radius: 8px;
+    font-family: 'Baloo Thambi 2';
+    font-size: 16px;
+    color: white;
+    margin-bottom: 10px;
+    
+}
+
+.bt1submit {
+    width: 10%;
+    height: 5vh;
+    background: #16FC92;
+    font-family: 'Baloo Thambi 2';
+    font-size: 16px ;
+    cursor: pointer;
+    color: black;
+    font-weight: 900;
+    border-radius: 8px;
+    
+}
+
+::placeholder {
+    color: #FFFFFF;
+    font-size: 13px;
+    text-align: left;
+}

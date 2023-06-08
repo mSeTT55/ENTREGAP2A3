@@ -1,0 +1,146 @@
+/*Aqui começa o menu superior*/
+
+.menu-superior{
+    width: 100%;
+    height: 12%;
+    background-color: black;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+}
+
+.img-text{
+    width: 85%;
+    height: 100%;
+
+}
+
+.usuario{
+    width: 15%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
+    margin-right: 2em;
+}
+
+.img-text{
+    display: flex;
+    flex-direction: row;
+}
+
+.img-esquerda{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+
+.img-logo {
+    position: relative;
+    width: 10vw;
+    top: 5%;
+}
+
+.text-direita{
+    width: 80%;
+    height: 100%;
+    padding-left: 3%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.text-direita > a {
+    text-decoration: none;
+    font-family: 'Graduate', cursive;
+    font-style: normal;
+    font-size: 18px;
+    padding: 0 5%;
+    outline: none;
+    line-height: 1.5;
+    
+}
+
+.user-esquerda{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 50%; 
+    font-family: 'Inter', sans-serif;
+}
+
+.user-esquerda > p{
+    color: #FFFFFF;
+    font-size: 18px;
+    
+}
+
+.text-direita a.active {
+    color: #16FC92;
+    
+}
+.text-direita a.inactive {
+    color: #FFFFFF;
+}
+
+/*dropdown menu*/
+
+.usuario{
+    padding-right: 15px;
+}
+
+.usuario2{
+    display: none;
+    padding-right: 15px;
+}
+
+
+.usuario > div > button{
+    height: 35px;
+    padding: 1em 2em;
+    font-size: 80%;
+    font-family: 'Graduate', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #16FC92;
+    font-weight: 800;
+}
+
+.usuario > div >  button:hover{
+    background-color: #1ca364;
+}
+
+.dropdown-content {
+
+    background-color: #f1f1f1;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    position: fixed;
+    margin-left: 22px;
+}
+
+.dropdown-content > a {
+    color: white;
+    padding: 0.5em 4.2em;
+    text-decoration: none;
+    display: block;
+    font-size: 70%;
+    background-color: #1F1B2C;
+    border: #16FC92 solid;
+    border-width: 1px;
+}
+
+.show {
+    display:flex;
+    flex-direction: column;
+}
+
+
+/*Aqui termina o menu superior*/
