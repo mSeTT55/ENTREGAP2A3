@@ -6,8 +6,6 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 
-
-
 const CadastreSe = () => {
         //UseState para pegar os dados do formulario, decompor em um array e aplicar cada dado em cada variavel
         const [dadosForm, setDadosForm] = useState({
@@ -16,7 +14,7 @@ const CadastreSe = () => {
         senha: '', 
         confirm_senha: '' 
         });
-        //Verificar se as senhas são iguais
+        //Criando verificacao se as senhas são iguais
         const senhasiguais = () => {
             if (dadosForm.senha !== dadosForm.confirm_senha) {
             alert('A senha e a confirmação de senha não correspondem.');
@@ -38,7 +36,7 @@ const CadastreSe = () => {
                 confirm_senha: dadosForm.confirm_senha
             };
 
-
+            
             // Indicando ao AXIOS que os dados são em JSON
             const config = {
                 headers: {
@@ -50,18 +48,35 @@ const CadastreSe = () => {
             if (!senhasiguais()) {
                 return;
             }
-
-            // Chamando API atraves do AXIOS
+            //Teste para verificar se usuário existe no sistema
             try {
-                const response = await axios.post('http://localhost:5000/usuario/post/novo', montandoDados, config);
-                console.log(response.data);
-                if(response.data){
-                    alert('Usuário cadastrado com sucesso.');      
+                const verificaSeUsuarioExiste = await axios.get('http://localhost:5000/usuario/get/all', config);
+                const filtered = verificaSeUsuarioExiste.data.filter(obj => {
+                    return obj.email === dadosForm.email;
+                        
+                }); 
+                
+                if (filtered.length > 0){
+                    alert('Este e-mail já está cadastrado, favor tentar login ou entrar em contato com o suporte.');
+                } else {
+                    // Cadastrando Usuário caso não exista usuário cadastrado
+                    try {
+                        const response = await axios.post('http://localhost:5000/usuario/post/novo', montandoDados, config);
+                        console.log(response.data);
+                        if(response.status === 200){
+                            alert('Usuário cadastrado com sucesso.');      
+                        } else{
+                            alert('Erro ao cadastrar o usuário tente novamente.');
+                        }
+                    }
+                    catch (error) {
+                        console.error(error);
+                    }        
                 }
-            } catch (error) {
+            } 
+            catch (error) {
                 console.error(error);
-            }
-        
+            }           
         };
     
     return(
@@ -135,7 +150,7 @@ const CadastreSe = () => {
                             />
                             <div className="conect">
                                 <p>Já tem uma conta</p>
-                                <Link to={"/login"}>Conecte-se</Link>
+                                <Link className='conecte_se' to={"/login"}>Conecte-se</Link>
                             </div>
                             <div className="termo">
                                 <input className="check" type="checkbox" name="termo" required/>

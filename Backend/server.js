@@ -55,9 +55,6 @@ app.get('/', (req, res) => {
 
 
 
-
-
-
 /*CRUD DE USUÁRIOS------------------------------------------------------------------------------------------------*/
 
 //Rota API GET para obter todos os usuários
