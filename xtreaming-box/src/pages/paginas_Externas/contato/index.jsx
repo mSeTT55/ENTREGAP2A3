@@ -5,20 +5,27 @@ import logo from '../../../assets/imgs/logo.png';
 
 
 
-function Contato(){
-    const [formContato, setFormContato] = useState({
-        nome: '',
-        email:'',
-        mensagem:''
-    })
+const Contato = () => {
+    //UseState para pegar os dados do formulario, decompor em um array e aplicar cada dado em cada variavel
+    const [dadosFormCont, setdadosFormCont] = useState({
+        nome_contato: '', 
+        email_contato: '', 
+        mensagem_contato: '' 
+        
+    });
 
-    const handleFormEdit = (event, nome) =>{
-        setFormContato({
-            ...formContato,
-            [nome]: event.target.value
-        })
+    const formSumbit = async (pegarCada) => {
+        //Cancelando o comportamento padrão de recarregar a pagina
+        pegarCada.preventDefault();
+        
+        //montando os dados do array
+        const montandoDados = {
+            nome_contato: dadosFormCont.nome_contato, 
+            email_contato: dadosFormCont.email_contato,
+            mensagem_contato: dadosFormCont.mensagem_contato 
+            
+        };
     }
-
     return(
         <div className="main">
             <div className="menu-superior">
@@ -43,11 +50,16 @@ function Contato(){
                 </div>
                 <div className="conteiner-maior">
                     <div className="caixa-itens">
-                        <form className="form-esquerda">
+                        <form className="form-esquerda" onSubmit={(pegarCada) => formSumbit(pegarCada)}>
                             <p>Nova mensagem</p>
-                            <input type="text" placeholder="Nome (Obrigatório)" required value= {formContato.nome} onChange={(e) => {handleFormEdit(e,'nome')}}/>
-                            <input type="email" placeholder="E-mail (Obrigatório)" requiredvalue= {formContato.email} onChange={(e) => {handleFormEdit(e,'email')}}/>
-                            <textarea name="mensagem" id="" placeholder="Digite sua mensagem (Obrigatório)" required value= {formContato.mensagem}onChange={(e) => {handleFormEdit(e,'mensagem')}}></textarea>
+                            <input type="text" placeholder="Nome (Obrigatório)" required value={dadosFormCont.nome_contato}
+                                onChange={(pegarCada) => setdadosFormCont({ ...dadosFormCont, nome_contato: pegarCada.target.value })}/>
+
+                            <input type="email" placeholder="E-mail (Obrigatório)" requiredvalue={dadosFormCont.email_contato}
+                                onChange={(pegarCada) => setdadosFormCont({ ...dadosFormCont, email_contato: pegarCada.target.value })}/>
+
+                            <textarea name="mensagem" id="" placeholder="Digite sua mensagem (Obrigatório)" required value={dadosFormCont.mensagem_contato}
+                                onChange={(pegarCada) => setdadosFormCont({ ...dadosFormCont, mensagem_contato: pegarCada.target.value })}/>
                             <div>
                                 <button type='submit'className="Enviar">Enviar Mensagem</button>
                                 <button className="Cancelar">Cancelar</button>
