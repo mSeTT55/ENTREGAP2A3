@@ -1,20 +1,20 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './styleContato.css';
 import './styleContatoMobile.css';
 import logo from '../../../assets/imgs/logo.png';
 
 
 
-function contato(){
-    const [formData, setFormData] = useState({
+function Contato(){
+    const [formContato, setFormContato] = useState({
         nome: '',
         email:'',
         mensagem:''
     })
 
     const handleFormEdit = (event, nome) =>{
-        setFormData({
-            ...formData,
+        setFormContato({
+            ...formContato,
             [nome]: event.target.value
         })
     }
@@ -45,9 +45,9 @@ function contato(){
                     <div className="caixa-itens">
                         <form className="form-esquerda">
                             <p>Nova mensagem</p>
-                            <input type="text" placeholder="Nome (Obrigatório)" required value= {formData.nome} onChange={(e) => {handleFormEdit(e,'nome')}}/>
-                            <input type="email" placeholder="E-mail (Obrigatório)" requiredvalue= {formData.email} onChange={(e) => {handleFormEdit(e,'email')}}/>
-                            <textarea name="mensagem" id="" placeholder="Digite sua mensagem (Obrigatório)" required value= {formData.mensagem}onChange={(e) => {handleFormEdit(e,'mensagem')}}></textarea>
+                            <input type="text" placeholder="Nome (Obrigatório)" required value= {formContato.nome} onChange={(e) => {handleFormEdit(e,'nome')}}/>
+                            <input type="email" placeholder="E-mail (Obrigatório)" requiredvalue= {formContato.email} onChange={(e) => {handleFormEdit(e,'email')}}/>
+                            <textarea name="mensagem" id="" placeholder="Digite sua mensagem (Obrigatório)" required value= {formContato.mensagem}onChange={(e) => {handleFormEdit(e,'mensagem')}}></textarea>
                             <div>
                                 <button type='submit'className="Enviar">Enviar Mensagem</button>
                                 <button className="Cancelar">Cancelar</button>
@@ -63,4 +63,4 @@ function contato(){
     );
 }
 
-export default contato;
+export default Contato;
