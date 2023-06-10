@@ -1,5 +1,5 @@
 //Importando o ReactRouter
-import { BrowserRouter, Routes, Route, Switch, Redirect} from 'react-router-dom';
+import {Routes, Route, Switch, Redirect} from 'react-router-dom';
 
 //Importando a pagina inicial
 import PagInicial from './pages/paginas_Externas/paginaInicial/index.jsx';
@@ -38,12 +38,13 @@ import Cadastrarplataforma from './pages/Administrador/CadastrarPlataforma/index
 
 function Rotas() {
     return (
-        <BrowserRouter>
             <Routes>
                 <Route exact path='/' element={<PagInicial/>}/>
                 <Route  path='/login' element={<Login/>}/>
                 <Route  path='/cadastro' element={<CadastreSe/>}/>
                 <Route  path='/contato' element={<Contato/>}/>
+
+                
                 <Route  path='/perfil' element={<MeuPerfil/>}/>
                 <Route  path='/editarperfil' element={<EditarPerfil/>}/>
                 <Route  path='/minhalista' element={<MinhaLista/>}/>
@@ -54,7 +55,6 @@ function Rotas() {
                 <Route path= '/cadastrarseries' element={<Cadastrarserie/>}/>
                 <Route path= '/cadastrarplataforma' element={<Cadastrarplataforma/>}/>
             </Routes> 
-        </BrowserRouter>
     );
 } 
 

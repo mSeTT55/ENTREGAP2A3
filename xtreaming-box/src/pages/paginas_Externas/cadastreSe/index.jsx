@@ -1,19 +1,20 @@
 import './stylecadastreSe.css';
 import './stylecadastreSeMobile.css';
 import logo from '../../../assets/imgs/logo.png';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 
 const CadastreSe = () => {
         //UseState para pegar os dados do formulario, decompor em um array e aplicar cada dado em cada variavel
         const [dadosForm, setDadosForm] = useState({
-        nome_completo: '', 
-        email: '', 
-        senha: '', 
-        confirm_senha: '' 
+            nome_completo: '', 
+            email: '', 
+            senha: '', 
+            confirm_senha: '' 
         });
+        
         //Criando verificacao se as senhas são iguais
         const senhasiguais = () => {
             if (dadosForm.senha !== dadosForm.confirm_senha) {
