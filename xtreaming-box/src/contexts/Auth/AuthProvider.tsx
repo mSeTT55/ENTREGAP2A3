@@ -7,7 +7,7 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
     const [user, setUser] = useState<User | null> (null);
 
     const entrar = (email: string, senha: string) => {
-
+        
     }
 
     const sair = () => {

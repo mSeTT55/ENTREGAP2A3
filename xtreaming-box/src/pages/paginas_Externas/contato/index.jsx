@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './styleContato.css';
 import './styleContatoMobile.css';
 import logo from '../../../assets/imgs/logo.png';
@@ -19,12 +20,24 @@ const Contato = () => {
         pegarCada.preventDefault();
         
         //montando os dados do array
-        const montandoDados = {
-            nome_contato: dadosFormCont.nome_contato, 
-            email_contato: dadosFormCont.email_contato,
-            mensagem_contato: dadosFormCont.mensagem_contato 
-            
+        const montandoDadosContato = {
+            nome: dadosFormCont.nome_contato, 
+            email: dadosFormCont.email_contato,
+            mensagem: dadosFormCont.mensagem_contato 
         };
+
+        //Inserindo dados da mensagem no banco
+        try {
+            const responseContato = await axios.post('http://localhost:5000/contatos/post/novo', montandoDadosContato);
+            console.log(responseContato.data);
+            if (responseContato.status === 200){
+                alert('Mensagem enviada, obrigado pelo seu contato. Daremos retorno em breve.');
+            } else{
+                alert('Erro ao enviar a menssagem, favor tentar novamente.');
+            }
+        } catch (error) {
+            console.log(error);
+        }
     }
     return(
         <div className="main">

@@ -6,19 +6,11 @@ export const connectAPI = () =>({
     },
 
     login:async (email, senha) => {
-        const response = await axios.get('http://localhost:5000/usuario/get/all')
-        const filtered = response.data.filter(obj => {
-            return obj.email === email;                
-        }); 
-        
-        if(filtered.length > 0 && filtered.senha === senha){
-            return true
-        }else{
-            return false
-        }    
+        const response = await axios.get('http://localhost:5000/usuario/get/all');
+        return response.data;
     },
     
     logout: async () => {
-
+        console.log('Saindo');
     }
 })

@@ -49,6 +49,7 @@ const CadastreSe = () => {
             if (!senhasiguais()) {
                 return;
             }
+            
             //Teste para verificar se usuário existe no sistema
             try {
                 const verificaSeUsuarioExiste = await axios.get('http://localhost:5000/usuario/get/all', config);

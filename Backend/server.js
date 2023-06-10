@@ -237,8 +237,8 @@ app.get('/contatos/get/:id', (req, res) => {
 
 // Rota POST para criar uma nova mensagem
 app.post('/contatos/post/novo', (req, res) => {
-  const { nome_completo, email, mensagem } = req.body;
-  db.run('INSERT INTO usuarios (nome, email, mensagem) VALUES (?, ?, ?)', [nome_completo, email, mensagem], function (err) {
+  const { nome, email, mensagem } = req.body;
+  db.run('INSERT INTO contato (nome, email, mensagem) VALUES (?, ?, ?)', [nome, email, mensagem], function (err) {
     if (err) {
       console.error(err);
       res.status(500).json({ error: 'Sua mensagem não foi enviada, tente denovo.' });
