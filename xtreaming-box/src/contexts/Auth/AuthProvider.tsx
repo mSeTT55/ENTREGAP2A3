@@ -21,7 +21,6 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
         }
         const dadosLogin: dados [] = await api.login();
 
-        console.log(dadosLogin);
         
         const filtered = dadosLogin.filter((obj) => {
             return obj.email === email;                

@@ -78,9 +78,9 @@ const Contato = () => {
                                 
                                 </div>
                                 <div>
-                               <Link to={"/"}className="btn btn-white btn-animate">
+                                <Link to={"/"}className="btn btn-white btn-animate">
                                 Cancelar
-                              </Link>
+                                </Link>
                               </div>
                             </div>
                         </form>
