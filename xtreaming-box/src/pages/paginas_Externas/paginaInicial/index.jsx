@@ -10,6 +10,12 @@ function PagInicial(){
     return(
         <body>
             <div className="main">
+            <div className="menu-superior-inicial">
+                <div className="text-direita-faleconosco">
+                      <h1><Link to={"/contato"} className="text-direita-faleconosco">Fale Conosco</Link></h1>
+                    </div>
+                </div>
+            
                 <div className="sessao-superior">
                     <img src={logo}className="logo-img" alt="Logotipo do site EXtreamingBox"/>
                 </div>

@@ -2,6 +2,7 @@ import '../../../layouts/body.css';
 import './styleLogin.css';
 import './styleLoginMobile.css';
 import logo from '../../../assets/imgs/logo.png';
+import { Link, Navigate } from 'react-router-dom';
 
 
 function Login(){
@@ -16,7 +17,10 @@ function Login(){
         <body>
             <div className="main-login">
                 <div className="sessao-superior-login">
-                    <img src={logo} className="logoimg" alt="Logotipo do site EXtreamingBox"/>
+                    <Link to={"/"}>
+                        <img src={logo} className="logoimg" alt="Logotipo do site EXtreamingBox"/>
+                    </Link> 
+                    
                 </div>
                 <div className="sessao-inferior">
                     <form className="card-login">

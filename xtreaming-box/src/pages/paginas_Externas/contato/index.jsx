@@ -31,7 +31,7 @@ const Contato = () => {
             const responseContato = await axios.post('http://localhost:5000/contatos/post/novo', montandoDadosContato);
             console.log(responseContato.data);
             if (responseContato.status === 200){
-                alert('Mensagem enviada, obrigado pelo seu contato. Daremos retorno em breve.');
+                alert('Obrigado pelo seu contato. Daremos retorno em até 3 dias.');
             } else{
                 alert('Erro ao enviar a menssagem, favor tentar novamente.');
             }
@@ -47,19 +47,15 @@ const Contato = () => {
                         <img className="img-logo" src={logo} alt="Imagem da Logo"/>     
                     </div>
                     <div className="text-direita-contato">
-                        <h1>Contato</h1>
+                        <h1>Fale Conosco</h1>
                     </div>
                 </div>
             </div>
             {/*Aqui termina toda parte do menu superior*/}
             <div className="conteudo-principal-lista" id="conteudoprincipalLista">
                 <div className="text-botoes-contato">
-                    <div>
-                        <p className="title1">Deixe aqui sua opnião ou mande uma mensagem</p>
-                    </div>
-                    <div>
-                        <p className="title2">O prazo de resposta de sua solicitação é até 3 dias</p>
-                    </div>
+                    <p className="title1">Deixe aqui sua opnião ou mande uma mensagem</p>
+                                  
                 </div>
                 <div className="conteiner-maior">
                     <div className="caixa-itens">
