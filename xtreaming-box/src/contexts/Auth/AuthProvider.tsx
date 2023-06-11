@@ -13,13 +13,25 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
 
     //Verificação de usuário 
     const entrar = async (email: string, senha: string) => {
-        const dadosLogin = await api.login();
+        interface dados {
+            nome_completo: string,
+            email: string;
+            senha: string;
+            confirm_senha: string;
+        }
+        const dadosLogin: dados [] = await api.login();
+
         console.log(dadosLogin);
-        const filtered = dadosLogin.filter((obj: { email: string; }) => {
+        
+        const filtered = dadosLogin.filter((obj) => {
             return obj.email === email;                
         });
-        if(filtered.length > 0 && filtered.senha === senha){
-            setUser(filtered.email);
+
+        console.log(filtered);
+
+        if(filtered.length > 0 && filtered[0].senha === senha){
+            const emailFiltrado = filtered[0].email;
+            setUser();
             return true;
         }
         return false;   

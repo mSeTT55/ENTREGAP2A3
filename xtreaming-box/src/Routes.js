@@ -8,7 +8,7 @@ import {RequireAuth} from './contexts/Auth/RequireAuth'
 import PagInicial from './pages/paginas_Externas/paginaInicial/index.jsx';
 
 //Importando a pagina de login
-import Login from './pages/paginas_Externas/login/index.jsx';
+import Login from './pages/paginas_Externas/login/index';
 
 //Importando a pagina de cadastre-se
 import CadastreSe from './pages/paginas_Externas/cadastreSe/index.jsx';
