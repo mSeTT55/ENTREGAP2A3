@@ -71,11 +71,11 @@ const Contato = () => {
 
                             <textarea name="mensagem" id="" placeholder="Digite sua mensagem (Obrigatório)" required value={dadosFormCont.mensagem_contato}
                                 onChange={(pegarCada) => setdadosFormCont({ ...dadosFormCont, mensagem_contato: pegarCada.target.value })}/>
-                            <div cla>
+                            <div className='boton'>
                                 <div>
-                                <Link to={"/"}className="btn btn-white btn-animate" type='submit'>
-                                Enviar Mensagem
-                                </Link>
+                                
+                                <button className="btn btn-white btn-animate" type='submit'>ENVIAR</button>
+                                
                                 </div>
                                 <div>
                                <Link to={"/"}className="btn btn-white btn-animate">
