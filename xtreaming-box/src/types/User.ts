@@ -1,7 +1,7 @@
 //montando informações do usuário
 export type User = {
     id?: number;
-    nome: string;
+    nome_completo: string;
     email: string;
     senha?: string;
 }

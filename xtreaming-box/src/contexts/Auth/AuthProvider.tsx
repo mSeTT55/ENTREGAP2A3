@@ -27,11 +27,9 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
             return obj.email === email;                
         });
 
-        console.log(filtered);
-
         if(filtered.length > 0 && filtered[0].senha === senha){
-            const emailFiltrado = filtered[0].email;
-            setUser();
+            const emailFiltrado = filtered[0];
+            setUser(emailFiltrado);
             return true;
         }
         return false;   
