@@ -39,19 +39,7 @@ function Series (){
                                 </div>
                             </div>     
                         </section>
-                        <section className="series"> 
-                            <div className="conteudo_serie">
-                                <img className="img_serie" src={imgserie2} alt="Amor e Morte"/>
-                                <p className="nome_serie">A casa do Dragão</p>
-                                <div className='startsdiv'>
-                                    <img className="img-star" src={estrela2} alt="Avaliação"/>
-                                </div>
-                                <div className="div-botton">
-                                    <img className="img-botton" src={vouver} alt="Botoes"/>                   
-                                    <img className="img-botton" src={visto} alt="Botoes"/>
-                                </div>
-                            </div>   
-                        </section>
+                        
                         {/*<!--Aqui se termina cada card das series-->*/}  
                     </div>
                 </div>
