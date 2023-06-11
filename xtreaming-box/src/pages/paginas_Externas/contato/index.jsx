@@ -3,7 +3,7 @@ import axios from 'axios';
 import './styleContato.css';
 import './styleContatoMobile.css';
 import logo from '../../../assets/imgs/logo.png';
-
+import { Link } from 'react-router-dom';
 
 
 const Contato = () => {
@@ -44,7 +44,9 @@ const Contato = () => {
             <div className="menu-superior">
                 <div className="img-text">
                     <div className="img-esquerda">
-                        <img className="img-logo" src={logo} alt="Imagem da Logo"/>     
+                        <Link to={"/"}>
+                        <img className="img-logo" src={logo} alt="Imagem da Logo"/> 
+                        </Link>    
                     </div>
                     <div className="text-direita-contato">
                         <h1>Fale Conosco</h1>
@@ -69,9 +71,17 @@ const Contato = () => {
 
                             <textarea name="mensagem" id="" placeholder="Digite sua mensagem (Obrigatório)" required value={dadosFormCont.mensagem_contato}
                                 onChange={(pegarCada) => setdadosFormCont({ ...dadosFormCont, mensagem_contato: pegarCada.target.value })}/>
-                            <div>
-                                <button type='submit'className="Enviar">Enviar Mensagem</button>
-                                <button className="Cancelar">Cancelar</button>
+                            <div cla>
+                                <div>
+                                <Link to={"/"}className="btn btn-white btn-animate" type='submit'>
+                                Enviar Mensagem
+                                </Link>
+                                </div>
+                                <div>
+                               <Link to={"/"}className="btn btn-white btn-animate">
+                                Cancelar
+                              </Link>
+                              </div>
                             </div>
                         </form>
                         <div className="form-direita">
