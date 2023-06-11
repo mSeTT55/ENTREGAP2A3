@@ -1,6 +1,9 @@
 //Importando o ReactRouter
 import {Routes, Route, Switch, Redirect} from 'react-router-dom';
 
+import {RequireAuth} from './contexts/Auth/RequireAuth'
+
+
 //Importando a pagina inicial
 import PagInicial from './pages/paginas_Externas/paginaInicial/index.jsx';
 
@@ -48,7 +51,7 @@ function Rotas() {
                 <Route  path='/perfil' element={<MeuPerfil/>}/>
                 <Route  path='/editarperfil' element={<EditarPerfil/>}/>
                 <Route  path='/minhalista' element={<MinhaLista/>}/>
-                <Route  path='/series' element={<Series/>}/>
+                <Route  path='/series' element={<RequireAuth> <Series/> </RequireAuth>}/>
                 <Route  path='/testemain' element={<TesteMain/>}/>
 
                 <Route path= '/paineldecontrole' element={<Painelcontrole/>}/>

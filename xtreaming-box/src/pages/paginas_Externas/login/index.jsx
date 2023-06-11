@@ -5,8 +5,11 @@ import logo from '../../../assets/imgs/logo.png';
 
 
 function Login(){
-    const handleChange = (event) =>{
-        console.log('Digitando...', event.target.name, event.target.value)
+    const [email, setEmail] = useState('');
+    const [senha, setSenha] = useState('');
+
+    const btnLogin = () => {
+
     }
 
     return(
@@ -20,15 +23,31 @@ function Login(){
                         <h1>ACESSO</h1>
                         <div className="textfield">
                             <label id="emailLabel" for="email">E-mail</label>
-                            <input type="email" name="email" id="email" placeholder="Digite seu e-mail" onChange={handleChange} required/> 
+
+                            <input type="email" 
+                                name="email" 
+                                id="email" 
+                                placeholder="Digite seu e-mail" 
+                                value={email} 
+                                required
+                            /> 
+
                             <p id="emailErrado"></p>
                         </div>
                         <div className="textfield">
                             <label id="senhaLabel" for="password">Senha</label>
-                            <input type="password" name="password" placeholder="Senha" onChange={handleChange} required/>
+
+                            <input 
+                                type="password" 
+                                name="password" 
+                                placeholder="Senha" 
+                                value={senha} 
+                                required
+                            />
+
                         </div>
                         
-                        <button type="submit" className="btn-entrar">Entrar</button>
+                        <button onClick={btnLogin} className="btn-entrar">Entrar</button>
                         <div className="cardlogin-botoes-inferiores">
                             <input className="manterconectado-login" type="checkbox" name="manterconectado"/>
                             <label className="manterconectado-login">Manter conectado</label>
