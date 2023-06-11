@@ -2,7 +2,7 @@ import React, {useState, useContext} from 'react';
 import '../../../layouts/body.css';
 import './styleLogin.css';
 import './styleLoginMobile.css';
-//import logo from '../../../assets/imgs/logo';
+import logo from '../../../assets/imgs/logo.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/Auth/AuthContext';
 
@@ -29,7 +29,7 @@ function Login(){
             <div className="main-login">
                 <div className="sessao-superior-login">
                     <Link to={"/"}>
-                        <img  className="logoimg" alt="Logotipo do site EXtreamingBox"/>
+                        <img src={logo} className="logoimg" alt="Logotipo do site EXtreamingBox"/>
                     </Link> 
                     
                 </div>
