@@ -85,7 +85,9 @@ const CadastreSe = () => {
         <div className="main">
             <div className="menu-superior">
                     <div className="img-esquerda" id='img-esquerda'>
-                    <img className="img-logo" src={logo} alt="Imagem da Logo"/>   
+                        <Link to={"/"} >
+                            <img className="img-logo" src={logo} alt="Imagem da Logo"/>
+                        </Link>       
                     </div>
                     <div className="menu-text">
                         <p>Seu Gerenciador de Lista de séries</p>
