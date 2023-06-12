@@ -2,6 +2,9 @@ import React from 'react';
 import './styleplataformaMobile.css';
 import './styleplataforma.css';
 import Interno from '../../../layouts/interno.jsx';
+import ConteudoPagina from '../../../components/CadastarPlataforma/ConteudoPagina'
+
+
 
 function CadastrarPlataforma() {
   return (
@@ -13,7 +16,7 @@ function CadastrarPlataforma() {
                 </div>
    
             </div>
-   
+            <ConteudoPagina/>
    </Interno>         
   )
 }
