@@ -10,6 +10,22 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
     //Conexão com API
     const api = connectAPI();
 
+    // Verificando se o usuário está logado
+    useEffect(() => {
+        const validateToken = () => {
+            const storageData = localStorage.getItem('authToken');
+            if(storageData) {
+                const emailFiltrado = localStorage.getItem('emailFiltrado');
+                if (emailFiltrado !== null) {
+                    const meuArrayRecuperado = JSON.parse(emailFiltrado);
+                    console.log(meuArrayRecuperado);
+                    setUser(meuArrayRecuperado);
+                }
+            }
+        }
+        validateToken();
+    }, []);
+
     //Colocar o token no local storage para persistência de usuário logado.
     const setToken = () =>{
         const token:number = api.createToken()
@@ -20,7 +36,7 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
     //Verificação de usuário 
     const entrar = async (email: string, senha: string) => {
         interface dados {
-            nome_completo: string,
+            nome_completo: string;
             email: string;
             senha: string;
             confirm_senha: string;
@@ -40,19 +56,6 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
         }
         return false;   
     }
-
-
-    useEffect(() => {
-        const validateToken =  () => {
-            const storageData = localStorage.getItem('authToken');
-            if(storageData) {
-                const emailFiltrado = localStorage.getItem('emailFiltrado');
-                setUser();
-            }
-        }
-        validateToken();
-    }, []);
-
 
     // Fazer logoff
     const sair = () => {
