@@ -1,4 +1,4 @@
-import React,  { useState } from "react";
+import React,  { useEffect, useState } from "react";
 import { User } from "../../types/User";
 import { AuthContext } from "./AuthContext";
 import  {connectAPI} from "./connectAPI";
@@ -12,7 +12,7 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
 
     //Colocar o token no local storage para persistência de usuário logado.
     const setToken = () =>{
-        const token:number = api.validateToken()
+        const token:number = api.createToken()
         const authToken:string = token.toString();
         localStorage.setItem('authToken', authToken);
     }
@@ -35,10 +35,24 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
             const emailFiltrado = filtered[0];
             setUser(emailFiltrado);
             setToken();
+            localStorage.setItem('emailFiltrado', JSON.stringify(emailFiltrado));
             return true;
         }
         return false;   
     }
+
+
+    useEffect(() => {
+        const validateToken =  () => {
+            const storageData = localStorage.getItem('authToken');
+            if(storageData) {
+                const emailFiltrado = localStorage.getItem('emailFiltrado');
+                setUser();
+            }
+        }
+        validateToken();
+    }, []);
+
 
     // Fazer logoff
     const sair = () => {

@@ -5,13 +5,13 @@ import './styleLoginMobile.css';
 import logo from '../../../assets/imgs/logo.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/Auth/AuthContext';
-import { connectAPI } from '../../../contexts/Auth/connectAPI';
+
 
 
 function Login(){
     const auth = useContext(AuthContext);
     const navigate = useNavigate()
-    const api = connectAPI();
+    
 
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
