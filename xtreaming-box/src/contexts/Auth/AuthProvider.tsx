@@ -10,6 +10,12 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
     //Conexão com API
     const api = connectAPI();
 
+    //Colocar o token no local storage para persistência de usuário logado.
+    const setToken = () =>{
+        const token:number = api.validateToken()
+        const authToken:string = token.toString();
+        localStorage.setItem('authToken', authToken);
+    }
 
     //Verificação de usuário 
     const entrar = async (email: string, senha: string) => {
@@ -21,7 +27,6 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
         }
         const dadosLogin: dados [] = await api.login();
 
-        
         const filtered = dadosLogin.filter((obj) => {
             return obj.email === email;                
         });
@@ -29,6 +34,7 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
         if(filtered.length > 0 && filtered[0].senha === senha){
             const emailFiltrado = filtered[0];
             setUser(emailFiltrado);
+            setToken();
             return true;
         }
         return false;   

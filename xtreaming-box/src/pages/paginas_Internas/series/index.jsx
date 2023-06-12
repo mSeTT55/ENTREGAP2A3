@@ -39,7 +39,6 @@ function Series (){
                                 </div>
                             </div>     
                         </section>
-                        
                         {/*<!--Aqui se termina cada card das series-->*/}  
                     </div>
                 </div>

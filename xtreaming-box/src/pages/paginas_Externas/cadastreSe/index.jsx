@@ -1,12 +1,13 @@
 import './stylecadastreSe.css';
 import './stylecadastreSeMobile.css';
 import logo from '../../../assets/imgs/logo.png';
-import React, { useState } from 'react';
+import React, { useState, useNavigate } from 'react';
 import axios from 'axios';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const CadastreSe = () => {
+        const navigate = useNavigate()
         //UseState para pegar os dados do formulario, decompor em um array e aplicar cada dado em cada variavel
         const [dadosForm, setDadosForm] = useState({
             nome_completo: '', 
@@ -66,7 +67,8 @@ const CadastreSe = () => {
                         const response = await axios.post('http://localhost:5000/usuario/post/novo', montandoDados, config);
                         console.log(response.data);
                         if(response.status === 200){
-                            alert('Usuário cadastrado com sucesso.');      
+                            alert('Usuário cadastrado com sucesso.');
+                            navigate('/login');      
                         } else{
                             alert('Erro ao cadastrar o usuário tente novamente.');
                         }

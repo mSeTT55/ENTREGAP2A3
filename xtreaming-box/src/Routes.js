@@ -1,5 +1,5 @@
 //Importando o ReactRouter
-import {Routes, Route, Switch, Redirect} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 
 import {RequireAuth} from './contexts/Auth/RequireAuth'
 
@@ -36,10 +36,13 @@ import TesteMain from './components/TesteMain/Main.jsx';
 import Painelcontrole from './pages/Administrador/PainelControle/index.jsx'
 import Cadastrarserie from './pages/Administrador/CadastrarSeries/index.jsx'
 import Cadastrarplataforma from './pages/Administrador/CadastrarPlataforma/index.jsx'
+import { useContext } from 'react';
+import { AuthContext } from './contexts/Auth/AuthContext';
 
 
 
 function Rotas() {
+    const auth = useContext(AuthContext);
     return (
             <Routes>
                 <Route exact path='/' element={<PagInicial/>}/>
@@ -53,6 +56,8 @@ function Rotas() {
                 <Route  path='/minhalista' element={<MinhaLista/>}/>
                 <Route  path='/series' element={<RequireAuth> <Series/> </RequireAuth>}/>
                 <Route  path='/testemain' element={<TesteMain/>}/>
+
+
 
                 <Route path= '/paineldecontrole' element={<Painelcontrole/>}/>
                 <Route path= '/cadastrarseries' element={<Cadastrarserie/>}/>

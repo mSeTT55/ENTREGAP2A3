@@ -5,11 +5,13 @@ import './styleLoginMobile.css';
 import logo from '../../../assets/imgs/logo.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/Auth/AuthContext';
+import { connectAPI } from '../../../contexts/Auth/connectAPI';
 
 
 function Login(){
     const auth = useContext(AuthContext);
     const navigate = useNavigate()
+    const api = connectAPI();
 
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
@@ -18,9 +20,10 @@ function Login(){
         pegarCada.preventDefault();
         const isLogged = await auth.entrar(email, senha);
         if (isLogged) {
+            
             navigate('/series');
         }else{
-            alert("Usuário ou senha incorreta.");
+            alert("Usuário ou senha incorreto, tente novamente ou cadastre-se em nossa plataforma.");
         }
     }
 
