@@ -2,6 +2,7 @@
 import '../../layouts/body.css';
 
 import Interno from '../../layouts/interno';
+import BotaoMarcador from '../botaoSituacao/botaoMarcador';
 
 function Main (){
     return (
