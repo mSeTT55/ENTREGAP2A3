@@ -1,13 +1,13 @@
 import './stylecadastreSe.css';
 import './stylecadastreSeMobile.css';
 import logo from '../../../assets/imgs/logo.png';
-import React, { useState, useNavigate } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 
 const CadastreSe = () => {
-        const navigate = useNavigate()
+       
         //UseState para pegar os dados do formulario, decompor em um array e aplicar cada dado em cada variavel
         const [dadosForm, setDadosForm] = useState({
             nome_completo: '', 
@@ -68,7 +68,7 @@ const CadastreSe = () => {
                         console.log(response.data);
                         if(response.status === 200){
                             alert('Usuário cadastrado com sucesso.');
-                            navigate('/login');      
+                        
                         } else{
                             alert('Erro ao cadastrar o usuário tente novamente.');
                         }
