@@ -49,22 +49,19 @@ function Series (){
                 <div className="conteiner-maior">
                     <div id='caixa-itens' className="caixa-itens" >
                         {/*<!--Aqui se encontra cada card das series-->*/}
-                    
-                    {
-                        series.map((serie, seriesSection) =>
-                            <section key={seriesSection} className="series"> 
-                                <div className="conteudo_serie">
-                                    <img className="img_serie" src={serie.imagem_serie} alt={`Imagem da série ${serie.nome}`}/>
-                                    <p className="nome_serie">{serie.nome}</p>
-                                    <div className="div-botton">
-                                        <BotaoMarcador/>
-                                    </div>
-                                </div>     
-                            </section>
-                        )
-                    }
-                        
-                        
+                        {
+                            series.map((serie, seriesSection) =>
+                                <section key={seriesSection} className="series"> 
+                                    <div className="conteudo_serie">
+                                        <img className="img_serie" src={serie.imagem_serie} alt={`Imagem da série ${serie.nome}`}/>
+                                        <p className="nome_serie">{serie.nome}</p>
+                                        <div className="div-botton">
+                                            <BotaoMarcador/>
+                                        </div>
+                                    </div>     
+                                </section>
+                            )
+                        }
                         {/*<!--Aqui se termina cada card das series-->*/}  
                     </div>
                 </div>
