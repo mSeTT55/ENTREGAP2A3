@@ -6,8 +6,9 @@ export const RequireAuth = ({children}: {children: JSX.Element}) => {
 
     const auth = useContext(AuthContext);
     const storageData = localStorage.getItem("authToken");
-    console.log(storageData)
+    
 
+    
     if (!auth.user && storageData === null){
         return <Navigate to='/login'/>
     } 
