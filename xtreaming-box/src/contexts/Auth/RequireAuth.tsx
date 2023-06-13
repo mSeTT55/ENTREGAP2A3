@@ -1,15 +1,17 @@
 import React, { useContext } from "react";
 import { AuthContext } from "./AuthContext";
-import Login from "../../pages/paginas_Externas/login";
-import { Route } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 export const RequireAuth = ({children}: {children: JSX.Element}) => {
 
     const auth = useContext(AuthContext);
+    const storageData = localStorage.getItem("authToken");
+    console.log(storageData)
 
-    if (!auth.user){
-        <Route  path='/login' element={<Login/>}/>
-    }
-
+    if (!auth.user && storageData === null){
+        return <Navigate to='/login'/>
+    } 
+       
+    
     return children;
 }

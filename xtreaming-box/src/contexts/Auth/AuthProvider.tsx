@@ -10,21 +10,7 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
     //Conexão com API
     const api = connectAPI();
 
-    // Verificando se o usuário está logado
-    useEffect(() => {
-        const validateToken = () => {
-            const storageData = localStorage.getItem('authToken');
-            if(storageData) {
-                const emailFiltrado = localStorage.getItem('emailFiltrado');
-                if (emailFiltrado !== null) {
-                    const meuArrayRecuperado = JSON.parse(emailFiltrado);
-                    console.log(meuArrayRecuperado);
-                    setUser(meuArrayRecuperado);
-                }
-            }
-        }
-        validateToken();
-    }, []);
+    
 
     //Colocar o token no local storage para persistência de usuário logado.
     const setToken = () =>{
