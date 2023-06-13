@@ -10,8 +10,6 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
     //Conexão com API
     const api = connectAPI();
 
-    
-
     //Colocar o token no local storage para persistência de usuário logado.
     const setToken = () =>{
         const token:number = api.createToken()
