@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { User } from "../../types/User";
 import { AuthContext } from "./AuthContext";
 import  {connectAPI} from "./connectAPI";
@@ -9,6 +9,22 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
 
     //Conexão com API
     const api = connectAPI();
+
+    // Verificando se o usuário está logado e colocando 
+    useEffect(() => {
+        const validateToken = () => {
+            const storageData = localStorage.getItem('authToken');
+            if(storageData) {
+                const emailFiltrado = localStorage.getItem('emailFiltrado');
+                if (emailFiltrado !== null) {
+                    const meuArrayRecuperado = JSON.parse(emailFiltrado);
+                    setUser(meuArrayRecuperado);
+                }
+            }
+        }
+        validateToken();
+    }, []);
+
 
     //Colocar o token no local storage para persistência de usuário logado.
     const setToken = () =>{

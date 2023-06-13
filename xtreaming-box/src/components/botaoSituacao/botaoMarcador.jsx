@@ -13,17 +13,10 @@ function BotaoMarcador (){
     
 
     return(
-        
         <div className="margin-botton">
-            <div>
-                <img className="" src={assistirNormal} alt="Botoes"/>
-            </div>
-            <div>                   
-                <img className="" src={assistidoNormal} alt="Botoes"/>
-            </div>
-        </div>
-                                      
-                    
+            <img className="" src={assistirNormal} alt="Botoes"/> 
+            <img className="" src={assistidoNormal} alt="Botoes"/>
+        </div>            
     )
 } 
 
