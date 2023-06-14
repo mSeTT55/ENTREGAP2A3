@@ -3,11 +3,12 @@ import './stylecadastreSeMobile.css';
 import logo from '../../../assets/imgs/logo.png';
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const CadastreSe = () => {
-       
+        const navigate = useNavigate();
+
         //UseState para pegar os dados do formulario, decompor em um array e aplicar cada dado em cada variavel
         const [dadosForm, setDadosForm] = useState({
             nome_completo: '', 
@@ -29,7 +30,7 @@ const CadastreSe = () => {
         const formSumbit = async (pegarCada) => {
             //Cancelando o comportamento padrão de recarregar a pagina
             pegarCada.preventDefault();
-            
+ 
             //montando os dados do array
             const montandoDados = {
                 nome_completo: dadosForm.nome_completo, 
@@ -60,15 +61,16 @@ const CadastreSe = () => {
                 }); 
                 
                 if (filtered.length > 0){
-                    alert('Este e-mail já está cadastrado, favor tentar login ou entrar em contato com o suporte.');
+                    alert('Este e-mail já está cadastrado, favor tentar login ou entrar em contato com o suporte solicitando o reset de senha.');
+                    navigate('/contato');
                 } else {
                     // Cadastrando Usuário caso não exista usuário cadastrado
                     try {
                         const response = await axios.post('http://localhost:5000/usuario/post/novo', montandoDados, config);
                         console.log(response.data);
                         if(response.status === 200){
-                            alert('Usuário cadastrado com sucesso.');
-                        
+                            alert('Usuário cadastrado com sucesso, você será redirecionado para a página de login.');
+                            navigate('/login');
                         } else{
                             alert('Erro ao cadastrar o usuário tente novamente.');
                         }

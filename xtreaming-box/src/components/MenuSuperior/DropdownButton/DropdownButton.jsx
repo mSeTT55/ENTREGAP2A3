@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import '../MenuSuperior.css';
-import { NavLink } from 'react-router-dom';
-
+import { NavLink, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/Auth/AuthContext';
 
 function DropdownMenu() {
     const [isOpen, setIsOpen] = useState(false);
@@ -9,6 +9,15 @@ function DropdownMenu() {
     const toggleDropdown = () => {
       setIsOpen(!isOpen);
     };
+    
+    
+    const auth = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const btnLogout = async () => {
+      await auth.sair();
+      navigate('/');
+    } 
   
     return (
       <div className="dropdown">
@@ -16,7 +25,7 @@ function DropdownMenu() {
         {isOpen && (
           <div id="dropdown-content" class="dropdown-content">
             <NavLink to={"/perfil"} >Perfil</NavLink>
-            <NavLink>Sair</NavLink>
+            <a onClick={btnLogout}>Sair</a>
           </div>
         )}
       </div>

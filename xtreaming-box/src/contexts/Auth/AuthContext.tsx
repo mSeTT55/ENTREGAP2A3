@@ -1,6 +1,7 @@
 import { createContext } from 'react';
 import { User } from "../../types/User";
 
+// Esta pag contém os contextos de atenticação que precisam para validar o usuário
 export type AuthContextType = {
     user: User | null; 
     //função para entrar

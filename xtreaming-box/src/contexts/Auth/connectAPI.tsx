@@ -15,6 +15,6 @@ export const connectAPI = () =>({
     
     // Saida de login
     logout: async () => {
-        console.log('Saindo');
+        localStorage.clear();
     }
 })
