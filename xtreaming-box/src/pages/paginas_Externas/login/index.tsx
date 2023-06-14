@@ -29,7 +29,7 @@ function Login(){
     const esqueciSenha = async () => {
         alert("Por favor nos envie uma mensagem solicitando o reset de senha e informando seu e-mail cadastrado que iremos lhe enviar uma nova senha.")
         navigate('/contato');
-      } 
+    } 
 
 
     return(

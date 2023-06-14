@@ -96,8 +96,8 @@ app.post('/usuario/post/novo', (req, res) => {
 //Rota PUT para atualizar um usuário existente
 app.put('/usuario/update/:id', (req, res) => {
   const { idusuario } = req.body;
-  const { nome_completo, email, senha } = req.body;
-  db.run('UPDATE usuarios SET nome_completo = ?, email = ?, senha = ? WHERE idusuario = ?', [nome_completo, email, senha,  idusuario], function (err) {
+  const { nome_completo, email, senha, confirm_senha } = req.body;
+  db.run('UPDATE usuarios SET nome_completo = ?, email = ?, senha = ?, confirm_senha = ? WHERE idusuario = ?', [nome_completo, email, senha, confirm_senha, idusuario], function (err) {
     if (err) {
       console.error(err);
       res.status(500).json({ error: 'Erro ao atualizar dados do usuário' });
