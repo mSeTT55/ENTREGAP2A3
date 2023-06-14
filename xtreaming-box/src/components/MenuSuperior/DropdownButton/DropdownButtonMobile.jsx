@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import '../MenuSuperiorMobile.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/Auth/AuthContext';
 
 
 function DropdownButtonMobile() {
@@ -9,6 +10,15 @@ function DropdownButtonMobile() {
     const toggleDropdown = () => {
       setIsOpen(!isOpen);
     };
+
+    const auth = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const btnLogout = async () => {
+      await auth.sair();
+      navigate('/');
+    } 
+
   
     return (
       <div className="dropdown">
@@ -19,7 +29,7 @@ function DropdownButtonMobile() {
             <NavLink to={"/minhalista"}>Minha Lista</NavLink>
             <NavLink to={"/contato"}>Contato</NavLink>
             <NavLink to={"/perfil"}>Perfil</NavLink>
-            <NavLink>Sair</NavLink>
+            <a onClick={btnLogout}>Sair</a>
           </div>
         )}
       </div>
