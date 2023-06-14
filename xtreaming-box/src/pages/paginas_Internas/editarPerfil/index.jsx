@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './styleEditarPerfil.css';
 import './EditarPerfilMobile.css';
 import Interno from '../../../layouts/interno.jsx';
@@ -6,6 +6,28 @@ import Interno from '../../../layouts/interno.jsx';
 
 
 function EditarPerfil (){
+
+    //Criando useState para armazenar dados do array do local Storage
+    const [contaLogada, setContaLogada] = useState([]);
+
+    //Função que pega informações de login que foram armazenadas no local storage
+    const pegandoInformacoes = () => {
+        const emailFiltrado = localStorage.getItem('emailFiltrado');
+        if (emailFiltrado !== null) {
+            const contaLogada = JSON.parse(emailFiltrado);
+            setContaLogada(contaLogada);
+        }
+    }
+    
+    //useEffect utilizado para executar a função de pegar os dados do local storage
+    useEffect(() => {
+        pegandoInformacoes();
+    }, []);
+
+    
+
+
+
     return(
         <Interno>
             <div class="text-botoes">
@@ -23,13 +45,10 @@ function EditarPerfil (){
                     <div class="itens-tab">
                         <form>
                             <div class="inputs">
-                                <input class="entradasdetexto" type="text" name="nome" id= "edit_nome" placeholder="Nome"/>
+                                <input class="entradasdetexto" type="text" name="nome" id= "edit_nome" placeholder={contaLogada.nome_completo}/>
                             </div>
                             <div class="inputs">
-                                <input class="entradasdetexto" type="text" name="sobrenome" id= "edit_sobren" placeholder="Sobrenome"/>
-                            </div>
-                            <div class="inputs">
-                                <input class="entradasdetexto" type="email" name="email" id="" placeholder="E-mail"/>
+                                <input class="entradasdetexto" type="email" name="email" id="" placeholder={contaLogada.email}/>
                             </div>
                                 <button class="bt1submit" id="" type="submit">Confirmar</button>                            
                         </form>

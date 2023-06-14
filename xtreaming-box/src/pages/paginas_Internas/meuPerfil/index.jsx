@@ -6,7 +6,11 @@ import {Link} from 'react-router-dom';
 
 
 function MeuPerfil (){ 
+
+    //Criando useState para armazenar dados do array do local Storage
     const [contaLogada, setContaLogada] = useState([]);
+
+    //Função que pega informações de login que foram armazenadas no local storage
     const pegandoInformacoes = () => {
         const emailFiltrado = localStorage.getItem('emailFiltrado');
         if (emailFiltrado !== null) {
@@ -14,6 +18,8 @@ function MeuPerfil (){
             setContaLogada(contaLogada);
         }
     }
+    
+    //useEffect utilizado para executar a função de pegar os dados do local storage
     useEffect(() => {
         pegandoInformacoes();
     }, []);
