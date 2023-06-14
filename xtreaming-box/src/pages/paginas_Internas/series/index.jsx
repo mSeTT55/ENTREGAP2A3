@@ -26,8 +26,7 @@ function Series (){
         try {
             const response = await axios.get('http://localhost:5000/series/get/all', config);
             const series = response.data
-            setSeries(series); 
-            console.log(series)      
+            setSeries(series);    
             }
         catch (error) {
             console.error(error);
