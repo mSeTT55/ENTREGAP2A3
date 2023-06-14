@@ -1,8 +1,16 @@
 
-.cabec-graf{
+.total-ser > .cabec-graf-ser .container-graf-ser{
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.cabec-graf-ser{
     display: flex;
     flex-direction: row;
-    width: 100%;
+    width: 45%;
     height: 40px;
     background-color: #514769;
     border: 1px solid  #16FC92;
@@ -11,6 +19,33 @@
     
 }
 
+
+.container-graf-ser{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 2%;
+    width: 45%;
+    height: 80%;
+    background-color: white;
+    border-radius: 20px;
+    overflow-y: auto;
+    background-color: hsla(0, 24%, 15%, 0.61);
+
+}  
+
+.nome-h3-ser {
+    padding-top: 1%;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    font-family: 'Baloo 2',cursive;
+    color: #16FC92;
+    font-weight: 600;
+    font-size: 24px;
+    
+}
 .corpo-graf{
     
     display: flex;

@@ -3,12 +3,11 @@ import './styletabelaSerie.css'
 function TabelaSerie (){
     return(
 
-
-            <div className="setorb">
-                    <div className="graf-title">
-                       <p className="nome-h3">Lista de Séries</p> 
-                    </div>   
-                     <div className="container-graf">
+            <div className='total-ser'>
+                <div className="graf-title-ser">
+                <p className="nome-h3-ser">Tabela Séries</p>
+                </div>
+                     <div className="container-graf-ser">
                        <div className="cabec-graf">
                          <div className="col1">
                              <p>cód</p>
@@ -54,6 +53,7 @@ function TabelaSerie (){
                        </div>
                      </div>
                   </div>
+                  
 
 )
 }

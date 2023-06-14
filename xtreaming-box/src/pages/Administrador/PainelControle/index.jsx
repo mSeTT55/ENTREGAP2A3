@@ -2,6 +2,7 @@ import React from 'react';
 import './stylePainelcontrole.css';
 import './stylePainelcontroleMobile.css';
 import InternoAdm from '../../../layouts/internoAdm.jsx';
+import { Link } from 'react-router-dom';
 
 function PainelControle() {
   return (
@@ -17,15 +18,23 @@ function PainelControle() {
                     <div class="setor-a">
                     <div>
                     <div>
-                       <p class="nome-h2">Novo</p>
+                       <p class="nome-h2-pnl">Novo</p>
                      </div>
                      <div class="itens-tab">
-                        <div class="linha1">    
                             <div> 
-                                <button class="bt1" id="" onclick="mudarPagina1()">CADASTRAR SÉRIES</button>
+                            <p class="nome-h2-pnl">Cadastrar</p>  
+                            </div>
+                        <div class="linha1"> 
+                         
+                            <div> 
+                                <Link to= "/cadastrarseries">
+                                <button class="bt1" id="">SÉRIES</button>
+                                </Link>
                             </div>
                             <div> 
-                                <button class="bt1" id="" onclick="mudarPagina2()">CADASTRAR PLATAFORMAS</button>
+                                <Link to= "/cadastrarplataforma">
+                                <button class="bt1" id="" onclick="mudarPagina2()">PLATAFORMAS</button>
+                                </Link>
                             </div>
                          </div> 
                          <br/>
