@@ -11,10 +11,10 @@ function DropdownMenuAdm() {
     };
   
     return (
-      <div className="dropdown">
+      <div className="dropdown-adm">
         <button onClick={toggleDropdown}>ADMINISTRADOR</button>
         {isOpen && (
-          <div id="dropdown-content" class="dropdown-content">
+          <div id="dropdown-content-adm" class="dropdown-content-adm">
             <NavLink to={"/perfil"} >Perfil</NavLink>
             <NavLink to={"/paineldecontrole"} >Painel de Controle</NavLink>
             <NavLink>Sair</NavLink>

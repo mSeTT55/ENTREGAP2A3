@@ -1,41 +1,41 @@
 /*Aqui começa o menu superior*/
 
 @media only screen and (max-width:540px){
-    .menu-superior{
+    .menu-superior-adm{
         margin: 0;
     }
 
-    .img-text, .usuario2{
+    .img-text-adm, .usuario2-adm{
         width: 50%;
         margin: 0px;
     }
 
-    .img-esquerda{
+    .img-esquerda-adm{
         width: 100%;
         justify-content: center;
         padding: 15px 0 0 15px;
     }
 
-    .img-logo{
+    .img-logo-adm{
         width: 40vw;
     }
     
-    .text-direita{
+    .text-direita-adm{
         display: none;
     }
 
-    .usuario2 > div{
+    .usuario2-adm > div{
         /*margin: 25px 0 0 0;*/
     }
 
 
     /*dropdown menu*/
 
-    .usuario{
+    .usuario-adm{
         display: none;
     }
 
-    .usuario2{
+    .usuario2-adm{
         display: flex;
         padding-left: 15px;
         justify-content: center;
@@ -43,7 +43,7 @@
     }
 
 
-    .usuario2 > div > button{
+    .usuario2-adm > div > button{
         height: 35px;
         padding: 1em 2em;
         font-size: 72%;
@@ -55,11 +55,11 @@
         font-weight: 800;
     }
 
-    .usuario2 > div >  button:hover{
+    .usuario2-adm > div >  button:hover{
         background-color: #1ca364;
     }
 
-    .dropdown-content2 {
+    .dropdown-content2-adm {
         background-color: #f1f1f1;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         z-index: 1;
@@ -67,7 +67,7 @@
         margin-left: 22px;
     }
 
-    .dropdown-content2 > a {
+    .dropdown-content2-adm > a {
         color: white;
         padding: 0.5em 2.8em;
         text-decoration: none;
@@ -78,7 +78,7 @@
         border-width: 1px;
     }
 
-    .show2 {
+    .show2-adm {
         display:flex;
         flex-direction: column;
     }
@@ -86,7 +86,7 @@
 }
 
 @media only screen and (max-width:350px){
-    .usuario2 > div{
+    .usuario2-adm > div{
         /*margin: 20px 0 0 0;*/
     }
 }

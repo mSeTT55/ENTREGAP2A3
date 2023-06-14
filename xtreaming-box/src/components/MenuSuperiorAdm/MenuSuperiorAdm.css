@@ -1,6 +1,6 @@
 /*Aqui começa o menu superior*/
 
-.menu-superior{
+.menu-superior-adm{
     width: 100%;
     height: 12%;
     background-color: black;
@@ -10,13 +10,13 @@
     margin: 0;
 }
 
-.img-text{
+.img-text-adm{
     width: 85%;
     height: 100%;
 
 }
 
-.usuario{
+.usuario-adm{
     width: 15%;
     height: 100%;
     position: relative;
@@ -27,12 +27,12 @@
     margin-right: 2em;
 }
 
-.img-text{
+.img-text-adm{
     display: flex;
     flex-direction: row;
 }
 
-.img-esquerda{
+.img-esquerda-adm{
     width: 20%;
     height: 100%;
     display: flex;
@@ -40,13 +40,13 @@
     align-items: center;  
 }
 
-.img-logo {
+.img-logo-adm {
     position: relative;
     width: 10vw;
     top: 5%;
 }
 
-.text-direita{
+.text-direita-adm{
     width: 80%;
     height: 100%;
     padding-left: 3%;
@@ -55,7 +55,7 @@
     align-items: center;
 }
 
-.text-direita > a {
+.text-direita-adm > a {
     text-decoration: none;
     font-family: 'Graduate', cursive;
     font-style: normal;
@@ -66,7 +66,7 @@
     
 }
 
-.user-esquerda{
+.user-esquerda-adm{
     width: 80%;
     display: flex;
     justify-content: center;
@@ -75,33 +75,33 @@
     font-family: 'Inter', sans-serif;
 }
 
-.user-esquerda > p{
+.user-esquerda-adm > p{
     color: #FFFFFF;
     font-size: 18px;
     
 }
 
-.text-direita a.active {
+.text-direita-adm a.active {
     color: #16FC92;
     
 }
-.text-direita a.inactive {
+.text-direita-adm a.inactive {
     color: #FFFFFF;
 }
 
 /*dropdown menu*/
 
-.usuario{
+.usuario-adm{
     padding-right: 15px;
 }
 
-.usuario2{
+.usuario2-adm{
     display: none;
     padding-right: 15px;
 }
 
 
-.usuario > div > button{
+.usuario-adm > div > button{
     height: 35px;
     padding: 1em 2em;
     font-size: 80%;
@@ -113,11 +113,11 @@
     font-weight: 800;
 }
 
-.usuario > div >  button:hover{
+.usuario-adm > div >  button:hover{
     background-color: #1ca364;
 }
 
-.dropdown-content {
+.dropdown-content-adm {
 
     background-color: #f1f1f1;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -126,7 +126,7 @@
     margin-left: 22px;
 }
 
-.dropdown-content > a {
+.dropdown-content-adm > a {
     color: white;
     padding: 0.5em 4.2em;
     text-decoration: none;
@@ -137,7 +137,7 @@
     border-width: 1px;
 }
 
-.show {
+.show-adm {
     display:flex;
     flex-direction: column;
 }

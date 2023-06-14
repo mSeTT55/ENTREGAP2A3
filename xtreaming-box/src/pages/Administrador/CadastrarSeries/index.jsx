@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './styleSeriesMobile.css';
 import './styleSeries.css';
-import Interno from '../../../layouts/interno.jsx';
+import InternoAdm from '../../../layouts/internoAdm.jsx';
 import { Link } from 'react-router-dom';
 
 
@@ -51,7 +51,7 @@ const CadastrarSerie = () => {
 
   return (
    
-   <Interno>
+   <InternoAdm>
             <div className="text-botoes">
                 <div>
                     <h1 id='editarperfil'  className="minhalista">Cadastrar Séries</h1>
@@ -175,7 +175,7 @@ const CadastrarSerie = () => {
                 </div>
             </div>
    
-   </Interno>         
+   </InternoAdm>         
   )
 }
 

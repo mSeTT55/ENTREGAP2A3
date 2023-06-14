@@ -11,14 +11,14 @@ function DropdownButtonMobileAdm() {
     };
   
     return (
-      <div className="dropdown">
+      <div className="dropdown-adm">
         <button onClick={toggleDropdown}>ADMINISTRADOR</button>
         {isOpen && (
-          <div id="dropdown-content2" className="dropdown-content2">
+          <div id="dropdown-content2-adm" className="dropdown-content2-adm">
             <NavLink to={"/series"}>Séries</NavLink>
-            <NavLink to={"/minhalista"}>Minha Lista</NavLink>
             <NavLink to={"/paineldecontrole"}>Painel de Controle</NavLink>
             <NavLink to={"/perfil"}>Perfil</NavLink>
+            
             <NavLink>Sair</NavLink>
           </div>
         )}

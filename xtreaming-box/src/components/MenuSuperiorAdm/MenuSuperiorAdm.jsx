@@ -10,12 +10,12 @@ import { NavLink } from 'react-router-dom';
 
 function MenuSuperiorAdm() {
     return (
-        <div className="menu-superior">
-            <div className="img-text">
-                <div className="img-esquerda">
-                    <img className="img-logo" src={logo} alt="Imagem da Logo"/>     
+        <div className="menu-superior-adm">
+            <div className="img-text-adm">
+                <div className="img-esquerda-adm">
+                    <img className="img-logo-adm" src={logo} alt="Imagem da Logo"/>     
                 </div>
-                <div className="text-direita">
+                <div className="text-direita-adm">
                     <NavLink 
                     className={({ isActive }) => (isActive ? 'active' : 'inactive')}
                     to={"/series"}>SÉRIES</NavLink>
@@ -28,10 +28,10 @@ function MenuSuperiorAdm() {
                    
                 </div>
             </div>
-            <div className="usuario">
+            <div className="usuario-adm">
                 <DropdownMenuAdm />
             </div>
-            <div className="usuario2">
+            <div className="usuario2-adm">
                 <DropdownMenuMobileAdm />   
             </div>
         </div>
