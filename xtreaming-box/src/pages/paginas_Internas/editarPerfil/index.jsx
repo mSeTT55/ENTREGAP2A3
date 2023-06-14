@@ -4,7 +4,6 @@ import './EditarPerfilMobile.css';
 import Interno from '../../../layouts/interno.jsx';
 
 
-
 function EditarPerfil (){
 
     //Criando useState para armazenar dados do array do local Storage
@@ -23,9 +22,6 @@ function EditarPerfil (){
     useEffect(() => {
         pegandoInformacoes();
     }, []);
-
-    
-
 
 
     return(
