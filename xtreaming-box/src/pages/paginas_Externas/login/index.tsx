@@ -20,12 +20,17 @@ function Login(){
         pegarCada.preventDefault();
         const isLogged = await auth.entrar(email, senha);
         if (isLogged) {
-            
             navigate('/series');
         }else{
             alert("Usuário ou senha incorreto, tente novamente ou cadastre-se em nossa plataforma.");
         }
     }
+
+    const esqueciSenha = async () => {
+        alert("Por favor nos envie uma mensagem solicitando o reset de senha e informando seu e-mail cadastrado que iremos lhe enviar uma nova senha.")
+        navigate('/contato');
+      } 
+
 
     return(
         <body>
@@ -71,7 +76,7 @@ function Login(){
                         <div className="cardlogin-botoes-inferiores">
                             <input className="manterconectado-login" type="checkbox" name="manterconectado"/>
                             <label className="manterconectado-login">Manter conectado</label>
-                            <button className="btn-esquecisenha">Esqueci a senha</button>
+                            <button onClick={esqueciSenha} className="btn-esquecisenha">Esqueci a senha</button>
                         </div>
                     </form>
                 </div>
