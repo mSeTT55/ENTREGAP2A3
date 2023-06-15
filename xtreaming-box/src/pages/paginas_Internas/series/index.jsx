@@ -10,20 +10,40 @@ import assistidoNormal from "../../../assets/imgs/SituacaoSerie/assistidoNormal.
 import assistidoMarcado from "../../../assets/imgs/SituacaoSerie/assistidoMarcado.png";
 
 function Series() {
-  // Listando séries com o map
   const [series, setSeries] = useState([]);
   const userId = JSON.parse(localStorage.getItem('emailFiltrado')).idusuario;
 
   const pegandoSeries = async () => {
     try {
       const response = await axios.get('http://localhost:5000/series/get/all');
-      const seriesData = response.data.map((serie) => ({
-        ...serie,
-        imageSrcDes: assistirNormal,
-        imageSrcAss: assistidoNormal,
-        situacaoSerie: null,
-      }));
+      const seriesData = response.data.map((serie) => {
+        const buttonState = JSON.parse(localStorage.getItem('buttonState'));
+        const buttonInfo = buttonState.find((button) => button.idseries === serie.idseries);
+        return {
+          ...serie,
+          imageSrcDes: buttonInfo ? buttonInfo.imageSrcDes : assistirNormal,
+          imageSrcAss: buttonInfo ? buttonInfo.imageSrcAss : assistidoNormal,
+          situacaoSerie: null,
+        };
+      });
       setSeries(seriesData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const loadButtonState = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/situacao_series/get/all');
+      const situacoes = response.data;
+
+      const buttonState = situacoes.map((situacao) => ({
+        idseries: situacao.series_idseries,
+        imageSrcDes: situacao.desejo_assistir === 'Sim' ? assistirMarcado : assistirNormal,
+        imageSrcAss: situacao.assistido === 'Sim' ? assistidoMarcado : assistidoNormal,
+      }));
+
+      localStorage.setItem('buttonState', JSON.stringify(buttonState));
     } catch (error) {
       console.error(error);
     }
@@ -31,12 +51,12 @@ function Series() {
 
   useEffect(() => {
     pegandoSeries();
+    loadButtonState();
   }, []);
 
   const handleImageClick = async (seriesSection, type) => {
-    // Cria uma cópia do array de séries
     const updatedSeries = [...series];
-    // Verifica o estado atual da imagem
+
     if (type === 'assistir') {
       if (updatedSeries[seriesSection].imageSrcDes === assistirNormal) {
         updatedSeries[seriesSection].imageSrcDes = assistirMarcado;
@@ -54,17 +74,16 @@ function Series() {
         console.log(`Desmarcou assistido ${updatedSeries[seriesSection].nome}`);
       }
     }
-    // Atualiza o estado do meu array de séries
+
     setSeries(updatedSeries);
 
-    // Envia a situação para a API
     const situacaoSerie = {
       desejo_assistir: updatedSeries[seriesSection].imageSrcDes === assistirMarcado ? 'Sim' : 'Não',
       assistido: updatedSeries[seriesSection].imageSrcAss === assistidoMarcado ? 'Sim' : 'Não',
       series_idseries: updatedSeries[seriesSection].idseries,
       series_plataforma_idplataforma: updatedSeries[seriesSection].plataforma_idplataforma,
       usuario_idusuario: userId,
-      idsituacao_serie: null, // Inicializa com null
+      idsituacao_serie: null,
     };
 
     const config = {
@@ -84,7 +103,7 @@ function Series() {
       );
 
       if (situacaoExistente) {
-        situacaoSerie.idsituacao_serie = situacaoExistente.idsituacao_serie; // Atualiza o ID da situação série
+        situacaoSerie.idsituacao_serie = situacaoExistente.idsituacao_serie;
         await axios.put(`http://localhost:5000/situacao_serie/update/${situacaoExistente.idsituacao_serie}`, situacaoSerie, config);
         console.log('Situação atualizada com sucesso');
       } else {
@@ -106,7 +125,6 @@ function Series() {
       </div>
       <div className="conteiner-maior">
         <div id="caixa-itens" className="caixa-itens">
-          {/* <!--Aqui começa cada card das séries--> */}
           {series.map((serie, seriesSection) => (
             <section key={seriesSection} className="series">
               <div className="conteudo_serie">
@@ -125,7 +143,6 @@ function Series() {
               </div>
             </section>
           ))}
-          {/* <!--Termina cada card das séries--> */}
         </div>
       </div>
     </Interno>
