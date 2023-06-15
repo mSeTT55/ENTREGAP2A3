@@ -16,34 +16,24 @@ function Series() {
   const pegandoSeries = async () => {
     try {
       const response = await axios.get('http://localhost:5000/series/get/all');
+      const situacoesResponse = await axios.get('http://localhost:5000/situacao_series/get/all');
+      const situacoes = situacoesResponse.data;
+
       const seriesData = response.data.map((serie) => {
-        const buttonState = JSON.parse(localStorage.getItem('buttonState'));
-        const buttonInfo = buttonState.find((button) => button.idseries === serie.idseries);
+        const situacaoSerie = situacoes.find(
+          (situacao) =>
+            situacao.series_idseries === serie.idseries &&
+            situacao.usuario_idusuario === userId
+        );
         return {
           ...serie,
-          imageSrcDes: buttonInfo ? buttonInfo.imageSrcDes : assistirNormal,
-          imageSrcAss: buttonInfo ? buttonInfo.imageSrcAss : assistidoNormal,
-          situacaoSerie: null,
+          imageSrcDes: situacaoSerie?.desejo_assistir === 'Sim' ? assistirMarcado : assistirNormal,
+          imageSrcAss: situacaoSerie?.assistido === 'Sim' ? assistidoMarcado : assistidoNormal,
+          situacaoSerie: situacaoSerie || null,
         };
       });
+
       setSeries(seriesData);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const loadButtonState = async () => {
-    try {
-      const response = await axios.get('http://localhost:5000/situacao_series/get/all');
-      const situacoes = response.data;
-
-      const buttonState = situacoes.map((situacao) => ({
-        idseries: situacao.series_idseries,
-        imageSrcDes: situacao.desejo_assistir === 'Sim' ? assistirMarcado : assistirNormal,
-        imageSrcAss: situacao.assistido === 'Sim' ? assistidoMarcado : assistidoNormal,
-      }));
-
-      localStorage.setItem('buttonState', JSON.stringify(buttonState));
     } catch (error) {
       console.error(error);
     }
@@ -51,7 +41,6 @@ function Series() {
 
   useEffect(() => {
     pegandoSeries();
-    loadButtonState();
   }, []);
 
   const handleImageClick = async (seriesSection, type) => {
@@ -88,8 +77,8 @@ function Series() {
 
     const config = {
       headers: {
-        'Content-Type': 'application/json'
-      }
+        'Content-Type': 'application/json',
+      },
     };
 
     try {
@@ -104,7 +93,11 @@ function Series() {
 
       if (situacaoExistente) {
         situacaoSerie.idsituacao_serie = situacaoExistente.idsituacao_serie;
-        await axios.put(`http://localhost:5000/situacao_serie/update/${situacaoExistente.idsituacao_serie}`, situacaoSerie, config);
+        await axios.put(
+          `http://localhost:5000/situacao_serie/update/${situacaoExistente.idsituacao_serie}`,
+          situacaoSerie,
+          config
+        );
         console.log('Situação atualizada com sucesso');
       } else {
         await axios.post('http://localhost:5000/situacao_serie/post/novo', situacaoSerie, config);
@@ -130,12 +123,13 @@ function Series() {
               <div className="conteudo_serie">
                 <img className="img_serie" src={serie.imagem_serie} alt={`Imagem da série ${serie.nome}`} />
                 <p className="nome_serie">{serie.nome}</p>
+                <p className="nome_plataforma">{serie.nome}</p>
                 <div className="div-botton">
                   <div>
                     <div onClick={() => handleImageClick(seriesSection, 'assistir')}>
-                      <img src={serie.imageSrcDes} alt="Desejo Assistir" />
+                      <img src={serie.imageSrcDes} alt="Desejo Assistir"/>
                     </div>
-                    <div onClick={() => handleImageClick(seriesSection, 'assistido')}>
+                    <div onClick={() => handleImageClick(seriesSection,'assistido')}>
                       <img src={serie.imageSrcAss} alt="Assistido" />
                     </div>
                   </div>

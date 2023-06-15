@@ -54,20 +54,22 @@
 .series{
     display: flex;
     flex-direction: row;
-    margin: 0 0.5em 2.5em 0.5em;
+    margin: 0 0.2em 2.5em 0.2em;
+    border-radius: 20px;
 }
 
 .conteudo_serie{
     width: 10em;
-    height: 18em;
+    height: 19em;
     display: flex;
     align-items: center;
+    
     flex-direction: column;
 }
 
-.conteudo_serie > .img_serie, .nome_serie , .startsdiv, .div-botton {
+.conteudo_serie > .img_serie, .nome_serie , .nome_plataforma, .startsdiv, .div-botton {
     margin: 0;
-    margin-bottom: 15px;
+    margin-bottom: 8px;
 }
 
 
@@ -80,7 +82,11 @@
 .conteudo_serie > .nome_serie {
     font-family: 'Baloo Thambi',cursive;
     color: white;
+}
 
+.conteudo_serie > .nome_plataforma {
+    color: white;
+    font-size: small;
 }
 
 .img-star{
