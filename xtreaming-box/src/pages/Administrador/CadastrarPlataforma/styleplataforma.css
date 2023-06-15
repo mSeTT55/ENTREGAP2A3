@@ -60,7 +60,13 @@
     
     
 }
-
+.format-bt{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5%;
+}
 
 /* titulo da caixa */
 .nome-h2 {
@@ -124,10 +130,11 @@
     color: #FFFFFF;
     font-size: 13px;
     text-align: left;
+    
 }
 
 
-.bt1{
+.bt1-plat{
     width: 160px;
     height: 5vh;
     background: #16FC92;
@@ -143,7 +150,7 @@
 
 }
 
-.bt2 {
+.bt2-plat {
     width: 160px;
     height: 5vh;
     background: red;
@@ -171,12 +178,12 @@
     font-style: italic;
 }
 
-.linha1{
+.linha1-plat{
     display: flex;
     align-items: center;
     flex-direction: row;
     justify-content: left;
-    margin-left: 5%;
+    
     
 }
 

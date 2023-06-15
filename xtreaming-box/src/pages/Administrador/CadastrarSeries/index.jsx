@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 
 
 
+
 const CadastrarSerie = () => {
   //UseState para pegar os dados do formulario, decompor em um array e aplicar cada dado em cada variavel
   const [dadosFormSerie, setdadosFormSerie] = useState({
@@ -47,6 +48,9 @@ const CadastrarSerie = () => {
           console.log(error);
       }
   }
+    
+
+  
 
   return (
    
@@ -69,7 +73,7 @@ const CadastrarSerie = () => {
                             <select className="input-box" name="selec-plata" id="select-plata" placeholder="Selecione a plataforma do streaming"
                             required value={dadosFormSerie.plataformaid_serie}
                             onChange={(pegarCada) => setdadosFormSerie({ ...dadosFormSerie, plataformaid_serie: pegarCada.target.value })}>
-                                <option value="1">Netflix</option>
+                               <option value="1">Netflix</option>
                                 <option value="2">Globo Play</option>
                                 <option value="3">Prime Vídeo</option>
                                 <option value="4">Disney Plus</option>
