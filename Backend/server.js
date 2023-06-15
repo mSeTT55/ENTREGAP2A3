@@ -281,114 +281,6 @@ app.delete('/contato/delete/:id', (req, res) => {
   });
 });
 
-
-/*CRUD DE SITUAÇÃO SERIES------------------------------------------------------------------------------------------------*/
-
-//Rota API GET para obter todos resultados e situações
-app.get('/situacao_series/get/all', (req, res) => {
-  db.all('SELECT * FROM situacao_serie', (err, rows) =>{
-    if (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Não conseguimos analisar sua situação' });
-    } else {
-      res.json(rows);
-    }
-  });
-});
-
-
-//Rota API GET para obter todas as situação por ID
-app.get('/situacao_series/get/all/:id', (req, res) => {
-  const { idsituacao_serie } = req.body;
-  db.get('SELECT * FROM situacao_serie WHERE idsituacao_serie = ?', [idsituacao_serie], (err, row) => {
-    if (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Não conseguimos identificar a situação' });
-    } else if (row) {
-      res.json(row);
-    } else {
-      res.status(404).json({ error: 'Situação não encontrada' });
-    }
-  });
-});
-
-
-//Rota API GET para obter situação por ID de desejo assistir
-app.get('/situacao_series/get/desejo_assistir/:id', (req, res) => {
-  const { idsituacao_serie } = req.body;
-  db.get('SELECT * FROM situacao_serie WHERE idsituacao_serie = ? AND desejo_assistir = 1', [idsituacao_serie], (err, row) => {
-    if (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Não conseguimos identificar seu desejo' });
-    } else if (row) {
-      res.json(row);
-    } else {
-      res.status(404).json({ error: 'Situação não encontrada' });
-    }
-  });
-});
-
-//Rota API GET para obter situação por ID visto
-app.get('/situacao_series/get/visto/:id', (req, res) => {
-  const { idsituacao_serie } = req.body;
-  db.get('SELECT * FROM situacao_serie WHERE idsituacao_serie = ? AND visto = 2', [idsituacao_serie], (err, row) => {
-    if (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Não conseguimos identificar series que já foram vistas' });
-    } else if (row) {
-      res.json(row);
-    } else {
-      res.status(404).json({ error: 'Situação não encontrada' });
-    }
-  });
-});
-
-// Rota POST para criar uma nova situação
-app.post('/situacao_serie/post/novo', (req, res) => {
-  const { desejo_assistir, visto, serie_idseries, series_plataforma_idplataforma, usuario_idusuario } = req.body;
-  db.run('INSERT INTO situacao_serie (desejo_assistir, visto, serie_idseries, series_plataforma_idplataforma, usuario_idusuario) VALUES (?, ?, ?, ?, ?)', [desejo_assistir, visto, serie_idseries, series_plataforma_idplataforma, usuario_idusuario], function (err) {
-    if (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Erro ao cadastrar situação' });
-    } else {
-      res.json({ id: this.lastID });
-    }
-  });
-});
-
-
-//Rota PUT para atualizar situação de desejo e visto 1 para desejo e 2 para visto
-app.put('/situacao_serie/update/:id', (req, res) => {
-  const { usuario_idusuario } = req.body;
-  const { desejo_assistir, visto } = req.body;
-  db.run('UPDATE situacao_serie SET desejo_assistir = ?, visto = ?, WHERE usuario_idusuario = ?', [desejo_assistir, visto, usuario_idusuario], function (err) {
-    if (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Erro ao atualizar a situação' });
-    } else if (this.changes > 0) {
-      res.json({ message: 'Situação atualizada com sucesso' });
-    } else {
-      res.status(404).json({ error: 'Situação não encontrada' });
-    }
-  });
-});
-
-
-//Rota DELETE para excluir a situação
-app.delete('/situacao_serie/delete/:id', (req, res) => {
-  const { usuario_idusuario } = req.body;
-  db.run('DELETE FROM situacao_serie WHERE usuario_idusuario = ?', [usuario_idusuario], function (err) {
-    if (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Erro ao excluir situação' });
-    } else if (this.changes > 0) {
-      res.json({ message: 'Situação excluída com sucesso' });
-    } else {
-      res.status(404).json({ error: 'Situação não encontrado' });
-    }
-  });
-});
-
 /*CRUD DE SERIES------------------------------------------------------------------------------------------------*/
 
 //Rota API GET para obter todos as series
@@ -462,6 +354,84 @@ app.delete('/series/delete/:id', (req, res) => {
       res.json({ message: 'Usuário excluído com sucesso' });
     } else {
       res.status(404).json({ error: 'Usuário não encontrado' });
+    }
+  });
+});
+
+
+/*CRUD DE SITUAÇÃO SERIES------------------------------------------------------------------------------------------------*/
+
+//Rota API GET para obter todos resultados e situações
+app.get('/situacao_series/get/all', (req, res) => {
+  db.all('SELECT * FROM situacao_serie', (err, rows) =>{
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Não conseguimos analisar sua situação' });
+    } else {
+      res.json(rows);
+    }
+  });
+});
+
+
+//Rota API GET para obter todas as situação por ID
+app.get('/situacao_series/get/:id', (req, res) => {
+  const { idsituacao_serie } = req.body;
+  db.get('SELECT * FROM situacao_serie WHERE idsituacao_serie = ?', [idsituacao_serie], (err, row) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Não conseguimos identificar a situação' });
+    } else if (row) {
+      res.json(row);
+    } else {
+      res.status(404).json({ error: 'Situação não encontrada' });
+    }
+  });
+});
+
+
+// Rota POST para criar uma nova situação
+app.post('/situacao_serie/post/novo', (req, res) => {
+  const { desejo_assistir, visto, serie_idseries, series_plataforma_idplataforma, usuario_idusuario } = req.body;
+  db.run('INSERT INTO situacao_serie (desejo_assistir, visto, serie_idseries, series_plataforma_idplataforma, usuario_idusuario) VALUES (?, ?, ?, ?, ?)', [desejo_assistir, visto, serie_idseries, series_plataforma_idplataforma, usuario_idusuario], function (err) {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Erro ao cadastrar situação' });
+    } else {
+      res.json({ id: this.lastID });
+    }
+  });
+});
+
+
+//Rota PUT para atualizar situação de desejo e visto 1 para desejo e 2 para visto
+app.put('/situacao_serie/update/:id', (req, res) => {
+  const { usuario_idusuario } = req.body;
+  const { desejo_assistir, visto } = req.body;
+  db.run('UPDATE situacao_serie SET desejo_assistir = ?, visto = ?, WHERE usuario_idusuario = ?', [desejo_assistir, visto, usuario_idusuario], function (err) {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Erro ao atualizar a situação' });
+    } else if (this.changes > 0) {
+      res.json({ message: 'Situação atualizada com sucesso' });
+    } else {
+      res.status(404).json({ error: 'Situação não encontrada' });
+    }
+  });
+});
+
+
+//Rota DELETE para excluir a situação
+app.delete('/situacao_serie/delete/:id', (req, res) => {
+  const { usuario_idusuario } = req.body;
+  db.run('DELETE FROM situacao_serie WHERE usuario_idusuario = ?', [usuario_idusuario], function (err) {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Erro ao excluir situação' });
+    } else if (this.changes > 0) {
+      res.json({ message: 'Situação excluída com sucesso' });
+    } else {
+      res.status(404).json({ error: 'Situação não encontrado' });
     }
   });
 });

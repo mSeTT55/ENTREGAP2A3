@@ -4,17 +4,16 @@ import './styleSeries.css';
 import './styleSeriesMobile.css';
 import axios from 'axios';
 
-//import imgserie from '../../../assets/imgs/imagens_series/amor e morte.png';
-//import imgserie2 from '../../../assets/imgs/imagens_series/a casa do dragão.png';
-
-//import estrela from '../../../assets/imgs/stars/5-star.png';
-//import estrela2 from '../../../assets/imgs/stars/1-star.png';
-import BotaoMarcador from '../../../components/botaoSituacao/botaoMarcador.jsx'
+import assistirNormal from "../../../assets/imgs/SituacaoSerie/assistirNormal.png";
+import assistirMarcado from "../../../assets/imgs/SituacaoSerie/assistirMarcado.png";
+import assistidoNormal from "../../../assets/imgs/SituacaoSerie/assistidoNormal.png";
+import assistidoMarcado from "../../../assets/imgs/SituacaoSerie/assistidoMarcado.png";
 
 
 
 function Series (){
 
+    // Listando séries com o map
     const [series, setSeries] = useState([]);
 
     const pegandoSeries  = async () => {
@@ -25,18 +24,47 @@ function Series (){
         };
         try {
             const response = await axios.get('http://localhost:5000/series/get/all', config);
-            const series = response.data
-            setSeries(series);    
-            }
-        catch (error) {
+            const seriesData = response.data.map((serie) => ({
+              ...serie,
+              imageSrcDes: assistirNormal,
+              imageSrcAss: assistidoNormal,
+            }));
+                setSeries(seriesData);
+            } catch (error) {
             console.error(error);
-        }
-        return series
-    }
+          }
+        };
     useEffect(() => {
         pegandoSeries();
     }, []);
 
+
+    const handleImageClick = (seriesSection, type) => {
+        // Cria uma cópia do array de séries
+        const updatedSeries = [...series];
+    
+        // Verifica o estado atual da imagem
+        if (type === 'assistir') {
+          if (updatedSeries[seriesSection].imageSrcDes === assistirNormal) {
+            updatedSeries[seriesSection].imageSrcDes = assistirMarcado;
+            console.log('Marcou que quer assistir')
+          } else {
+            updatedSeries[seriesSection].imageSrcDes = assistirNormal;
+            console.log('Desmarcou que quer assistir')
+          }
+        } else if (type === 'assistido') {
+          if (updatedSeries[seriesSection].imageSrcAss === assistidoNormal) {
+            updatedSeries[seriesSection].imageSrcAss = assistidoMarcado;
+            console.log('Marcou assistido')
+          } else {
+            updatedSeries[seriesSection].imageSrcAss = assistidoNormal;
+            console.log('Desmarcou assistido')
+          }
+        }
+        // Atualiza o estado do meu array de séries
+        setSeries(updatedSeries);
+      };
+        
     return(
         <Interno>
                 <div className="cabecalho">
@@ -47,7 +75,8 @@ function Series (){
                 </div>
                 <div className="conteiner-maior">
                     <div id='caixa-itens' className="caixa-itens" >
-                        {/*<!--Aqui se encontra cada card das series-->*/}
+                        {/*<!--Aqui começa cada card das series-->*/}
+
                         {
                             series.map((serie, seriesSection) =>
                                 <section key={seriesSection} className="series"> 
@@ -55,13 +84,21 @@ function Series (){
                                         <img className="img_serie" src={serie.imagem_serie} alt={`Imagem da série ${serie.nome}`}/>
                                         <p className="nome_serie">{serie.nome}</p>
                                         <div className="div-botton">
-                                            <BotaoMarcador/>
+                                            <div>
+                                                <div onClick={() => handleImageClick(seriesSection, 'assistir')}>
+                                                    <img src={serie.imageSrcDes} alt="Desejo Assistir" />
+                                                </div>
+                                                <div onClick={() => handleImageClick(seriesSection, 'assistido')}>
+                                                    <img src={serie.imageSrcAss} alt="Assistido" />
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>     
                                 </section>
                             )
                         }
-                        {/*<!--Aqui se termina cada card das series-->*/}  
+
+                        {/*<!--Termina cada card das series-->*/}  
                     </div>
                 </div>
         </Interno>
