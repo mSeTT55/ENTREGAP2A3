@@ -74,13 +74,13 @@ const Contato = () => {
                             <div className='boton'>
                                 <div>
                                 
-                                <button className="btn btn-white btn-animate" type='submit'>ENVIAR</button>
+                                <button className="bt1-plat" type='submit'>ENVIAR</button>
                                 
                                 </div>
                                 <div>
-                                <Link to={"/"}className="btn btn-white btn-animate">
-                                Cancelar
-                                </Link>
+                                <Link to={"/paineldecontrole"}>
+                                     <button className="bt2-plat" id="" type="">Cancelar</button>
+                                     </Link>
                               </div>
                             </div>
                         </form>

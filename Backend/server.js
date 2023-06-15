@@ -159,8 +159,8 @@ app.get('/plataformas/get/:id', (req, res) => {
 
 // Rota POST para criar uma nova plataforma
 app.post('/plataformas/post/novo', (req, res) => {
-  const { nome_plataforma, imagem_plataforma } = req.body;
-  db.run('INSERT INTO plataforma (nome, imagemplataforma) VALUES (?, ?)', [nome_plataforma, imagem_plataforma], function (err) {
+  const { nome, imagemplataforma } = req.body;
+  db.run('INSERT INTO plataforma (nome, imagemplataforma) VALUES (?, ?)', [nome, imagemplataforma], function (err) {
     if (err) {
       console.error(err);
       res.status(500).json({ error: 'Erro ao cadastrar plataforma' });

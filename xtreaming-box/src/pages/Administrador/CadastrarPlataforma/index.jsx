@@ -24,14 +24,14 @@ import axios from 'axios';
             //montando os dados do array
             const montandoDadosPlataforma = {
                 
-                nome_plataforma: dadosFormPlata.nome_plata,
-                imagem_plataforma : dadosFormPlata.imagem_Plata
+                nome: dadosFormPlata.nome_plata,
+                imagemplataforma : dadosFormPlata.imagem_Plata
                 
               };
       
             //Inserindo dados da mensagem no banco
             try {
-                const responsePlataforma = await axios.post('http://localhost:5000//plataformas/post/novo', montandoDadosPlataforma);
+                const responsePlataforma = await axios.post('http://localhost:5000/plataformas/post/novo', montandoDadosPlataforma);
                 console.log(responsePlataforma.data);
                 if (responsePlataforma.status === 200){
                     alert('Plataforma cadastrada com sucesso.');
@@ -87,42 +87,7 @@ import axios from 'axios';
                       </div>                         
                     </div>
                     
-                    <div className="setorb">
-                        
-                        <div className="graf-title">
-                           <p className="nome-h3">Lista de Plataformas</p> 
-                        </div>   
-                        
-                         <div className="container-graf">
-                           <div className="cabec-graf">
-                             <div className="col1">
-                                 <p>código</p>
-                             </div>
-                             <div className="col2">
-                                 <p>Nome</p>
-                             </div>
-                             <div className="col3">
-                                 <p>TAG</p>
-                             </div>
-                           </div>
-                           <div className="corpo-graf">
-                             <div className="col1-1">
-                                 <p>001</p>
-                             </div>
-                             <div className="col2-1">
-                                 <p>Netflix</p>
-                             </div>
-                             <div className="col3-1">
-                                 <div className="tag">
-                                     <img src="/imgs/netflix.png" alt="netflix"/>
-                                 </div>
-                             </div>
-                           </div>
-                           <div className="lixeira"> 
-                            <img src="/imgs/trash1.png" alt=""/>
-                          </div>
-                         </div>
-                      </div>
+                    
                       
                 </div> 
                 
