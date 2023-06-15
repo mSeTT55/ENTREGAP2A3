@@ -64,13 +64,14 @@ function Series() {
       series_idseries: updatedSeries[seriesSection].idseries,
       series_plataforma_idplataforma: updatedSeries[seriesSection].plataforma_idplataforma,
       usuario_idusuario: userId,
+      idsituacao_serie: null, // Inicializa com null
     };
-    
+
     const config = {
-        headers: {
+      headers: {
         'Content-Type': 'application/json'
-        }
-    };    
+      }
+    };
 
     try {
       const response = await axios.get('http://localhost:5000/situacao_series/get/all');
@@ -81,15 +82,13 @@ function Series() {
           situacao.series_idseries === situacaoSerie.series_idseries &&
           situacao.usuario_idusuario === situacaoSerie.usuario_idusuario
       );
-        
 
       if (situacaoExistente) {
-        // Atualiza a situação existente usando o método PUT
+        situacaoSerie.idsituacao_serie = situacaoExistente.idsituacao_serie; // Atualiza o ID da situação série
         await axios.put(`http://localhost:5000/situacao_serie/update/${situacaoExistente.idsituacao_serie}`, situacaoSerie, config);
         console.log('Situação atualizada com sucesso');
       } else {
-        // Cria uma nova situação usando o método POST
-        await axios.post('http://localhost:5000/situacao_serie/post/novo', situacaoSerie);
+        await axios.post('http://localhost:5000/situacao_serie/post/novo', situacaoSerie, config);
         console.log('Situação cadastrada com sucesso');
       }
     } catch (error) {
@@ -110,20 +109,20 @@ function Series() {
           {/* <!--Aqui começa cada card das séries--> */}
           {series.map((serie, seriesSection) => (
             <section key={seriesSection} className="series">
-                <div className="conteudo_serie">
-                    <img className="img_serie" src={serie.imagem_serie} alt={`Imagem da série ${serie.nome}`} />
-                    <p className="nome_serie">{serie.nome}</p>
-                    <div className="div-botton">
-                        <div>
-                            <div onClick={() => handleImageClick(seriesSection, 'assistir')}>
-                            <img src={serie.imageSrcDes} alt="Desejo Assistir" />
-                            </div>
-                            <div onClick={() => handleImageClick(seriesSection, 'assistido')}>
-                            <img src={serie.imageSrcAss} alt="Assistido" />
-                            </div>
-                        </div>
+              <div className="conteudo_serie">
+                <img className="img_serie" src={serie.imagem_serie} alt={`Imagem da série ${serie.nome}`} />
+                <p className="nome_serie">{serie.nome}</p>
+                <div className="div-botton">
+                  <div>
+                    <div onClick={() => handleImageClick(seriesSection, 'assistir')}>
+                      <img src={serie.imageSrcDes} alt="Desejo Assistir" />
                     </div>
+                    <div onClick={() => handleImageClick(seriesSection, 'assistido')}>
+                      <img src={serie.imageSrcAss} alt="Assistido" />
+                    </div>
+                  </div>
                 </div>
+              </div>
             </section>
           ))}
           {/* <!--Termina cada card das séries--> */}

@@ -406,7 +406,7 @@ app.post('/situacao_serie/post/novo', (req, res) => {
 
 //Rota PUT para atualizar situação
 app.put('/situacao_serie/update/:id', (req, res) => {
-  const { idsituacao_serie } = req.body; // Obtém o ID da situação a ser atualizada dos parâmetros de rota
+  const { idsituacao_serie } = req.body;
   const { desejo_assistir, assistido, series_idseries, series_plataforma_idplataforma, usuario_idusuario } = req.body;
   db.run('UPDATE situacao_serie SET desejo_assistir = ?, assistido = ?, series_idseries = ?, series_plataforma_idplataforma = ?, usuario_idusuario = ? WHERE idsituacao_serie = ?', [desejo_assistir, assistido, series_idseries, series_plataforma_idplataforma, usuario_idusuario, idsituacao_serie], function (err) {
     if (err) {
