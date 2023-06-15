@@ -78,7 +78,7 @@ const Contato = () => {
                                 
                                 </div>
                                 <div>
-                                <Link to={"/paineldecontrole"}>
+                                <Link to={"/"}>
                                      <button className="bt2-plat" id="" type="">Cancelar</button>
                                      </Link>
                               </div>
