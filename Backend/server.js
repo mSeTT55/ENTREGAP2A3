@@ -422,8 +422,8 @@ app.get('/series/get/:id', (req, res) => {
 
 // Rota POST para criar um novo cadastro de série
 app.post('/series/post/novo', (req, res) => {
-  const { plataforma_idplataforma, nome, ano, genero, imagem_serie, avaliacao, temporada} = req.body;
-  db.run('INSERT INTO series (plataforma_idplataforma, nome, ano, genero, imagem_serie, avaliação, temporada) VALUES (?, ?, ?, ?, ?, ?, ?)', [plataforma_idplataforma, nome, ano, genero, imagem_serie, avaliacao, temporada], function (err) {
+  const { plataforma_idplataforma, nome, ano, genero, imagem_serie, sinopse, temporada} = req.body;
+  db.run('INSERT INTO series (plataforma_idplataforma, nome, ano, genero, imagem_serie, sinopse, temporada) VALUES (?, ?, ?, ?, ?, ?, ?)', [plataforma_idplataforma, nome, ano, genero, imagem_serie, sinopse, temporada], function (err) {
     if (err) {
       console.error(err);
       res.status(500).json({ error: 'Erro no cadastro do série' });

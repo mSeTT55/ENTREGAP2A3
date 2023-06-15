@@ -31,9 +31,8 @@ const CadastrarSerie = () => {
           genero: dadosFormSerie.genero_serie,
           imagem_serie: dadosFormSerie.imagem_ser,
           temporada: dadosFormSerie.temporada_serie,
-          avaliacao: dadosFormSerie.sinopse_serie
-           
-      };
+          sinopse: dadosFormSerie.sinopse_serie   
+        };
 
       //Inserindo dados da mensagem no banco
       try {
