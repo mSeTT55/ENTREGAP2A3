@@ -392,8 +392,8 @@ app.get('/situacao_series/get/:id', (req, res) => {
 
 // Rota POST para criar uma nova situação
 app.post('/situacao_serie/post/novo', (req, res) => {
-  const { desejo_assistir, visto, serie_idseries, series_plataforma_idplataforma, usuario_idusuario } = req.body;
-  db.run('INSERT INTO situacao_serie (desejo_assistir, visto, serie_idseries, series_plataforma_idplataforma, usuario_idusuario) VALUES (?, ?, ?, ?, ?)', [desejo_assistir, visto, serie_idseries, series_plataforma_idplataforma, usuario_idusuario], function (err) {
+  const { desejo_assistir, assistido, series_idseries, series_plataforma_idplataforma, usuario_idusuario } = req.body;
+  db.run('INSERT INTO situacao_serie (desejo_assistir, assistido, series_idseries, series_plataforma_idplataforma, usuario_idusuario) VALUES (?, ?, ?, ?, ?)', [desejo_assistir, assistido, series_idseries, series_plataforma_idplataforma, usuario_idusuario], function (err) {
     if (err) {
       console.error(err);
       res.status(500).json({ error: 'Erro ao cadastrar situação' });
@@ -404,11 +404,11 @@ app.post('/situacao_serie/post/novo', (req, res) => {
 });
 
 
-//Rota PUT para atualizar situação de desejo e visto 1 para desejo e 2 para visto
+//Rota PUT para atualizar situação
 app.put('/situacao_serie/update/:id', (req, res) => {
-  const { usuario_idusuario } = req.body;
-  const { desejo_assistir, visto } = req.body;
-  db.run('UPDATE situacao_serie SET desejo_assistir = ?, visto = ?, WHERE usuario_idusuario = ?', [desejo_assistir, visto, usuario_idusuario], function (err) {
+  const { idsituacao_serie } = req.body; // Obtém o ID da situação a ser atualizada dos parâmetros de rota
+  const { desejo_assistir, assistido, series_idseries, series_plataforma_idplataforma, usuario_idusuario } = req.body;
+  db.run('UPDATE situacao_serie SET desejo_assistir = ?, assistido = ?, series_idseries = ?, series_plataforma_idplataforma = ?, usuario_idusuario = ? WHERE idsituacao_serie = ?', [desejo_assistir, assistido, series_idseries, series_plataforma_idplataforma, usuario_idusuario, idsituacao_serie], function (err) {
     if (err) {
       console.error(err);
       res.status(500).json({ error: 'Erro ao atualizar a situação' });
@@ -423,8 +423,8 @@ app.put('/situacao_serie/update/:id', (req, res) => {
 
 //Rota DELETE para excluir a situação
 app.delete('/situacao_serie/delete/:id', (req, res) => {
-  const { usuario_idusuario } = req.body;
-  db.run('DELETE FROM situacao_serie WHERE usuario_idusuario = ?', [usuario_idusuario], function (err) {
+  const { idsituacao_serie } = req.body;
+  db.run('DELETE FROM situacao_serie WHERE idsituacao_serie = ?', [idsituacao_serie], function (err) {
     if (err) {
       console.error(err);
       res.status(500).json({ error: 'Erro ao excluir situação' });
