@@ -27,13 +27,23 @@ function MinhaLista() {
                 const userData = JSON.parse(localStorage.getItem('emailFiltrado'));
                 const userId = userData.idusuario;
 
-                // Filtrar séries correspondentes ao usuário logado
+                // Filtrar séries correspondentes ao usuário logado e com status válido
                 const filteredSeries = situacaoSeriesData
-                    .filter((situacaoSerie) => situacaoSerie.usuario_idusuario === userId)
+                    .filter(
+                        (situacaoSerie) =>
+                            situacaoSerie.usuario_idusuario === userId &&
+                            (situacaoSerie.desejo_assistir === 'Sim' ||
+                                situacaoSerie.assistido === 'Sim')
+                    )
                     .map((situacaoSerie) => {
-                        const serie = seriesData.find((serie) => serie.idseries === situacaoSerie.series_idseries);
+                        const serie = seriesData.find(
+                            (serie) => serie.idseries === situacaoSerie.series_idseries
+                        );
 
-                        if (situacaoSerie.desejo_assistir === 'Sim' && situacaoSerie.assistido === 'Sim') {
+                        if (
+                            situacaoSerie.desejo_assistir === 'Sim' &&
+                            situacaoSerie.assistido === 'Sim'
+                        ) {
                             serie.status = 'Já assisti e quero ver novamente';
                         } else if (situacaoSerie.desejo_assistir === 'Sim') {
                             serie.status = 'Desejo Assistir';
@@ -95,42 +105,47 @@ function MinhaLista() {
                         id="direita-itens-desejo-assistir"
                         className="direita-itens-desejo-assistir"
                     >
-                        {series.map((serie) => (
-                            <ul className="item" key={serie.idseries}>
-                                <div id="imagem-plataforma">
-                                    <img src="/imgs/globo-play.png" alt="Plataforma" />
-                                </div>
-                                <div id="div-nome-serie">
-                                    <p className="verde">Série</p>
-                                    <p>{serie.nome}</p>
-                                </div>
-                                <div id="div-genero">
-                                    <p className="verde">Gênero</p>
-                                    <p>{serie.genero}</p>
-                                </div>
-                                <div id="div-qntdtemporada">
-                                    <p className="verde">Temporadas</p>
-                                    <p>{serie.temporada} temporadas</p>
-                                </div>
-                                <div>
-                                    <p className="verde">Status</p>
-                                    <p>{serie.status}</p>
-                                </div>
-                                <div>
-                                    <p className="verde">Recomendado</p>
-                                    <div className="recomendado">
-                                        <label>
-                                            <input type="checkbox" id="checkbox-item" />
-                                            Sim
-                                        </label>
-                                        <label>
-                                            <input type="checkbox" id="checkbox-item" />
-                                            Não
-                                        </label>
+                        {series
+                            .filter(
+                                (serie) =>
+                                    serie.desejo_assistir !== 'Não' && serie.assistido !== 'Não'
+                            )
+                            .map((serie) => (
+                                <ul className="item" key={serie.idseries}>
+                                    <div id="imagem-plataforma">
+                                        <img src="/imgs/globo-play.png" alt="Plataforma" />
                                     </div>
-                                </div>
-                            </ul>
-                        ))}
+                                    <div id="div-nome-serie">
+                                        <p className="verde">Série</p>
+                                        <p>{serie.nome}</p>
+                                    </div>
+                                    <div id="div-genero">
+                                        <p className="verde">Gênero</p>
+                                        <p>{serie.genero}</p>
+                                    </div>
+                                    <div id="div-qntdtemporada">
+                                        <p className="verde">Temporadas</p>
+                                        <p>{serie.temporada} temporadas</p>
+                                    </div>
+                                    <div>
+                                        <p className="verde">Status</p>
+                                        <p>{serie.status}</p>
+                                    </div>
+                                    <div>
+                                        <p className="verde">Recomendado</p>
+                                        <div className="recomendado">
+                                            <label>
+                                                <input type="checkbox" id="checkbox-item" />
+                                                Sim
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" id="checkbox-item" />
+                                                Não
+                                            </label>
+                                        </div>
+                                    </div>
+                                </ul>
+                            ))}
                     </div>
                 </div>
             </div>
