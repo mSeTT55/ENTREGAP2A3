@@ -111,6 +111,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-around;
     background-color: #514769;
     border-radius: 15px;
     padding: 0.5em 1em;
@@ -138,7 +139,6 @@
 }
 
 #div-nome-serie {
-    width: 25vw;
     text-align: left;
 }
 
@@ -146,21 +146,17 @@
     width: 15vw;
 }
 
-.lixeira{
-    align-items: center;
-}
-
 .item > div > p{
     margin: 0;
     color: #FFFFFF;
     font-family: Graduate;
-    font-size: 22px;
+    font-size: 18px;
     margin-bottom: 5px;
 }
 
 .item > div > .verde{
     color: #16FC92;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .recomendado{
@@ -172,6 +168,7 @@
     font-family: Graduate;
     color: #FFFFFF;
     margin: 0;
+    
 }
 
 /**/
