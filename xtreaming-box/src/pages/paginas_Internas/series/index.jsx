@@ -39,9 +39,38 @@ function Series() {
     }
   };
 
+  const obterNomePlataforma = async (idPlataforma) => {
+    try {
+      const response = await axios.get(`http://localhost:5000/plataformas/get/all`);
+      const plataformas = response.data;
+      const plataforma = plataformas.find((plataforma) => plataforma.idplataforma === idPlataforma);
+      return plataforma ? plataforma.nome : '';
+    } catch (error) {
+      console.error(error);
+      return '';
+    }
+  };
+
   useEffect(() => {
     pegandoSeries();
   }, []);
+
+  useEffect(() => {
+    const preencherNomesPlataforma = async () => {
+      const seriesComPlataforma = await Promise.all(
+        series.map(async (serie) => {
+          const nomePlataforma = await obterNomePlataforma(serie.plataforma_idplataforma);
+          return {
+            ...serie,
+            nomePlataforma,
+          };
+        })
+      );
+      setSeries(seriesComPlataforma);
+    };
+
+    preencherNomesPlataforma();
+  }, [series]);
 
   const handleImageClick = async (seriesSection, type) => {
     const updatedSeries = [...series];
@@ -123,7 +152,7 @@ function Series() {
               <div className="conteudo_serie">
                 <img className="img_serie" src={serie.imagem_serie} alt={`Imagem da série ${serie.nome}`} />
                 <p className="nome_serie">{serie.nome}</p>
-                <p className="nome_plataforma">{serie.nome}</p>
+                <p className="nome_plataforma">{serie.nomePlataforma}</p>
                 <div className="div-botton">
                   <div>
                     <div onClick={() => handleImageClick(seriesSection, 'assistir')}>
