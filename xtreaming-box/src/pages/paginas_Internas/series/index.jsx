@@ -98,6 +98,7 @@ function Series() {
     const situacaoSerie = {
       desejo_assistir: updatedSeries[seriesSection].imageSrcDes === assistirMarcado ? 'Sim' : 'Não',
       assistido: updatedSeries[seriesSection].imageSrcAss === assistidoMarcado ? 'Sim' : 'Não',
+      recomendado: null, // Coloque o valor do recomendado aqui (null ou algum valor)
       series_idseries: updatedSeries[seriesSection].idseries,
       series_plataforma_idplataforma: updatedSeries[seriesSection].plataforma_idplataforma,
       usuario_idusuario: userId,

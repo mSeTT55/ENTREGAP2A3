@@ -1,21 +1,41 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './styleMinhaLista.css';
 import './styleMinhaListaMobile.css';
 
 import Interno from '../../../layouts/interno.jsx';
 import exclamacao from '../../../assets/imgs/exclamacao.png';
-import lupa from '../../../assets/imgs/lupa.png';
 
 
 function MinhaLista (){ 
 
+    // Dropdown filtro
+    const [selectedOption, setSelectedOption] = useState(''); 
+    const handleSelect = (event) => {
+        setSelectedOption(event.target.value);
+    };
+    
+
+
     return( 
         <Interno>   
-            <div className="text-botoes">
-                <div id="esquerda-text-botoes">
+            <div className="text-botoes-minhalista">
+                <div id="esquerda-text-botoes-minhalista">
                     <h1 id="minhalista" className="minhalista">Minha Lista</h1>
                 </div>
-                <div id="direita-text-botoes">
+                <div id="direita-text-botoes-minhalista">
+                    <p>Categorias</p>
+                    <div className="selecao">
+                        <select value={selectedOption} onChange={handleSelect}>
+                            <option value="">Selecione uma opção</option>
+                            <option value="assistido">Assistido</option>
+                            <option value="desejo-assistir">Desejo assistir</option>
+                            <option value="recomendado">Recomendado</option>
+                            <option value="nao-recomendo">Não recomendo</option>
+                        </select>
+                    </div>
+
+
+
                 </div>
             </div>
             <div className="conteiner-maior">
@@ -23,31 +43,14 @@ function MinhaLista (){
 
 
                 <div className="caixa-itens" id=''>
-                    <div className="esquerda-itens">
-                        <div id="desejoassistir" className="desejoassistir" onclick="mudarTela_desejoassistir()"><a>Desejo Assistir</a></div>
-                        <div id="visto" className="visto" onclick="mudarTela_visto()"><a>Visto</a></div>
-                    </div>
-
-
-
                     {/*<!--Itens da direita Vazio DESEJO ASSISTIR-->*/}
                     <div id="direita-itens-vazio" className="direita-itens-vazio-desejo-assistir">
                         <img src={exclamacao} alt="Exclamação Imagem"/>
                         <p>Pensando no que assistir? Veja nossa lista de séries.</p>
                         <a href="">Adicionar Séries</a>
                     </div>
-                    
-
-                    {/*<!--Itens da direita Vazio VISTO-->*/}
-                    <div id="direita-itens-vazio" className="direita-itens-vazio-visto" >
-                        <img src={lupa} alt="Exclamação Imagem"/>
-                        <p>Procure séries que você já viu! Veja nossa lista de séries.</p>
-                        <a href="">Procurar Séries</a>
-                    </div>
-
-
+                
                     {/*<!--Aqui termina toda parte do conteúdo lista quando esta vazia-->*/}
-
 
 
                     {/*<!--Itens da direita Desejo Assistir-->*/}
@@ -67,55 +70,22 @@ function MinhaLista (){
                             <div id="div-qntdtemporada">
                                 <p class="verde">Temporadas</p>
                                 <p>6 temporadas</p>
-                            </div>    
-                            <div>
-                                <p class="verde">Opniões</p>
-                                <p>4,9</p>
-                            </div>
-                            <div>
-                                <p class="verde">Visto</p>
-                                <input type="checkbox" id="checkbox-item"/>
-                            </div>
-                            <div class="lixeira">
-                                <img src="/imgs/trash1.png"/>
-                            </div>
-                        </ul> 
-                    </div>
-
-
-
-                    {/*<!--Itens da direita Visto-->*/}
-                    <div id="direita-itens-visto" class="direita-itens-visto">
-                        <ul class="item">
-                            <div id="imagem-plataforma">
-                                <img src="/imgs/netflix.png"/>
-                            </div>                          
-                            <div id="div-nome-serie">
-                                <p class="verde">Série</p>
-                                <p>Arcane</p>
-                            </div>
-                            <div id="div-genero">
-                                <p class="verde">Gênero</p>
-                                <p>Ação</p>
                             </div>
                             <div id="div-qntdtemporada">
-                                <p class="verde">Temporadas</p>
-                                <p>6 temporadas</p>
+                                <p class="verde">Status</p>
+                                <p>assistido</p>
                             </div>    
                             <div>
-                                <p class="verde">Opniões</p>
-                                <p>5.0</p>
+                                <p class="verde">Recomendado</p>
+                                <div className="recomendado">
+                                    <p>Sim</p><input type="checkbox" id="checkbox-item"/>
+                                    <p>Não</p><input type="checkbox" id="checkbox-item"/>
+                                </div>
                             </div>
-                            <div>
-                                <p class="verde">Visto</p>
-                                <input type="checkbox" id="checkbox-item"/>
-                            </div>
-                            <div class="lixeira">
-                                <img src="/imgs/trash1.png"/>
-                            </div>
-                        </ul> 
-                    </div>
+                        </ul>
 
+
+                    </div>
                 </div>
             </div>         
         </Interno>
