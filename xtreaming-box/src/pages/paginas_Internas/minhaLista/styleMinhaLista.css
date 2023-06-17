@@ -175,5 +175,10 @@
     font-size: small;
 }
 
+
+.checkbox{
+    display: flex;
+    flex-direction: column;
+}
 /**/
 
