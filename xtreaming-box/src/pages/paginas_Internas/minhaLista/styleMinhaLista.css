@@ -179,6 +179,9 @@
 .checkbox{
     display: flex;
     flex-direction: column;
+    color: #FFFFFF;
+    font-family: Graduate;
+    font-size: small;
 }
 /**/
 
