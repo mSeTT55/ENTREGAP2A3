@@ -13,15 +13,18 @@ function MinhaLista() {
     };
 
     const [series, setSeries] = useState([]);
+    const [plataformas, setPlataformas] = useState([]);
 
     useEffect(() => {
         const fetchSeries = async () => {
             try {
                 const responseSeries = await axios.get('http://localhost:5000/series/get/all');
                 const responseSituacaoSeries = await axios.get('http://localhost:5000/situacao_series/get/all');
+                const responsePlataformas = await axios.get('http://localhost:5000/plataformas/get/all');
 
                 const seriesData = responseSeries.data;
                 const situacaoSeriesData = responseSituacaoSeries.data;
+                const plataformasData = responsePlataformas.data;
 
                 // Obter ID do usuário logado do Local Storage
                 const userData = JSON.parse(localStorage.getItem('emailFiltrado'));
@@ -53,10 +56,18 @@ function MinhaLista() {
                             serie.status = serie.assistido;
                         }
 
+                        // Encontrar a imagem da plataforma correspondente
+                        const plataforma = plataformasData.find(
+                            (plataforma) => plataforma.idplataforma === serie.plataforma_idplataforma
+                        );
+
+                        if (plataforma) {
+                            serie.imagemplataforma = plataforma.imagemplataforma;
+                        }
                         return serie;
                     });
-
                 setSeries(filteredSeries);
+                setPlataformas(plataformasData);
             } catch (error) {
                 console.log(error);
             }
@@ -113,7 +124,7 @@ function MinhaLista() {
                             .map((serie) => (
                                 <ul className="item" key={serie.idseries}>
                                     <div id="imagem-plataforma">
-                                        <img src="/imgs/globo-play.png" alt="Plataforma" />
+                                        <img src={serie.imagemplataforma} alt="Plataforma" />
                                     </div>
                                     <div id="div-nome-serie">
                                         <p className="verde">Série</p>
