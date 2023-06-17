@@ -35,7 +35,6 @@ import TesteMain from './components/TesteMain/Main.jsx';
 
 // paginas do administrador
 import Painelcontrole from './pages/Administrador/PainelControle/index.jsx'
-import Cadastrarserie from './pages/Administrador/CadastrarSeries/index.jsx'
 import Cadastrarplataforma from './pages/Administrador/Plataforma/CadastrarPlataforma/index.jsx'
 import DeletarPlata from './pages/Administrador/Plataforma/DeletarPlataforma/index.jsx';
 import DeletarSerie from './pages/Administrador/Series/DeletarSeries/index.jsx';
@@ -59,7 +58,6 @@ function Rotas() {
                     <Route  path='/testemain' element={<TesteMain/>}/>
 
                     <Route path= '/paineldecontrole' element={<Painelcontrole/>}/>
-                    <Route path= '/cadastrarseries' element={<Cadastrarserie/>}/>
                     <Route path= '/cadastrarplataforma' element={<Cadastrarplataforma/>}/>
                     <Route path= '/deletarplataforma' element={<DeletarPlata/>}/>
                     <Route path= '/deletarserie' element={<DeletarSerie/>}/>

@@ -65,7 +65,7 @@ const AtualizarSerie = () => {
                 </div>
    
             </div>
-            <div className="conteiner-maior">
+            <div className="conteiner-maior-adm">
                 <div className="caixa-itens-up-ser">
                     <div className="setor-a">
                     <div>

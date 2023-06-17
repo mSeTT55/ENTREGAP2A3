@@ -70,8 +70,8 @@ const DeletarPlata = () => {
                 </div>
 
             </div>
-            <div className="conteiner-maior">
-                <div className="caixa-itens">
+            <div className="conteiner-maior-adm">
+                <div className="caixa-itens-adm">
                     <div>
                         <div>
                             <p className="nome-h2">Deletar</p>

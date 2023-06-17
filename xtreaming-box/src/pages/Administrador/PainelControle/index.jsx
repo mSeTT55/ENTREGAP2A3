@@ -13,7 +13,7 @@ function PainelControle() {
                     <h1 id='editarperfil'  className="minhalista">Painel de Controle</h1>
                 </div>
             </div>  
-                <div className="conteiner-maior">
+                <div className="conteiner-maior-adm">
                 <div className="caixa-itens-pnl">
                     <div className="setor-a-pnl">
                         <div className="itens-total-pnl">

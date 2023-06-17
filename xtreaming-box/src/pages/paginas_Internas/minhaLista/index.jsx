@@ -14,6 +14,32 @@ function MinhaLista() {
 
     const [series, setSeries] = useState([]);
     const [plataformas, setPlataformas] = useState([]);
+    const [situacaoSeriesData, setsituacaoSeriesData] = useState([]);
+
+    const handleRecomendadoCheckboxChange = (serieId) => {
+        const userData = JSON.parse(localStorage.getItem('emailFiltrado'));
+        const userId = userData.idusuario;
+
+        const filteredSituacaoSeries = situacaoSeriesData.filter(
+            (situacaoSerie) =>
+                situacaoSerie.usuario_idusuario === userId &&
+                situacaoSerie.series_idseries === serieId
+        );
+
+        if (filteredSituacaoSeries.length > 0) {
+            const situacaoSerie = filteredSituacaoSeries[0];
+            situacaoSerie.recomendado = 'Sim';
+
+            axios
+                .put(`http://localhost:5000/situacao_serie/update/${situacaoSerie.idsituacao_serie}`, situacaoSerie)
+                .then((response) => {
+                    console.log(response.data); // Situação atualizada com sucesso
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        }
+    };
 
     useEffect(() => {
         const fetchSeries = async () => {
@@ -68,6 +94,7 @@ function MinhaLista() {
                     });
                 setSeries(filteredSeries);
                 setPlataformas(plataformasData);
+                setsituacaoSeriesData(situacaoSeriesData)
             } catch (error) {
                 console.log(error);
             }
@@ -140,19 +167,22 @@ function MinhaLista() {
                                     </div>
                                     <div>
                                         <p className="verde">Status</p>
-                                        <p id='status'>{serie.status}</p>
+                                        <p id="status">{serie.status}</p>
                                     </div>
                                     <div>
                                         <p className="verde">Recomendado</p>
-                                        <div className="recomendado">
-                                            <label>
-                                                <input type="checkbox" id="checkbox-item" />
-                                                Sim
-                                            </label>
-                                            <label>
-                                                <input type="checkbox" id="checkbox-item" />
-                                                Não
-                                            </label>
+                                        <div className="checkbox">
+                                            <p>Sim</p>
+                                            <input
+                                                type="checkbox"
+                                                checked={serie.recomendado === 'Sim'}
+                                                onChange={() => handleRecomendadoCheckboxChange(serie.idseries)}
+                                            />
+                                            <input
+                                                type="checkbox"
+                                                checked={serie.recomendado === 'Não'}
+                                                onChange={() => handleRecomendadoCheckboxChange(serie.idseries)}
+                                            />
                                         </div>
                                     </div>
                                 </ul>

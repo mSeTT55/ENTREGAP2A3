@@ -37,7 +37,7 @@
 
 /*Aqui comeca o conteudo que vai englobar os itens*/
 
-.conteiner-maior{
+.conteiner-maior-adm{
     width: 100%;
     height: 80%;
     display: flex;
@@ -46,7 +46,7 @@
     align-items: center;
 }
 
-.caixa-itens{
+.caixa-itens-adm{
 
     display: flex;
     flex-direction: row;
