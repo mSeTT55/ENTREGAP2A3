@@ -77,7 +77,7 @@ function MinhaLista() {
                     <p>Categorias</p>
                     <div className="selecao">
                         <select value={selectedOption} onChange={handleSelect}>
-                            <option value="">Selecione uma opção</option>
+                            <option value="">Todas</option>
                             <option value="assistido">Assistido</option>
                             <option value="desejo-assistir">Desejo assistir</option>
                             <option value="recomendado">Recomendado</option>
@@ -129,7 +129,7 @@ function MinhaLista() {
                                     </div>
                                     <div>
                                         <p className="verde">Status</p>
-                                        <p>{serie.status}</p>
+                                        <p id='status'>{serie.status}</p>
                                     </div>
                                     <div>
                                         <p className="verde">Recomendado</p>
