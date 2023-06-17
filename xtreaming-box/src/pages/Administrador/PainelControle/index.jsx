@@ -44,7 +44,7 @@ function PainelControle() {
                             <div className="linha1-pnl"> 
                             
                                  
-                                    <Link className='form-link' to= "/cadastrarseries">
+                                    <Link className='form-link' to= "/atualizarserie">
                                     <button className="bt1-pnl" id="">SÉRIES</button>
                                     </Link>
                                 
@@ -65,7 +65,7 @@ function PainelControle() {
                             <div className="linha1-pnl"> 
                             
                                 
-                                    <Link className='form-link' to= "/cadastrarseries">
+                                    <Link className='form-link' to= "/deletarserie">
                                     <button className="bt1-pnl" id="">SÉRIES</button>
                                     </Link>
                                 

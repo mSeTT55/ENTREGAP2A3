@@ -329,8 +329,8 @@ app.post('/series/post/novo', (req, res) => {
 //Rota PUT para atualizar uma série 
 app.put('/series/update/:id', (req, res) => {
   const { idseries} = req.body;
-  const { plataforma_idplataforma, nome, ano, genero, tempoarada } = req.body;
-  db.run('UPDATE series SET plataforma_idplataforma = ?, nome = ?, ano = ?, genero = ?, temporada = ?, WHERE idseries = ?', [plataforma_idplataforma, nome, ano, genero, tempoarada, idseries], function (err) {
+  const { plataforma_idplataforma, nome, ano, genero, imagem_serie, sinopse, temporada } = req.body;
+  db.run('UPDATE series SET plataforma_idplataforma = ?, nome = ?, ano = ?, genero = ?, imagem_serie = ?, sinopse = ?, temporada = ? WHERE idseries = ?', [plataforma_idplataforma, nome, ano, genero, imagem_serie, sinopse, temporada, idseries], function (err) {
     if (err) {
       console.error(err);
       res.status(500).json({ error: 'Erro ao atualizar dados da série' });
@@ -343,7 +343,7 @@ app.put('/series/update/:id', (req, res) => {
 });
 
 
-//Rota DELETE para excluir um usuário
+//Rota DELETE para excluir uma serie
 app.delete('/series/delete/:id', (req, res) => {
   const { idseries } = req.body;
   db.run('DELETE FROM series WHERE idseries = ?', [idseries], function (err) {

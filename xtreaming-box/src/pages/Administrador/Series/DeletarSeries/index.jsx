@@ -8,32 +8,30 @@ import axios from 'axios';
 
 
 
-const DeletarPlata = () => {
+const DeletarSerie = () => {
 
     const navigate = useNavigate();
 
     //UseState para pegar os dados do formulario, decompor em um array e aplicar cada dado em cada variavel
-    const [dadosFormPlatDel, setdadosFormPlatDel] = useState({
+    const [dadosFormSerieDel, setdadosFormSerieDel] = useState({
 
-        id_plata: ''
+        id_serie: ''
 
 
     });
 
     const limparFormulario = () => {
-        setdadosFormPlatDel({
-            id_plata: ''
+        setdadosFormSerieDel({
+            id_serie: ''
         });
       };
-      
-    const formSubmitPlata = async (pegarCada) => {
+
+    const formSubmitSerie = async (pegarCada) => {
         //Cancelando o comportamento padrão de recarregar a pagina
         pegarCada.preventDefault();
         limparFormulario();
 
-
         
-
         const config = {
             headers: {
                 'Content-Type': 'application/json'
@@ -41,24 +39,24 @@ const DeletarPlata = () => {
         };
 
         const montandoDados = {
-            idplataforma: dadosFormPlatDel.id_plata
+            idseries: dadosFormSerieDel.id_serie
         };
 
         //Inserindo dados da mensagem no banco
         try {
-            const response = await axios.delete(`http://localhost:5000/plataforma/delete/${montandoDados.idplataforma}`, {
+            const response = await axios.delete(`http://localhost:5000/series/delete/${montandoDados.idseries}`, {
                 data: JSON.stringify(montandoDados), headers: config.headers
             });
             if (response.status === 200) {
-                alert('Plataforma deletada com sucesso, você será redirecionado para a página de cadastro caso mude de ideia.');
+                alert('Série deletada com sucesso, você será redirecionado para a página de painel de controle.');
                 navigate('/paineldecontrole');
             } else {
-                alert('Erro ao tentar deletar plataforma');
+                alert('Erro ao tentar deletar série');
 
             }
         }
         catch (error) {
-             alert('Coloque uma existente na lista de plataforma');
+             alert('Coloque uma ID existente na lista de Séries');
         }
     }
     return (
@@ -66,7 +64,7 @@ const DeletarPlata = () => {
         <InternoAdm>
             <div className="text-botoes">
                 <div>
-                    <h1 id='editarperfil' className="minhalista">Plataforma</h1>
+                    <h1 id='editarperfil' className="minhalista">Séries</h1>
                 </div>
 
             </div>
@@ -77,13 +75,13 @@ const DeletarPlata = () => {
                             <p className="nome-h2">Deletar</p>
                         </div>
                         <div className="itens-tab">
-                            <form onSubmit={(pegarCada) => formSubmitPlata(pegarCada)}>
+                            <form onSubmit={(pegarCada) => formSubmitSerie(pegarCada)}>
 
                                 <div className="linha1-plat">
                                     <div className="input-box">
-                                        <input type="text" name="nome" id="plat_id" placeholder="   Digite a ID para excluir a plataforma"
-                                            required value={dadosFormPlatDel.id_plata}
-                                            onChange={(pegarCada) => setdadosFormPlatDel({ ...dadosFormPlatDel, id_plata: pegarCada.target.value })} />
+                                        <input type="text" name="nome" id="plat_id" placeholder="   Digite a ID para excluir a série"
+                                            required value={dadosFormSerieDel.id_serie}
+                                            onChange={(pegarCada) => setdadosFormSerieDel({ ...dadosFormSerieDel, id_serie: pegarCada.target.value })} />
                                     </div>
                                 </div>
 
@@ -109,4 +107,4 @@ const DeletarPlata = () => {
     )
 }
 
-export default DeletarPlata;
+export default DeletarSerie;
