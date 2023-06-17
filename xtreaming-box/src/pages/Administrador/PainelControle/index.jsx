@@ -70,7 +70,7 @@ function PainelControle() {
                                     </Link>
                                 
                                 
-                                    <Link className='form-link' to= "/cadastrarplataforma">
+                                    <Link className='form-link' to= "/deletarplataforma">
                                     <button className="bt1-pnl" id="" onclick="mudarPagina2()">PLATAFORMAS</button>
                                     </Link>
                                 

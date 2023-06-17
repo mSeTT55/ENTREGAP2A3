@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './styleplataformaMobile.css';
 import './styleplataforma.css';
-import InternoAdm from '../../../layouts/internoAdm.jsx';
+import InternoAdm from '../../../../layouts/internoAdm.jsx';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -47,7 +47,7 @@ import axios from 'axios';
    <InternoAdm>
             <div className="text-botoes">
                 <div>
-                    <h1 id='editarperfil'  className="minhalista">Cadastrar Plataforma</h1>
+                    <h1 id='editarperfil'  className="minhalista">Plataforma</h1>
                 </div>
    
             </div>
@@ -55,7 +55,7 @@ import axios from 'axios';
                 <div className="caixa-itens">
                     <div>
                     <div>
-                       <p className="nome-h2">Novo</p>
+                       <p className="nome-h2">Cadastrar</p>
                      </div>
                      <div className="itens-tab">
                      <form onSubmit={(pegarCada) => formSubmitPlata(pegarCada)}>
