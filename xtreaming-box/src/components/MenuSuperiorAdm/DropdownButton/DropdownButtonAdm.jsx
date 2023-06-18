@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import '../MenuSuperiorAdm.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/Auth/AuthContext';
 
 
 function DropdownMenuAdm() {
@@ -9,6 +10,14 @@ function DropdownMenuAdm() {
     const toggleDropdown = () => {
       setIsOpen(!isOpen);
     };
+
+    const auth = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const btnLogout = async () => {
+      await auth.sair();
+      navigate('/');
+    } 
   
     return (
       <div className="dropdown-adm">
@@ -17,7 +26,7 @@ function DropdownMenuAdm() {
           <div id="dropdown-content-adm" class="dropdown-content-adm">
             <NavLink to={"/perfil"} >Perfil</NavLink>
             <NavLink to={"/paineldecontrole"} >Painel de Controle</NavLink>
-            <NavLink>Sair</NavLink>
+            <a onClick={btnLogout}>Sair</a>
           </div>
         )}
       </div>

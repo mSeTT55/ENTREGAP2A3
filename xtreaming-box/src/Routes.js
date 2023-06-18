@@ -60,14 +60,14 @@ function Rotas() {
                     <Route  path='/series' element={<RequireAuth> <Series/> </RequireAuth>}/>
                     <Route  path='/testemain' element={<TesteMain/>}/>
 
-                    <Route path= '/paineldecontrole' element={<Painelcontrole/>}/>
-                    <Route path= '/cadastrarseries' element={<CadastrarSerie/>}/>
-                    <Route path= '/cadastrarplataforma' element={<Cadastrarplataforma/>}/>
-                    <Route path= '/deletarplataforma' element={<DeletarPlata/>}/>
-                    <Route path= '/deletarserie' element={<DeletarSerie/>}/>
-                    <Route path= '/atualizarserie' element={<AtualizarSerie/>}/>
-                    <Route path= '/atualizarplataforma' element={<AtualizarPlataforma/>}/>
-                    <Route path= '/caixademensagem' element={<LerMensagens/>}/>
+                    <Route path= '/paineldecontrole' element={<RequireAuth><Painelcontrole/></RequireAuth>}/>
+                    <Route path= '/cadastrarseries' element={<RequireAuth><CadastrarSerie/></RequireAuth>}/>
+                    <Route path= '/cadastrarplataforma' element={<RequireAuth><Cadastrarplataforma/></RequireAuth>}/>
+                    <Route path= '/deletarplataforma' element={<RequireAuth><DeletarPlata/></RequireAuth>}/>
+                    <Route path= '/deletarserie' element={<RequireAuth><DeletarSerie/></RequireAuth>}/>
+                    <Route path= '/atualizarserie' element={<RequireAuth><AtualizarSerie/></RequireAuth>}/>
+                    <Route path= '/atualizarplataforma' element={<RequireAuth><AtualizarPlataforma/></RequireAuth>}/>
+                    <Route path= '/caixademensagem' element={<RequireAuth><LerMensagens/></RequireAuth>}/>
                 </Routes> 
             </BrowserRouter>
         </AuthProvider>
