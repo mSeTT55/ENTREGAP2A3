@@ -70,7 +70,7 @@ function MeuPerfil (){
         <Interno>
             <div className="text-botoes">
                 <div>
-                    <h1 className="minhalista">Perfil: {contaLogada.nome_completo}</h1>
+                    <h1 className="minhalista">Perfil </h1>
                 </div>
                 <div>
                 </div>

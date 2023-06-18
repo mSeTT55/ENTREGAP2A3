@@ -3,7 +3,6 @@
     display: flex;
     flex-direction: column;
     padding: 2%;
-    justify-content: center;
 }
 
 
@@ -24,9 +23,9 @@
 /* area de formatação dos inputs */
 
 
-.entradasdetexto{
+.entradasdetexto> input{
     box-sizing: border-box;
-    width: 30%;
+    width: 337px;
     height: 5vh;
     background: #514769;
     border: 1px solid #16FC92;
@@ -39,7 +38,7 @@
 }
 
 .bt1submit {
-    width: 10%;
+    width: 160px;
     height: 5vh;
     background: #16FC92;
     font-family: 'Baloo Thambi 2';
