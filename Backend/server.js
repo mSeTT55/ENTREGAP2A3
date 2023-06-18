@@ -250,7 +250,7 @@ app.post('/contatos/post/novo', (req, res) => {
 
 
 //Rota PUT para atualizar uma mensagem existente
-app.put('/contato/update/:id', (req, res) => {
+app.put('/contatos/update/:id', (req, res) => {
   const { idcontato } = req.body;
   const { nome_completo, email, mensagem } = req.body;
   db.run('UPDATE contato SET nome = ?, email = ?, mensagem = ? WHERE idcontato = ?', [nome_completo, email, mensagem,  idcontato], function (err) {
@@ -267,7 +267,7 @@ app.put('/contato/update/:id', (req, res) => {
 
 
 //Rota DELETE para excluir uma mensagem
-app.delete('/contato/delete/:id', (req, res) => {
+app.delete('/contatos/delete/:id', (req, res) => {
   const { idcontato } = req.body;
   db.run('DELETE FROM contato WHERE idcontato = ?', [idcontato], function (err) {
     if (err) {

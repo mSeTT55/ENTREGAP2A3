@@ -182,6 +182,7 @@ function MinhaLista() {
                   <div>
                     <p className="verde">Recomendado</p>
                     <div className="checkbox">
+                      {console.log(serie)}
                       <label>
                         Sim
                         <input
