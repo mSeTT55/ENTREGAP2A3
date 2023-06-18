@@ -15,6 +15,7 @@ function MinhaLista() {
   const [series, setSeries] = useState([]);
   const [plataformas, setPlataformas] = useState([]);
   const [situacaoSeriesData, setSituacaoSeriesData] = useState([]);
+  console.log(situacaoSeriesData);
 
   const handleRecomendadoCheckboxChange = (serieId, value) => {
     const userData = JSON.parse(localStorage.getItem('emailFiltrado'));
@@ -67,12 +68,37 @@ function MinhaLista() {
 
         // Filtrar séries correspondentes ao usuário logado e com status válido
         const filteredSeries = situacaoSeriesData
-          .filter(
-            (situacaoSerie) =>
-              situacaoSerie.usuario_idusuario === userId &&
-              (situacaoSerie.desejo_assistir === 'Sim' ||
-                situacaoSerie.assistido === 'Sim')
-          )
+          .filter((situacaoSerie) => {
+            if (selectedOption === '') {
+              return (
+                situacaoSerie.usuario_idusuario === userId &&
+                (situacaoSerie.desejo_assistir === 'Sim' ||
+                  situacaoSerie.assistido === 'Sim')
+              );
+            } else if (selectedOption === 'assistido') {
+              return (
+                situacaoSerie.usuario_idusuario === userId &&
+                situacaoSerie.assistido === 'Sim'
+              );
+            } else if (selectedOption === 'desejo-assistir') {
+              return (
+                situacaoSerie.usuario_idusuario === userId &&
+                situacaoSerie.desejo_assistir === 'Sim'
+              );
+            } else if (selectedOption === 'recomendado') {
+              return (
+                situacaoSerie.usuario_idusuario === userId &&
+                situacaoSerie.recomendado === 'Sim'
+              );
+            } else if (selectedOption === 'nao-recomendo') {
+              return (
+                situacaoSerie.usuario_idusuario === userId &&
+                situacaoSerie.recomendado === 'Não'
+              );
+            } else {
+              return false;
+            }
+          })
           .map((situacaoSerie) => {
             const serie = seriesData.find(
               (serie) => serie.idseries === situacaoSerie.series_idseries
@@ -111,7 +137,7 @@ function MinhaLista() {
     };
 
     fetchSeries();
-  }, []);
+  }, [selectedOption]);
 
   return (
     <Interno>
@@ -153,56 +179,55 @@ function MinhaLista() {
             id="direita-itens-desejo-assistir"
             className="direita-itens-desejo-assistir"
           >
-            {series
-              .filter(
-                (serie) =>
-                  serie.desejo_assistir !== 'Não' && serie.assistido !== 'Não'
-              )
-              .map((serie) => (
-                <ul className="item" key={serie.idseries}>
-                  <div id="imagem-plataforma">
-                    <img src={serie.imagemplataforma} alt="Plataforma" />
+            {series.map((serie) => (
+              <ul className="item" key={serie.idseries}>
+                <div id="imagem-plataforma">
+                  <img src={serie.imagemplataforma} alt="Plataforma" />
+                </div>
+                <div id="div-nome-serie">
+                  <p className="verde">Série</p>
+                  <p>{serie.nome}</p>
+                </div>
+                <div id="div-genero">
+                  <p className="verde">Gênero</p>
+                  <p>{serie.genero}</p>
+                </div>
+                <div id="div-qntdtemporada">
+                  <p className="verde">Temporadas</p>
+                  <p>{serie.temporada} temporadas</p>
+                </div>
+                <div>
+                  <p className="verde">Status</p>
+                  <p id="status">{serie.status}</p>
+                </div>
+                <div>
+                  <p className="verde">Recomendado</p>
+                  <div className="checkbox">
+                    {console.log(serie)}
+                    <label>
+                      Sim
+                      <input
+                        type="checkbox"
+                        checked={serie.recomendado === 'Sim'}
+                        onChange={() =>
+                          handleRecomendadoCheckboxChange(serie.idseries, 'Sim')
+                        }
+                      />
+                    </label>
+                    <label>
+                      Não
+                      <input
+                        type="checkbox"
+                        checked={serie.recomendado === 'Não'}
+                        onChange={() =>
+                          handleRecomendadoCheckboxChange(serie.idseries, 'Não')
+                        }
+                      />
+                    </label>
                   </div>
-                  <div id="div-nome-serie">
-                    <p className="verde">Série</p>
-                    <p>{serie.nome}</p>
-                  </div>
-                  <div id="div-genero">
-                    <p className="verde">Gênero</p>
-                    <p>{serie.genero}</p>
-                  </div>
-                  <div id="div-qntdtemporada">
-                    <p className="verde">Temporadas</p>
-                    <p>{serie.temporada} temporadas</p>
-                  </div>
-                  <div>
-                    <p className="verde">Status</p>
-                    <p id="status">{serie.status}</p>
-                  </div>
-                  <div>
-                    <p className="verde">Recomendado</p>
-                    <div className="checkbox">
-                      {console.log(serie)}
-                      <label>
-                        Sim
-                        <input
-                          type="checkbox"
-                          checked={serie.recomendado === 'Sim'}
-                          onChange={() => handleRecomendadoCheckboxChange(serie.idseries, 'Sim')}
-                        />
-                      </label>
-                      <label>
-                        Não
-                        <input
-                          type="checkbox"
-                          checked={serie.recomendado === 'Não'}
-                          onChange={() => handleRecomendadoCheckboxChange(serie.idseries, 'Não')}
-                        />
-                      </label>
-                    </div>
-                  </div>
-                </ul>
-              ))}
+                </div>
+              </ul>
+            ))}
           </div>
         </div>
       </div>
