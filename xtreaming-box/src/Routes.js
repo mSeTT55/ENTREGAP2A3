@@ -36,7 +36,7 @@ import TesteMain from './components/TesteMain/Main.jsx';
 // paginas do administrador
 import Painelcontrole from './pages/Administrador/PainelControle/index.jsx'
 import Cadastrarplataforma from './pages/Administrador/Plataforma/CadastrarPlataforma/index.jsx'
-import CadastrarSerie from './pages/Administrador/CadastrarSeries/index.jsx'
+import CadastrarSerie from './pages/Administrador/Series/CadastrarSeries/index.jsx'
 import DeletarPlata from './pages/Administrador/Plataforma/DeletarPlataforma/index.jsx';
 import DeletarSerie from './pages/Administrador/Series/DeletarSeries/index.jsx';
 import AtualizarSerie from './pages/Administrador/Series/UpdateSeries/index.jsx';
