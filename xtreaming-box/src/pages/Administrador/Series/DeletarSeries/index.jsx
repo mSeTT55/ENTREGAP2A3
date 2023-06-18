@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './styleplataformaMobile.css';
 import './styleplataforma.css';
 import InternoAdm from '../../../../layouts/internoAdm.jsx';
@@ -14,10 +14,7 @@ const DeletarSerie = () => {
 
     //UseState para pegar os dados do formulario, decompor em um array e aplicar cada dado em cada variavel
     const [dadosFormSerieDel, setdadosFormSerieDel] = useState({
-
         id_serie: ''
-
-
     });
 
     const limparFormulario = () => {
@@ -59,6 +56,22 @@ const DeletarSerie = () => {
              alert('Coloque uma ID existente na lista de Séries');
         }
     }
+
+    const [dadosSeries, setDadosSeries] = useState([]);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/series/get/all');
+                setDadosSeries(response.data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+
     return (
 
         <InternoAdm>
@@ -70,7 +83,7 @@ const DeletarSerie = () => {
             </div>
             <div className="conteiner-maior-adm">
                 <div className="caixa-itens-adm">
-                    <div>
+                    <div className='setor-a'>
                         <div>
                             <p className="nome-h2">Deletar</p>
                         </div>
@@ -95,6 +108,20 @@ const DeletarSerie = () => {
                                     </Link>
                                 </div>
                             </form>
+                        </div>
+                    </div>
+                    <div className="setor-b">
+                        <div className="caixa-plataforma">
+                            {dadosSeries.map((series) => (
+                                <section key={series.idseries}>
+                                    <p>ID: {series.idseries}</p>
+                                    <p>Nome: {series.nome}</p>
+                                    <p>Ano: {series.ano}</p>
+                                    <p>Genero: {series.genero}</p>
+                                    <p>Sinopse: {series.sinopse}</p>
+                                    <p>Temporada: {series.temporada}</p>
+                                </section>
+                            ))}
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './styleSeriesMobile.css';
 import './styleSeries.css';
@@ -82,7 +82,19 @@ const AtualizarSerie = () => {
         }
     }
 
+    const [dadosSeries, setDadosSeries] = useState([]);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/series/get/all');
+                setDadosSeries(response.data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
 
+        fetchData();
+    }, []);
 
 
     return (
@@ -158,7 +170,20 @@ const AtualizarSerie = () => {
                             </form>
                         </div>
                     </div>
-
+                    <div className="setor-b">
+                        <div className="caixa-plataforma">
+                            {dadosSeries.map((series) => (
+                                <section key={series.idseries}>
+                                    <p>ID: {series.idseries}</p>
+                                    <p>Nome: {series.nome}</p>
+                                    <p>Ano: {series.ano}</p>
+                                    <p>Genero: {series.genero}</p>
+                                    <p>Sinopse: {series.sinopse}</p>
+                                    <p>Temporada: {series.temporada}</p>
+                                </section>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </div>
 
