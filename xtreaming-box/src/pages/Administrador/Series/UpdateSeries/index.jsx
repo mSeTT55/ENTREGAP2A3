@@ -55,7 +55,7 @@ const AtualizarSerie = () => {
         //montando os dados do array        
         const montandoDadosSerUpd = {
 
-            id_serie: dadosFormSerUpd.id_serie,
+            idseries: dadosFormSerUpd.id_serie,
             plataforma_idplataforma: dadosFormSerUpd.plataformaid_serie,
             nome: dadosFormSerUpd.nome_serie,
             ano: dadosFormSerUpd.ano_serie,
@@ -64,15 +64,14 @@ const AtualizarSerie = () => {
             temporada: dadosFormSerUpd.temporada_serie,
             sinopse: dadosFormSerUpd.sinopse_serie
         };
+        console.log(montandoDadosSerUpd)
 
         //Inserindo dados da mensagem no banco
         try {
-            const response = await axios.put(`http://localhost:5000/series/update/${montandoDadosSerUpd.id_serie}`, {
-                data: JSON.stringify(montandoDadosSerUpd), headers: config.headers
-            });
+            const response = await axios.put(`http://localhost:5000/series/update/${montandoDadosSerUpd.idseries}`, montandoDadosSerUpd,config);
             if (response.status === 200) {
                 alert('Os dados de sua série foi alterado com sucesso.');
-                navigate('/paineldecontrole');
+                
             } else {
                 alert('Erro ao tentar deletar plataforma');
 
