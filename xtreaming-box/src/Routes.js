@@ -40,6 +40,8 @@ import CadastrarSerie from './pages/Administrador/Series/CadastrarSeries/index.j
 import DeletarPlata from './pages/Administrador/Plataforma/DeletarPlataforma/index.jsx';
 import DeletarSerie from './pages/Administrador/Series/DeletarSeries/index.jsx';
 import AtualizarSerie from './pages/Administrador/Series/UpdateSeries/index.jsx';
+import AtualizarPlataforma from './pages/Administrador/Plataforma/UpdatePlataforma/index.jsx'
+import LerMensagens from './pages/Administrador/Caixa de Mensagem/index.jsx';
 
 function Rotas() {
     
@@ -64,6 +66,8 @@ function Rotas() {
                     <Route path= '/deletarplataforma' element={<DeletarPlata/>}/>
                     <Route path= '/deletarserie' element={<DeletarSerie/>}/>
                     <Route path= '/atualizarserie' element={<AtualizarSerie/>}/>
+                    <Route path= '/atualizarplataforma' element={<AtualizarPlataforma/>}/>
+                    <Route path= '/caixademensagem' element={<LerMensagens/>}/>
                 </Routes> 
             </BrowserRouter>
         </AuthProvider>
