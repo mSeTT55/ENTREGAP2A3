@@ -16,12 +16,7 @@ function MenuSuperiorAdm() {
                     <img className="img-logo-adm" src={logo} alt="Imagem da Logo"/>     
                 </div>
                 <div className="text-direita-adm">
-                    <NavLink 
-                    className={({ isActive }) => (isActive ? 'active' : 'inactive')}
-                    to={"/series"}>SÉRIES</NavLink>
-                    <NavLink 
-                    className={({ isActive }) => (isActive ? 'active' : 'inactive')}
-                    to={"/minhalista"}>MINHA LISTA</NavLink>
+                   
                     <NavLink 
                     className={({ isActive }) => (isActive ? 'active' : 'inactive')}
                     to={"/paineldecontrole"}>PAINEL DE CONTROLE</NavLink>
