@@ -14,17 +14,13 @@ const AtualizarPlataforma = () => {
 
     //UseState para pegar os dados do formulario, decompor em um array e aplicar cada dado em cada variavel
     const [dadosFormPlaUpd, setdadosFormPlaUpd] = useState({
-
         id_plata: '',
         nome_plata: '',
         imagem_pla: ''
-
-
     });
 
     const limparFormulario = () => {
         setdadosFormPlaUpd({
-
             id_plata: '',
             nome_plata: '',
             imagem_pla: ''
@@ -52,12 +48,11 @@ const AtualizarPlataforma = () => {
             imagemplataforma: dadosFormPlaUpd.imagem_pla
 
         };
+            console.log(montandoDadosPlaUpd.idplataforma)
 
         //Inserindo dados da mensagem no banco
         try {
-            const response = await axios.put(`http://localhost:5000/plataforma/update/${montandoDadosPlaUpd.idplataforma}`, {
-                data: JSON.stringify(montandoDadosPlaUpd), headers: config.headers
-            });
+            const response = await axios.put(`http://localhost:5000/plataforma/update/${montandoDadosPlaUpd.idplataforma}`, montandoDadosPlaUpd, config);
             if (response.status === 200) {
                 alert('Os dados de sua Plataforma foi alterado com sucesso.');
                 navigate('/paineldecontrole');
@@ -67,7 +62,8 @@ const AtualizarPlataforma = () => {
             }
         }
         catch (error) {
-            alert('Coloque uma ID existente da lista de plataformas');
+            alert('Digite uma ID existente na lista');
+            console.log(error)
         }
     }
 
@@ -115,7 +111,7 @@ const AtualizarPlataforma = () => {
                                     </div>
                                     <div>
                                         <Link to={"/paineldecontrole"}>
-                                            <button className="bt2" id="" type="">Cancelar</button>
+                                            <button className="bt2" id="" type="">Voltar</button>
                                         </Link>
                                     </div>
                                 </div>

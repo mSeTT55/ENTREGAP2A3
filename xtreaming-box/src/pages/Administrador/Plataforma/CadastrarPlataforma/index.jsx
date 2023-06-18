@@ -79,7 +79,7 @@ import axios from 'axios';
                                      <button className="bt1-plat" id="" type="submit">Cadastrar</button>
                                 
                                      <Link to={"/paineldecontrole"}>
-                                     <button className="bt2-plat" id="" type="">Cancelar</button>
+                                     <button className="bt2-plat" id="" type="">Voltar</button>
                                      </Link>
                             </div>      
                          </form>       

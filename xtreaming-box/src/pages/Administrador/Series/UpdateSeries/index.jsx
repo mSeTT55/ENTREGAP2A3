@@ -152,7 +152,7 @@ const AtualizarSerie = () => {
                                     </div>
                                     <div>
                                         <Link to={"/paineldecontrole"}>
-                                            <button className="bt2" id="" type="">Cancelar</button>
+                                            <button className="bt2" id="" type="">Voltar</button>
                                         </Link>
                                     </div>
                                 </div>

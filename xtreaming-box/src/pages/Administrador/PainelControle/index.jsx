@@ -86,7 +86,7 @@ function PainelControle() {
                             <div className="linha1-pnl"> 
                             
                                 
-                                    <Link className='form-link' to= "/cadastrarseries">
+                                    <Link className='form-link' to= "/caixademensagem">
                                     <button className="bt1-pnl" id="">Ler Mensagens</button>
                                     </Link>
                                 

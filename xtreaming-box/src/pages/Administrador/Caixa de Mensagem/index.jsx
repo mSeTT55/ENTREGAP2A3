@@ -19,12 +19,12 @@ const LerMensagens = () => {
 
 
     });
-
     const limparFormulario = () => {
         setdadosFormMsgDel({
             id_contato: ''
         });
       };
+    
       
     const formSubmitMsg = async (pegarCada) => {
         //Cancelando o comportamento padrão de recarregar a pagina
@@ -46,19 +46,19 @@ const LerMensagens = () => {
 
         //Inserindo dados da mensagem no banco
         try {
-            const response = await axios.delete(`http://localhost:5000/plataforma/delete/${montandoDados.idplataforma}`, {
+            const response = await axios.delete(`http://localhost:5000/contatos/delete/${montandoDados.idplataforma}`, {
                 data: JSON.stringify(montandoDados), headers: config.headers
             });
             if (response.status === 200) {
-                alert('Plataforma deletada com sucesso, você será redirecionado para a página de cadastro caso mude de ideia.');
-                navigate('/paineldecontrole');
+                alert('Mensagem deletada com sucesso.');
+                
             } else {
-                alert('Erro ao tentar deletar plataforma');
+                alert('Erro ao tentar deletar mensagem');
 
             }
         }
         catch (error) {
-             alert('Coloque uma existente na lista de plataforma');
+             alert('Coloque uma ID existente da caixa de mensagem');
         }
     }
     return (
@@ -85,7 +85,7 @@ const LerMensagens = () => {
 
                                 <div className="linha1-plat">
                                     <div className="input-box">
-                                        <input type="text" name="nome" id="plat_id" placeholder="   Digite a ID para excluir a plataforma"
+                                        <input type="text" name="nome" id="plat_id" placeholder="   Digite a ID para excluir a mensagem"
                                             required value={dadosFormMsgDel.id_contato}
                                             onChange={(pegarCada) => setdadosFormMsgDel({ ...dadosFormMsgDel, id_contato: pegarCada.target.value })} />
                                     </div>

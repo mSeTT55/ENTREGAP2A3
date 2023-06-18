@@ -174,8 +174,8 @@ app.post('/plataformas/post/novo', (req, res) => {
 //Rota PUT para atualizar uma plataforma existente
 app.put('/plataforma/update/:id', (req, res) => {
   const { idplataforma } = req.body;
-  const { nome_plataforma, imagem_plataforma  } = req.body;
-  db.run('UPDATE plataforma SET nome = ?, imagemplataforma = ?', [nome_plataforma, imagem_plataforma ], function (err) {
+  const { nome, imagemplataforma  } = req.body;
+  db.run('UPDATE plataforma SET nome = ?, imagemplataforma = ? WHERE idplataforma = ?', [nome, imagemplataforma, idplataforma ], function (err) {
     if (err) {
       console.error(err);
       res.status(500).json({ error: 'Erro ao atualizar plataforma no banco de dados' });
