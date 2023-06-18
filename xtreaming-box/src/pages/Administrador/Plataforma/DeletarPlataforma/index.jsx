@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './styleplataformaMobile.css';
 import './styleplataforma.css';
 import InternoAdm from '../../../../layouts/internoAdm.jsx';
@@ -61,6 +61,22 @@ const DeletarPlata = () => {
              alert('Coloque uma existente na lista de plataforma');
         }
     }
+
+    const [dadosPlataformas, setDadosPlataformas] = useState([]);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/plataformas/get/all');
+                setDadosPlataformas(response.data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+
     return (
 
         <InternoAdm>
@@ -72,7 +88,7 @@ const DeletarPlata = () => {
             </div>
             <div className="conteiner-maior-adm">
                 <div className="caixa-itens-adm">
-                    <div>
+                    <div className='setor-a'>
                         <div>
                             <p className="nome-h2">Deletar</p>
                         </div>
@@ -97,6 +113,17 @@ const DeletarPlata = () => {
                                     </Link>
                                 </div>
                             </form>
+                        </div>
+                    </div>
+                    <div className="setor-b">
+                        <div className="caixa-plataforma">
+                            {dadosPlataformas.map((plataforma) => (
+                                <section key={plataforma.idplataforma}>
+                                    <p>ID: {plataforma.idplataforma}</p>
+                                    <p>Nome: {plataforma.nome}</p>
+                                    <p>Imagem: {plataforma.imagemplataforma}</p>
+                                </section>
+                            ))}
                         </div>
                     </div>
                 </div>

@@ -339,3 +339,36 @@
         top: 90%;
         left: 90%;
 }
+
+.setor-a{
+    width: 40%;
+}
+
+
+.setor-b{
+    width: 60%;
+}
+
+
+.caixa-plataforma{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 90%;
+    border-radius: 20px;
+    overflow-y: auto;
+    background-color: hsla(279, 16%, 37%, 0.61);
+    margin-left: 5%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.caixa-plataforma > section {
+    display: flex;
+    flex-direction: row;
+}
+
+.caixa-plataforma > section > p{
+    margin-left: 5%;
+    color: #FFFFFF;
+}
