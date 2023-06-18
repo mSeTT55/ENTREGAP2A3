@@ -57,7 +57,7 @@ const CadastrarSerie = () => {
    <InternoAdm>
             <div className="text-botoes">
                 <div>
-                    <h1 id='editarperfil'  className="minhalista">Cadastrar Séries</h1>
+                    <h1 id='editarperfil'  className="minhalista">Séries</h1>
                 </div>
    
             </div>
@@ -65,7 +65,7 @@ const CadastrarSerie = () => {
                 <div className="caixa-itens-adm">
                     <div className="setor-a">
                     <div>
-                       <p className="nome-h2">Novo</p>
+                       <p className="nome-h2">Cadastrar</p>
                      </div>
                      <div className="itens-tab">
                        <form onSubmit={(pegarCada) => formSumbit(pegarCada)}>
