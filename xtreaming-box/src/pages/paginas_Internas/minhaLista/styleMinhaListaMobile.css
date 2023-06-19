@@ -11,13 +11,39 @@
         padding-left: 30px;
     }
 
+    #esquerda-text-botoes-minhalista{
+        justify-content: center;
+        align-items: center;
+    }
+
     #direita-text-botoes{
         display: none;
     }
 
     #minhalista{
-        font-size: 35px;
+        font-size: 25px;
+        justify-content: center;
     }
+
+    #direita-text-botoes-minhalista{
+        font-size: 5px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .selecao > select{
+        width: 100%;
+        height: 100%;
+        background-color: #514769;
+        color: white;
+        font-size: 10px;
+    }
+
+    .selecao > option {
+        font-size: 10px;
+        height: 100%;
+    }
+
 
     /*Itens da esquerda---------------------------------------------------------------*/
     .esquerda-itens{
@@ -54,7 +80,9 @@
 
 
     .direita-itens-desejo-assistir{
-        width: 70%;
+        width: 98%;
+        display: flex;
+        align-items: center;
     }
 
 
@@ -69,21 +97,22 @@
 
 
     .item{
-        width: 55vw;
-        height: 30vh;
+        width: 95%;
+        height: 120%;
         display: flex;
-        flex-direction: column;     
-        margin-top: 0;
+        flex-direction: row;     
+        justify-content: center;
         padding: 0.1em;
     }
 
     .item > div{
         width: 2vw;
-        height: 20%;
+        height: 5%;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
+        margin: 2.2em;
     }
 
     #imagem-plataforma{
@@ -96,22 +125,33 @@
     }
 
     #div-nome-serie {
-        width: 15vw;
+        width: 2vw;
+        
+    }
+
+    #divstatus{
+        width: 5vw;
+    }
+
+    #divstatus > #status{
+        font-size: 10px;
+        align-items: left;
+    }
+
+    #divrecomendado{
+        width: 10vw;
+        font-size: 10px;
     }
 
     #div-genero, #div-qntdtemporada {
         display: none;
     }
 
-    #checkbox-item{
-        height: 12px;
+    .checkbox{
+        display: flex;
+        flex-direction: row;
     }
 
-    .lixeira > img{
-        width:  20px;
-        height: 20px;
-        cursor: pointer;
-    }
 
     .item > div > p{
         margin: 0;

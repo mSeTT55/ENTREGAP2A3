@@ -196,11 +196,11 @@ function MinhaLista() {
                   <p className="verde">Temporadas</p>
                   <p>{serie.temporada} temporadas</p>
                 </div>
-                <div>
+                <div id='divstatus'>
                   <p className="verde">Status</p>
                   <p id="status">{serie.status}</p>
                 </div>
-                <div>
+                <div id='divrecomendado'>
                   <p className="verde">Recomendado</p>
                   <div className="checkbox">
                     {console.log(serie)}
