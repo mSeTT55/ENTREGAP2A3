@@ -46,17 +46,18 @@
     align-items: center;
 }
 
-.caixa-itens-adm{
+.caixa-itens-adm-del-ser{
 
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     position: relative;
     top: 2%;
     width: 90%;
     height: 100%;
     background-color: rgba(31, 27, 44, 0.8);
     border-radius: 20px;
-    overflow-y: auto;
+    
+    
     
     
 }
@@ -69,7 +70,7 @@
 }
 
 /* titulo da caixa */
-.nome-h2 {
+.nome-h2-del-ser {
     padding-top: 1%;
     display: flex;
     justify-content: left;
@@ -80,7 +81,7 @@
     font-size: 22px;
     margin: 0%;
     margin-left: 5%; 
-    margin-bottom: 2%; 
+    
 }
 
 .nome-h3 {
@@ -150,7 +151,7 @@
 
 }
 
-.bt-excluir {
+.bt-excluir-del-ser {
     width: 160px;
     height: 5vh;
     background: red;
@@ -160,7 +161,7 @@
     transition: background-color 0.3s ease;
     color: white;
     font-weight: 900;
-    margin-left: 5%;
+    
     border-radius: 8px;
 }
 
@@ -178,11 +179,11 @@
     font-style: italic;
 }
 
-.linha1-plat{
+.linha1-del-ser{
     display: flex;
     align-items: center;
     flex-direction: row;
-    justify-content: left;
+    justify-content: center;
     
     
 }
@@ -215,13 +216,6 @@
     justify-content: center;
     position: absolute;
     width: 50%;
-    align-items: center;
-}
-.setorb{
-    
-    flex-direction: column;
-    top: 2%;
-    justify-content:baseline;
     align-items: center;
 }
 
@@ -338,4 +332,129 @@
     position: absolute;
         top: 90%;
         left: 90%;
+}
+
+
+
+.caixa-plataforma-del-ser{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 60%;
+    border-radius: 20px;
+    overflow-y: auto;
+    background-color: hsla(279, 16%, 37%, 0.61);
+    margin-left: 5%;
+    margin-top: 1%;
+    margin-bottom: 3%;
+}
+
+.caixa-plataforma-del-ser > section {
+    display: flex;
+    flex-direction: row;
+}
+
+.caixa-plataforma-del-ser > section > p{
+    margin-left: 5%;
+    color: #FFFFFF;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th, td {
+    border: 1px solid rgb(255, 254, 254);
+    padding: 4px;
+    text-align: left;
+    word-break: break-word;
+    
+  }
+
+  th {
+    background-color: #f2f2f2;
+    color: black;
+  }
+  .th-id-del-ser {
+    background-color: #f2f2f2;
+    color: black;
+    width: 10%;
+  }
+  .th-nome-del-ser {
+    background-color: #f2f2f2;
+    color: black;
+    width: 15%;
+
+  }
+ 
+  .th-ger {
+    background-color: #f2f2f2;
+    color: black;
+    width: 15%;
+  }
+
+  .th-ano {
+    background-color: #f2f2f2;
+    color: black;
+    width: 10%;
+  }
+
+  .th-temp {
+    background-color: #f2f2f2;
+    color: black;
+    width: 10%;
+  }
+
+  .th-sino {
+    background-color: #f2f2f2;
+    color: black;
+    width: 40%;
+  }
+
+  .td-id-del-ser{
+    color: white;
+    
+    width: 10%;
+  }
+
+  .td-nome-del-ser{
+    color: white;
+    
+    width: 15%;
+    
+  }
+  .td-ger{
+    color: white;
+    
+    width: 15%;
+   
+  }
+ 
+
+.td-ano{
+  color: white;
+  
+  width: 10%;
+ 
+}
+
+.td-temp{
+    color: white;
+    
+    width: 10%;
+   
+  }
+  
+.td-sino{
+    color: white;
+    
+    width: 40%;
+   
+  }
+  
+  
+p {
+
+    margin: 0%;
 }

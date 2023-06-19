@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './styleplataformaMobile.css';
 import './styleplataforma.css';
 import InternoAdm from '../../../../layouts/internoAdm.jsx';
-import { Link,useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -21,14 +21,14 @@ const DeletarSerie = () => {
         setdadosFormSerieDel({
             id_serie: ''
         });
-      };
+    };
 
     const formSubmitSerie = async (pegarCada) => {
         //Cancelando o comportamento padrão de recarregar a pagina
         pegarCada.preventDefault();
         limparFormulario();
 
-        
+
         const config = {
             headers: {
                 'Content-Type': 'application/json'
@@ -53,7 +53,7 @@ const DeletarSerie = () => {
             }
         }
         catch (error) {
-             alert('Coloque uma ID existente na lista de Séries');
+            alert('Coloque uma ID existente na lista de Séries');
         }
     }
 
@@ -82,15 +82,41 @@ const DeletarSerie = () => {
 
             </div>
             <div className="conteiner-maior-adm">
-                <div className="caixa-itens-adm">
-                    <div className='setor-a'>
-                        <div>
-                            <p className="nome-h2">Deletar</p>
+                <div className="caixa-itens-adm-del-ser">
+                    <div>
+                        <p className="nome-h2-del-ser">Deletar</p>
+                        <div className="caixa-plataforma-del-ser">
+                            <table>
+                                <tr className="fixa-coluna">
+                                    <th className="th-id-del-ser">ID</th>
+                                    <th className="th-nome-del-ser">Nome</th>
+                                    <th className="th-ger">Gênero</th>
+                                    <th className="th-ano">Ano</th>
+                                    <th className="th-temp">Temp</th>
+                                    <th className="th-sino">Sinopse</th>
+                                </tr>
+                            </table>
+                            {dadosSeries.map((series) => (
+                                <section key={series.idseries}>
+                                    <table>
+
+                                        <tr className="fixa-coluna">
+                                            <td className="td-id-del-ser"> <p>{series.idseries}</p></td>
+                                            <td className="td-nome-del-ser"><p>{series.nome}</p></td>
+                                            <td className="td-ger"><p>{series.genero}</p></td>
+                                            <td className="td-ano"><p>{series.ano}</p></td>
+                                            <td className="td-temp"><p>{series.temporada}</p></td>
+                                            <td className="td-sino"><p>{series.sinopse}</p></td>
+                                        </tr>
+                                    </table>
+                                    
+                                </section>
+                            ))}
                         </div>
                         <div className="itens-tab">
                             <form onSubmit={(pegarCada) => formSubmitSerie(pegarCada)}>
 
-                                <div className="linha1-plat">
+                                <div className="linha1-del-se">
                                     <div className="input-box">
                                         <input type="text" name="nome" id="plat_id" placeholder="   Digite a ID para excluir a série"
                                             required value={dadosFormSerieDel.id_serie}
@@ -101,7 +127,7 @@ const DeletarSerie = () => {
 
                                 <div className='format-bt'>
 
-                                    <button className="bt-excluir" id="" type="submit">Excluir</button>
+                                    <button className="bt-excluir-del-ser" id="" type="submit">Excluir</button>
 
                                     <Link to={"/paineldecontrole"}>
                                         <button className="bt-voltar" id="" type="">Voltar</button>
@@ -109,25 +135,12 @@ const DeletarSerie = () => {
                                 </div>
                             </form>
                         </div>
+
+
                     </div>
-                    <div className="setor-b">
-                        <div className="caixa-plataforma">
-                            {dadosSeries.map((series) => (
-                                <section key={series.idseries}>
-                                    <p>ID: {series.idseries}</p>
-                                    <p>Nome: {series.nome}</p>
-                                    <p>Ano: {series.ano}</p>
-                                    <p>Genero: {series.genero}</p>
-                                    <p>Sinopse: {series.sinopse}</p>
-                                    <p>Temporada: {series.temporada}</p>
-                                </section>
-                            ))}
-                        </div>
-                    </div>
+
+
                 </div>
-
-
-
             </div>
 
         </InternoAdm>

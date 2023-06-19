@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './styleplataformaMobile.css';
-import './styleplataforma.css';
+import './stylecaixademensagem.css';
 import InternoAdm from '../../../layouts/internoAdm.jsx';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -76,12 +76,26 @@ const LerMensagens = () => {
         <div className="caixa-itens-adm">
           <div>
             <div className="caixa-msg-contato">
+            <table>
+              <tr className="fixa-coluna">
+                <th className="th-id">ID</th>
+                <th className="th-nome">Nome</th>
+                <th className="th-mail">Email</th>
+                <th className="th-msg">Mensagem</th>
+              </tr>
+              </table>
               {dadosContatos.map((contato) => (
                 <section key={contato.idcontato}>
-                  <p>ID: {contato.idcontato}</p>
-                  <p>Nome: {contato.nome}</p>
-                  <p>Email: {contato.email}</p>
-                  <p>Mensagem: {contato.mensagem}</p>
+                  <table>
+
+                    <tr className="fixa-coluna">
+                      <td className="td-id"> <p>{contato.idcontato}</p></td>
+                      <td className="td-nome"><p>{contato.nome}</p></td>
+                      <td className="td-mail"><p>{contato.email}</p></td>
+                      <td className="td-msg"><p>{contato.mensagem}</p></td>
+                    </tr>
+                  </table>
+
                 </section>
               ))}
             </div>
