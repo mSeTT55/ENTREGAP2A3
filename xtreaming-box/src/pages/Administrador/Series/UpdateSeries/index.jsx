@@ -68,10 +68,10 @@ const AtualizarSerie = () => {
 
         //Inserindo dados da mensagem no banco
         try {
-            const response = await axios.put(`http://localhost:5000/series/update/${montandoDadosSerUpd.idseries}`, montandoDadosSerUpd,config);
+            const response = await axios.put(`http://localhost:5000/series/update/${montandoDadosSerUpd.idseries}`, montandoDadosSerUpd, config);
             if (response.status === 200) {
                 alert('Os dados de sua série foi alterado com sucesso.');
-                
+
             } else {
                 alert('Erro ao tentar deletar plataforma');
 
@@ -172,14 +172,29 @@ const AtualizarSerie = () => {
                     </div>
                     <div className="setor-b">
                         <div className="caixa-plataforma">
+                            <table>
+                                <tr className="fixa-coluna">
+                                    <th className="th-id-del-ser">ID</th>
+                                    <th className="th-nome-del-ser">Nome</th>
+                                    <th className="th-ger">Gênero</th>
+                                    <th className="th-ano">Ano</th>
+                                    <th className="th-temp">Temp</th>
+                                    <th className="th-sino">Sinopse</th>
+                                </tr>
+                            </table>
                             {dadosSeries.map((series) => (
                                 <section key={series.idseries}>
-                                    <p>ID: {series.idseries}</p>
-                                    <p>Nome: {series.nome}</p>
-                                    <p>Ano: {series.ano}</p>
-                                    <p>Genero: {series.genero}</p>
-                                    <p>Sinopse: {series.sinopse}</p>
-                                    <p>Temporada: {series.temporada}</p>
+                                    <table>
+
+                                        <tr className="fixa-coluna">
+                                            <td className="td-id-del-ser"> <p>{series.idseries}</p></td>
+                                            <td className="td-nome-del-ser"><p>{series.nome}</p></td>
+                                            <td className="td-ger"><p>{series.genero}</p></td>
+                                            <td className="td-ano"><p>{series.ano}</p></td>
+                                            <td className="td-temp"><p>{series.temporada}</p></td>
+                                            <td className="td-sino"><p>{series.sinopse}</p></td>
+                                        </tr>
+                                    </table>
                                 </section>
                             ))}
                         </div>
