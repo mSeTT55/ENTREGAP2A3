@@ -20,12 +20,13 @@
     
 }
 
-.botao-submit {
+.botao-submit-cad-ser {
     margin-top: 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
+    margin-left: 6%;
 }
 /* css do html*/
 
@@ -56,32 +57,39 @@
     margin: 0;
 }
 
-
+.format-form-cad-ser{
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    align-items: left;
+}
 /*Aqui termina toda parte text-botoes*/
 
 /*Aqui comeca o conteudo que vai englobar os itens*/
 
-.conteiner-maior-adm{
+.conteiner-maior-adm-cad-ser{
     width: 100%;
     height: 90%;
-   
+    display: flex;
     justify-content: center;
     position: relative;
 }
 
-.caixa-itens-adm{
+.caixa-itens-adm-cad-ser{
     display: flex;
-    flex-direction: row;
-    position: absolute;
+    flex-direction: column;
+    
     top: 2%;
     width: 90%;
     height: 95%;
     background-color: rgba(31, 27, 44, 0.8);
     border-radius: 20px;
+    justify-content: left;
      
 }
 /* titulo da caixa */
-.nome-h2 {
+.nome-h2-cad-ser > p{
+    width: 100%;
     padding-top: 1%;
     display: flex;
     justify-content: left;
@@ -110,7 +118,7 @@
 }
 /* area de formatação dos inputs */
 
-.input-box > input{
+.input-box-cad-ser > input{
     box-sizing: border-box;
     width: 337px;
     height: 5vh;
@@ -124,7 +132,7 @@
     margin-left: 5%;
 }
 
-.input-box > select{
+.input-box-cad-ser > select{
     box-sizing: border-box;
     width: 337px;
     height: 5vh;
@@ -138,7 +146,7 @@
     margin-left: 5%;
 }
 
-.input-box > textarea{
+.input-box-cad-ser> textarea{
     box-sizing: border-box;
     width: 337px;
     height: 80px;
@@ -225,13 +233,7 @@
     width: 50%;
     align-items: center;
 }
-.setorb{
-    
-    flex-direction: column;
-    top: 2%;
-    justify-content:baseline;
-    align-items: center;
-}
+
 
 
 .cabec-graf{
