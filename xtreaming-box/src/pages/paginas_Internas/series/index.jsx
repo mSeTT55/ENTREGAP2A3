@@ -151,9 +151,13 @@ function Series() {
           {series.map((serie, seriesSection) => (
             <section key={seriesSection} className="series">
               <div className="conteudo_serie">
-                <img className="img_serie" src={serie.imagem_serie} alt={`Imagem da série ${serie.nome}`} />
-                <p className="nome_serie">{serie.nome}</p>
-                <p className="nome_plataforma">{serie.nomePlataforma}</p>
+                <div className="divimg_serie">
+                  <img className="img_serie" src={serie.imagem_serie} alt={`Imagem da série ${serie.nome}`} />
+                </div>
+                <div className='divNome'>
+                  <p className="nome_serie">{serie.nome}</p>
+                  <p className="nome_plataforma">{serie.nomePlataforma}</p>
+                </div>
                 <div className="div-botton">
                   <div>
                     <div onClick={() => handleImageClick(seriesSection, 'assistir')}>

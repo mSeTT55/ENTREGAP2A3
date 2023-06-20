@@ -60,10 +60,10 @@
 
 .conteudo_serie{
     width: 10em;
-    height: 19em;
+    height: 22em;
     display: flex;
     align-items: center;
-    
+    justify-content: center;
     flex-direction: column;
 }
 
@@ -72,23 +72,31 @@
     margin-bottom: 8px;
 }
 
+.divNome{
+    height: 5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
+.divimg_serie{
+    height: 12em;
+}
 
 .img_serie{
-    width: 6.5em;
+    width: 7.5em;
     border-radius: 15px;
 }
 
-.conteudo_serie > .nome_serie {
+.conteudo_serie > .nome_serie, .divNome {
     font-family: 'Baloo Thambi',cursive;
     color: white;
+    text-align: center;
 }
 
-.conteudo_serie > .nome_plataforma {
+.conteudo_serie > .divNome > .nome_plataforma {
     color: white;
     font-size: small;
 }
 
-.img-star{
-    width: 8em;
-}
