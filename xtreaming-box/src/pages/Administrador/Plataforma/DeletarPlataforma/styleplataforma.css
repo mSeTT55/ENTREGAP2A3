@@ -49,7 +49,7 @@
 .caixa-itens-adm{
 
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     position: relative;
     top: 2%;
     width: 90%;
@@ -60,12 +60,26 @@
     
     
 }
-.format-bt{
+.format-bt-del-pla{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin-left: 5%;
+   
+}
+
+.nome-h2-del-pla {
+    padding-top: 1%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-family: 'Baloo 2',cursive;
+    color: #16FC92;
+    font-weight: 600;
+    font-size: 22px;
+    margin: 0%;
+    margin-left: 5%; 
+     
 }
 
 /* titulo da caixa */
@@ -112,6 +126,19 @@
     
 }
 
+.input-box-del-pla > input{
+    box-sizing: border-box;
+    width: 337px;
+    height: 5vh;
+    background: #514769;
+    border: 1px solid #16FC92;
+    border-radius: 8px;
+    font-family: 'Baloo Thambi 2';
+    font-size: 16px;
+    color: white;
+    margin-bottom: 10px;
+} 
+
 .bt-voltar {
     width: 160px;
     height: 5vh;
@@ -149,6 +176,19 @@
     
 
 }
+.bt-excluir-del-pla {
+    width: 160px;
+    height: 5vh;
+    background: red;
+    font-family: 'Baloo Thambi 2';
+    font-size: 16px ;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: white;
+    font-weight: 900;
+    align-items: left;
+    border-radius: 8px;
+}
 
 .bt-excluir {
     width: 160px;
@@ -182,7 +222,7 @@
     display: flex;
     align-items: center;
     flex-direction: row;
-    justify-content: left;
+    justify-content: center;
     
     
 }
@@ -340,27 +380,20 @@
         left: 90%;
 }
 
-.setor-a{
-    width: 40%;
-}
 
 
-.setor-b{
-    width: 60%;
-}
 
-
-.caixa-plataforma{
+.caixa-plataforma-del-pla{
     display: flex;
     flex-direction: column;
     width: 90%;
-    height: 90%;
+    height: 60%;
     border-radius: 20px;
     overflow-y: auto;
     background-color: hsla(279, 16%, 37%, 0.61);
     margin-left: 5%;
-    margin-top: 2%;
-    margin-bottom: 2%;
+    margin-top: 1%;
+    margin-bottom: 3%;
 }
 
 .caixa-plataforma > section {
@@ -371,4 +404,66 @@
 .caixa-plataforma > section > p{
     margin-left: 5%;
     color: #FFFFFF;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th, td {
+    border: 1px solid rgb(255, 254, 254);
+    padding: 4px;
+    text-align: left;
+    word-break: break-word;
+    
+  }
+
+  th {
+    background-color: #f2f2f2;
+    color: black;
+  }
+  .th-id-del-pla {
+    background-color: #f2f2f2;
+    color: black;
+    width: 10%;
+  }
+  .th-nome-del-pla {
+    background-color: #f2f2f2;
+    color: black;
+    width: 30%;
+
+  }
+ 
+  .th-img {
+    background-color: #f2f2f2;
+    color: black;
+    width: 60%;
+  }
+
+  .td-id-del-pla{
+    color: white;
+    
+    width: 10%;
+  }
+
+  .td-nome-del-pla{
+    color: white;
+    
+    width: 30%;
+    
+  }
+  .td-img{
+    color: white;
+    
+    width: 60%;
+   
+  }
+ 
+
+
+  
+p {
+
+    margin: 0%;
 }

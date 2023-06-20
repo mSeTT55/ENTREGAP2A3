@@ -370,3 +370,85 @@
         top: 90%;
         left: 90%;
 }
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th, td {
+    border: 1px solid rgb(255, 254, 254);
+    padding: 4px;
+    text-align: left;
+    word-break: break-word;
+    
+  }
+
+  th {
+    background-color: #f2f2f2;
+    color: black;
+  }
+  .th-id {
+    background-color: #f2f2f2;
+    color: black;
+    width: 10%;
+  }
+  .th-nome {
+    background-color: #f2f2f2;
+    color: black;
+    width: 25%;
+
+  }
+  .th-mail {
+    background-color: #f2f2f2;
+    color: black;
+    width: 35%;
+
+  }
+  .th-msgs {
+    background-color: #f2f2f2;
+    color: black;
+    width: 30%;
+  }
+
+  .td-id{
+    color: white;
+    
+    width: 10%;
+  }
+
+  .td-nome{
+    color: white;
+    
+    width: 25%;
+    
+  }
+  .td-mail{
+    color: white;
+    
+    width: 35%;
+   
+  }
+  .td-msg{
+    color: white;
+    
+    width: 39%;
+    
+  }
+
+  .fixa-coluna {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    
+  }
+  .fixa-linha {
+    position: sticky;
+    top: 0;
+    
+  }
+
+  
+p {
+
+    margin: 0%;
+}

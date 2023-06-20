@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './styleplataformaMobile.css';
 import './styleplataforma.css';
 import InternoAdm from '../../../../layouts/internoAdm.jsx';
-import { Link,useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -24,15 +24,15 @@ const DeletarPlata = () => {
         setdadosFormPlatDel({
             id_plata: ''
         });
-      };
-      
+    };
+
     const formSubmitPlata = async (pegarCada) => {
         //Cancelando o comportamento padrão de recarregar a pagina
         pegarCada.preventDefault();
         limparFormulario();
 
 
-        
+
 
         const config = {
             headers: {
@@ -58,7 +58,7 @@ const DeletarPlata = () => {
             }
         }
         catch (error) {
-             alert('Coloque uma existente na lista de plataforma');
+            alert('Coloque uma existente na lista de plataforma');
         }
     }
 
@@ -87,43 +87,51 @@ const DeletarPlata = () => {
 
             </div>
             <div className="conteiner-maior-adm">
-                <div className="caixa-itens-adm">
-                    <div className='setor-a'>
-                        <div>
-                            <p className="nome-h2">Deletar</p>
-                        </div>
-                        <div className="itens-tab">
-                            <form onSubmit={(pegarCada) => formSubmitPlata(pegarCada)}>
 
-                                <div className="linha1-plat">
-                                    <div className="input-box">
-                                        <input type="text" name="nome" id="plat_id" placeholder="   Digite a ID para excluir a plataforma"
-                                            required value={dadosFormPlatDel.id_plata}
-                                            onChange={(pegarCada) => setdadosFormPlatDel({ ...dadosFormPlatDel, id_plata: pegarCada.target.value })} />
-                                    </div>
+                <div className="caixa-itens-adm">
+                    <div>
+                        <p className="nome-h2-del-pla">Deletar</p>
+
+                        <div className="caixa-plataforma-del-pla">
+                            <table>
+                                <tr className="fixa-coluna">
+                                    <th className="th-id-del-pla">ID</th>
+                                    <th className="th-nome-del-pla">Nome</th>
+                                    <th className="th-img">Imagem</th>
+
+                                </tr>
+                            </table>
+                            {dadosPlataformas.map((plataforma) => (
+                                <section key={plataforma.idplataforma}>
+                                    <table>
+
+                                        <tr className="fixa-coluna">
+                                            <td className="td-id-del-pla"> <p>{plataforma.idplataforma}</p></td>
+                                            <td className="td-nome-del-pla"><p>{plataforma.nome}</p></td>
+                                            <td className="td-img"><p>{plataforma.imagemplataforma}</p></td>
+                                        </tr>
+                                    </table>
+                                    
+                                </section>
+                            ))}
+                        </div>
+
+
+                        <div className="linha1-plat">
+                            <form onSubmit={(pegarCada) => formSubmitPlata(pegarCada)}>
+                                <div className="input-box-del-pla">
+                                    <input type="text" name="nome" id="plat_id" placeholder="   Digite a ID para excluir a plataforma"
+                                        required value={dadosFormPlatDel.id_plata}
+                                        onChange={(pegarCada) => setdadosFormPlatDel({ ...dadosFormPlatDel, id_plata: pegarCada.target.value })} />
                                 </div>
 
-
-                                <div className='format-bt'>
-
+                                <div className='format-bt-del-pla'>
                                     <button className="bt-excluir" id="" type="submit">Excluir</button>
-
                                     <Link to={"/paineldecontrole"}>
                                         <button className="bt-voltar" id="" type="">Voltar</button>
                                     </Link>
                                 </div>
                             </form>
-                        </div>
-                    </div>
-                    <div className="setor-b">
-                        <div className="caixa-plataforma">
-                            {dadosPlataformas.map((plataforma) => (
-                                <section key={plataforma.idplataforma}>
-                                    <p>ID: {plataforma.idplataforma}</p>
-                                    <p>Nome: {plataforma.nome}</p>
-                                    <p>Imagem: {plataforma.imagemplataforma}</p>
-                                </section>
-                            ))}
                         </div>
                     </div>
                 </div>
