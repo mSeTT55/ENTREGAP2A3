@@ -152,7 +152,7 @@
     margin-left: 5%;
 }
 
-.bt1 {
+.bt1-upt-pla {
     width: 120px;
     height: 5vh;
     background: #16FC92;
@@ -162,8 +162,8 @@
     transition: background-color 0.3s ease;
     color: black;
     font-weight: 900;
-    margin-left: 5%;
-    margin-right: 50px;
+    margin-left: 7%;
+    margin-right: 20px;
     margin-bottom: 3%;
     margin-top: 2%;
     border-radius: 8px;
@@ -209,14 +209,14 @@
 
 
 .setor-b{
-    width: 60%;
+    width: 70%;
 }
 
-.caixa-plataforma{
+.caixa-plataforma-upt-pla{
     display: flex;
     flex-direction: column;
-    width: 90%;
-    height: 90%;
+    width: 60%;
+    height: 60%;
     border-radius: 20px;
     overflow-y: auto;
     background-color: hsla(279, 16%, 37%, 0.61);
@@ -225,17 +225,77 @@
     margin-bottom: 2%;
 }
 
-.caixa-plataforma > section {
+.caixa-plataforma-upt-pla > section {
     display: flex;
     flex-direction: row;
 }
 
-.caixa-plataforma > section > p{
+.caixa-plataforma-upt-pla > section > p{
     margin-left: 5%;
     color: #FFFFFF;
 }
 
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
 
+  th, td {
+    border: 1px solid rgb(255, 254, 254);
+    padding: 4px;
+    text-align: left;
+    word-break: break-word;
+    
+  }
+
+  th {
+    background-color: #f2f2f2;
+    color: black;
+  }
+  .th-id-del-pla {
+    background-color: #f2f2f2;
+    color: black;
+    width: 10%;
+  }
+  .th-nome-del-pla {
+    background-color: #f2f2f2;
+    color: black;
+    width: 30%;
+
+  }
+ 
+  .th-img {
+    background-color: #f2f2f2;
+    color: black;
+    width: 60%;
+  }
+
+  .td-id-del-pla{
+    color: white;
+    
+    width: 10%;
+  }
+
+  .td-nome-del-pla{
+    color: white;
+    
+    width: 30%;
+    
+  }
+  .td-img{
+    color: white;
+    
+    width: 60%;
+   
+  }
+ 
+
+
+  
+p {
+
+    margin: 0%;
+}
 
 
 

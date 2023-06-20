@@ -78,7 +78,7 @@ const AtualizarPlataforma = () => {
             </div>
             <div className="conteiner-maior-adm">
                 <div className="caixa-itens-up-ser">
-                    <div className="setor-a">
+                    <div className="setor-a-upt-pla">
                         <div>
                             <p className="nome-h2">Atualizar</p>
                         </div>
@@ -119,7 +119,7 @@ const AtualizarPlataforma = () => {
                                 </div>
                                 <div className="botao-submit">
                                     <div>
-                                        <button className="bt1" id="" type="submit">
+                                        <button className="bt1-upt-pla" id="" type="submit">
                                             Atualizar
                                         </button>
                                     </div>
@@ -135,12 +135,25 @@ const AtualizarPlataforma = () => {
                         </div>
                     </div>
                     <div className="setor-b">
-                        <div className="caixa-plataforma">
+                        <div className="caixa-plataforma-upt-pla">
+                        <table>
+                                <tr className="fixa-coluna">
+                                    <th className="th-id-del-pla">ID</th>
+                                    <th className="th-nome-del-pla">Nome</th>
+                                    <th className="th-img">Imagem</th>
+
+                                </tr>
+                            </table>
                             {dadosPlataformas.map((plataforma) => (
                                 <section key={plataforma.idplataforma}>
-                                    <p>ID: {plataforma.idplataforma}</p>
-                                    <p>Nome: {plataforma.nome}</p>
-                                    <p>Imagem: {plataforma.imagemplataforma}</p>
+                                    <table>
+
+                                        <tr className="fixa-coluna">
+                                            <td className="td-id-del-pla"> <p>{plataforma.idplataforma}</p></td>
+                                            <td className="td-nome-del-pla"><p>{plataforma.nome}</p></td>
+                                            <td className="td-img"><p>{plataforma.imagemplataforma}</p></td>
+                                        </tr>
+                                    </table>
                                 </section>
                             ))}
                         </div>

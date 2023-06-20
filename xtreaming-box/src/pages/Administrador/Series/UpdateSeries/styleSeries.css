@@ -1,6 +1,11 @@
 
 
-
+.setor-b-upt-ser{
+    align-items: center;
+    width: 70%;
+    justify-content: center;
+    display: flex;
+}
 
 
 /* area de formatação dos inputs */
@@ -203,7 +208,28 @@
     text-align: left;
 }
 
+.caixa-plataforma-upt-ser{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 60%;
+    border-radius: 20px;
+    overflow-y: auto;
+    background-color: hsla(279, 16%, 37%, 0.61);
+    margin-left: 5%;
+    margin-top: 1%;
+    margin-bottom: 3%;
+}
 
+.caixa-plataforma-upt-ser > section {
+    display: flex;
+    flex-direction: row;
+}
+
+.caixa-plataforma-upt-ser > section > p{
+    margin-left: 5%;
+    color: #FFFFFF;
+}
 
 
 

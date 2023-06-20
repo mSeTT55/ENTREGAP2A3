@@ -118,8 +118,6 @@ const CadastrarSerie = () => {
                         </div>
                     </form>
 
-
-
                 </div>
             </div>
 

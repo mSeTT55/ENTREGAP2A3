@@ -108,7 +108,7 @@ const AtualizarSerie = () => {
             </div>
             <div className="conteiner-maior-adm">
                 <div className="caixa-itens-up-ser">
-                    <div className="setor-a">
+                    <div className="setor-a-upt-ser">
                         <div>
                             <p className="nome-h2">Atualizar</p>
                         </div>
@@ -170,8 +170,8 @@ const AtualizarSerie = () => {
                             </form>
                         </div>
                     </div>
-                    <div className="setor-b">
-                        <div className="caixa-plataforma">
+                    <div className="setor-b-upt-ser">
+                        <div className="caixa-plataforma-upt-ser">
                             <table>
                                 <tr className="fixa-coluna">
                                     <th className="th-id-del-ser">ID</th>

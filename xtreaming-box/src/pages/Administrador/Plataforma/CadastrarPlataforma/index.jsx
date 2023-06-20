@@ -59,22 +59,22 @@ const CadastrarPlata = () => {
                         </div>
                         <div className="itens-tab">
                             <form onSubmit={(pegarCada) => formSubmitPlata(pegarCada)}>
-                                <div className="linha1-plat">
-                                    <div className="input-box">
+                                <div className="input-box-cad-pla">
+                                    <div className="input-box-cad-pla">
                                         <input type="text" name="nome" id="plat_nome" placeholder="   Digite o nome da plataforma de streaming"
                                             required value={dadosFormPlata.nome_plata}
                                             onChange={(pegarCada) => setdadosFormPlata({ ...dadosFormPlata, nome_plata: pegarCada.target.value })} />
                                     </div>
                                 </div>
-                                <div className="linha1-plat" >
-                                    <div className="input-box">
+                                <div className="input-box-cad-pla" >
+                                    <div className="input-box-cad-pla">
                                         <input type="text" name="inserir-img" id="plat_img" placeholder="  Digite a url da imagem da TAG da plataforma"
                                             required value={dadosFormPlata.imagem_Plata}
                                             onChange={(pegarCada) => setdadosFormPlata({ ...dadosFormPlata, imagem_Plata: pegarCada.target.value })} />
                                     </div>
                                 </div>
-                                <div className='format-bt'>
-                                    <button className="bt1-plat" id="" type="submit">Cadastrar</button>
+                                <div className='format-bt-cad-pla'>
+                                    <button className="bt1-cad-plat" id="" type="submit">Cadastrar</button>
                                     <Link to={"/paineldecontrole"}>
                                         <button className="bt2-plat" id="" type="">Voltar</button>
                                     </Link>
