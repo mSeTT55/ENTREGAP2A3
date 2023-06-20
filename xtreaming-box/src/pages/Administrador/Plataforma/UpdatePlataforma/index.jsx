@@ -135,7 +135,15 @@ const AtualizarPlataforma = () => {
                         </div>
                     </div>
                     <div className="setor-b">
-                        
+                        <div className="caixa-plataforma">
+                            {dadosPlataformas.map((plataforma) => (
+                                <section key={plataforma.idplataforma}>
+                                    <p>ID: {plataforma.idplataforma}</p>
+                                    <p>Nome: {plataforma.nome}</p>
+                                    <p>Imagem: {plataforma.imagemplataforma}</p>
+                                </section>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
